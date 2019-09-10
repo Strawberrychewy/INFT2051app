@@ -15,35 +15,37 @@ namespace INFT2051app {
         //Variables changed by player
         string NickName { get; set; }// NickName (PLAYER INPUT)
 
-        //Variables pulled from JSON file (A Base pet class can be formed so pets are loaded during runtime) 
-        string Name { get; set; }// Name
-        string Type { get; set; } // Type of Pet
-        string Description { get; set; } // Description
-        string SpritePath { get; set; } // Path of sprite animation
-        //string SoundPath { get; set; } // Path of sound effect animation (Unused until sound is implemented)
-
         //Variables changed by game loop (Always updated)
-        int Happiness { get; set; } // Happiness
-        int Age { get; set; } // Age
-        int Position_X { get; set; } // X Position
-        int Position_Y { get; set; } // Y Position
+        public int Happiness { get; set; } // Happiness
+        public int Age { get; set; } // Age
 
-        //BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
+        BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
 
         public Pet() {
-
+            Base = new BasePet();
 
         }
 
-        void Evolve() {
+        public void Evolve() {
             /*
              * The pet will look at the next evolution in the base pet class/JSON file to evolve into
-             * BASE CLASS USED, only "Base" variable needs to be changed
-             * JSON FILE USED, need to search JSON file first for information, then replace information whereever necessary
+             * BASE CLASS USED, only "Base" variable needs to be changed based on next evolution of current Base
+             * JSON FILE USED, need to search JSON file first for all information, then replace information whereever necessary
              *
+             * The below code specifies using swapping the BASE object for one in the entire dex
              */
-
+            string EvolveInto = Base.EvolvesInto; //Finds the next evolution chain object from its current Base object
         }
 
+        //HELPER FUNCTIONS (UNHAPPY<--------------NEUTRAL-------------->HAPPY)
+        public bool IsUnhappy() {
+            return Happiness < 30; 
+        }
+        public bool IsNeutral() {
+            return !IsUnhappy() && !IsHappy();
+        }
+        public bool IsHappy() {
+            return Happiness > 60;
+        }
     }
 }

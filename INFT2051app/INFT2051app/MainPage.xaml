@@ -34,9 +34,8 @@
             AbsoluteLayout.LayoutFlags="All" />
         <!-- Options (Anchored below Credits but retains Height and Width)-->
         <BoxView x:Name="Options"
-               BackgroundColor="Blue"
-               AbsoluteLayout.LayoutBounds="1.5, 0.1, 0.5, 0.1"
-               AbsoluteLayout.LayoutFlags="All" />
+            BackgroundColor="Blue"
+            AbsoluteLayout.LayoutBounds="1.5, 0.1, 0.5, 0.1"
+            AbsoluteLayout.LayoutFlags="All" />
     </AbsoluteLayout>
-
 </ContentPage>
