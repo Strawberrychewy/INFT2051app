@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="INFT2051app.MainPage">
+
+    <AbsoluteLayout x:Name ="main_layout">
+        <!-- Image Background -->
+        <BoxView x:Name="background" 
+           BackgroundColor="LightGreen" 
+           AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+           AbsoluteLayout.LayoutFlags="All" />
+        <!-- Left side (For touch controls) -->
+        <BoxView x:Name="side_left"
+           BackgroundColor="LightBlue"
+           AbsoluteLayout.LayoutBounds="0, 0, 0.5, 1"
+           AbsoluteLayout.LayoutFlags="All" />
+        <!-- Right side (For touch controls) -->
+        <BoxView x:Name="side_right"
+           BackgroundColor="Red"
+           AbsoluteLayout.LayoutBounds="1, 0, 0.5, 1"
+           AbsoluteLayout.LayoutFlags="All" />
+        <!-- Status -->
+        <BoxView x:Name="Status"
+           BackgroundColor="LightPink"
+           AbsoluteLayout.LayoutBounds="0, 0, 0.5, 0.1"
+           AbsoluteLayout.LayoutFlags="All" />
+        <!-- Credits -->
+        <BoxView x:Name="Credits"
+            BackgroundColor="LightGray"
+            AbsoluteLayout.LayoutBounds="1, 0, 0.5, 0.1"
+            AbsoluteLayout.LayoutFlags="All" />
+        <!-- Options (Anchored below Credits but retains Height and Width)-->
+        <BoxView x:Name="Options"
+               BackgroundColor="Blue"
+               AbsoluteLayout.LayoutBounds="1.5, 0.1, 0.5, 0.1"
+               AbsoluteLayout.LayoutFlags="All" />
+    </AbsoluteLayout>
+
+</ContentPage>
