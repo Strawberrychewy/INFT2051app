@@ -22,12 +22,12 @@ namespace INFT2051app {
         public string SoundPath { get; set; } // Path of sound effect animation (Unused until sound is implemented)
 
         //TODO: ADD ACTUAL DEFAULT PARAMETERS SO CONSTRUCTOR BECOMES FOOLPROOF
-        public BasePet( string name = "", 
-                        string type = "", 
-                        string stage = "", 
-                        string description = "", 
-                        string evolvesInto = "",
-                        string evolvesFrom = "",
+        public BasePet( string name = "Testy", 
+                        string type = "Land", 
+                        string stage = "Child", 
+                        string description = "TestObject", 
+                        string evolvesInto = "TestySupreme",
+                        string evolvesFrom = "None",
                         string spritePath = "", 
                         string soundPath = "") {
             Name = name;
@@ -38,6 +38,19 @@ namespace INFT2051app {
             SoundPath = soundPath;
             EvolvesFrom = evolvesFrom;
             EvolvesInto = evolvesInto;
+
+        }
+
+        public override String ToString() {
+            String s = "[" + Name + ", ";
+            s += Type + ", ";
+            s += Stage + ", ";
+            s += Description + ", ";
+            s += EvolvesFrom + ", ";
+            s += EvolvesInto + ", ";
+            s += SpritePath + ", ";
+            s += SoundPath + "]";
+            return s;
 
         }
     }

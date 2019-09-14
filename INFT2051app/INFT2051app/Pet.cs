@@ -13,7 +13,7 @@ namespace INFT2051app {
          */
 
         //Variables changed by player
-        string NickName { get; set; }// NickName (PLAYER INPUT)
+        public string NickName { get; set; }// NickName (PLAYER INPUT)
 
         //Variables changed by game loop (Always updated)
         public int Happiness { get; set; } // Happiness
@@ -21,7 +21,10 @@ namespace INFT2051app {
 
         BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
 
-        public Pet() {
+        public Pet(string nickname = "Chewy", int happiness = 0, int age = 0) {
+            NickName = nickname;
+            Happiness = happiness;
+            Age = age;
             Base = new BasePet();
 
         }
@@ -37,15 +40,29 @@ namespace INFT2051app {
             string EvolveInto = Base.EvolvesInto; //Finds the next evolution chain object from its current Base object
         }
 
-        //HELPER FUNCTIONS (UNHAPPY<--------------NEUTRAL-------------->HAPPY)
-        public bool IsUnhappy() {
-            return Happiness < 30; 
+        public string Status() {
+            /*
+             * This function checks the Happiness variable and returns the status based on the range 
+             * 
+             * Under 30: Unhappy
+             * Above 60: Happy
+             * Between 30 and 60: Neutral
+             */
+            if (Happiness < 30) {
+                return "Unhappy";
+            } else if (Happiness > 60) {
+                return "Happy";
+            } else {
+                return "Neutral";
+            }
         }
-        public bool IsNeutral() {
-            return !IsUnhappy() && !IsHappy();
-        }
-        public bool IsHappy() {
-            return Happiness > 60;
+
+        public override String ToString() {
+            String s = "[Nickname: " + NickName;
+            s += ", Happiness: " + Happiness;
+            s += ", Age: " + Age +"]";
+            s += "\n" + Base.ToString();
+            return s;
         }
     }
 }
