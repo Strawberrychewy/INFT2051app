@@ -12,16 +12,6 @@
            BackgroundColor="LightGreen" 
            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
            AbsoluteLayout.LayoutFlags="All" />
-        <!-- Left side (For touch controls) -->
-        <BoxView x:Name="side_left"
-           BackgroundColor="LightBlue"
-           AbsoluteLayout.LayoutBounds="0, 0, 0.5, 1"
-           AbsoluteLayout.LayoutFlags="All" />
-        <!-- Right side (For touch controls) -->
-        <BoxView x:Name="side_right"
-           BackgroundColor="LightGreen"
-           AbsoluteLayout.LayoutBounds="1, 0, 0.5, 1"
-           AbsoluteLayout.LayoutFlags="All" />
         <!-- Status -->
         <BoxView x:Name="Status"
            BackgroundColor="LightPink"
@@ -40,10 +30,10 @@
         
         
         <!-- DEBUG LABELS-->
-        <Label x:Name="Happiness_value"
+        <Label x:Name="DebugLabel"
            TextColor = "Red"
            FontSize="Small"
-           AbsoluteLayout.LayoutBounds="0.1, 0, 1, 0.1"
+           AbsoluteLayout.LayoutBounds="0.1, 0, 1, 1"
            AbsoluteLayout.LayoutFlags="All" >
             <Label.Text>
             Happiness: 0 
@@ -54,57 +44,9 @@
            TextColor = "Red"
            FontSize="Small"
            AbsoluteLayout.LayoutBounds="0.9, 0, 0.2, 0.1"
-           AbsoluteLayout.LayoutFlags="All"> 
+           AbsoluteLayout.LayoutFlags="All">
             <Label.Text>
                 Credits: 0
-            </Label.Text>
-        </Label>
-        <Label x:Name ="coordinates"
-           TextColor = "Red"
-           FontSize="Small"
-           AbsoluteLayout.LayoutBounds="0.1, 0.1, 1, 0.1"
-           AbsoluteLayout.LayoutFlags="All">
-            <Label.Text>
-                Pet X coord: 0 
-                Pet Y coord: 0
-            </Label.Text>
-        </Label>
-        <Label x:Name ="device"
-           TextColor = "Red"
-           FontSize="Small"
-           AbsoluteLayout.LayoutBounds="0.1, 0.2, 1, 0.1"
-           AbsoluteLayout.LayoutFlags="All">
-            <Label.Text>
-                Device Height: 0 
-                Device Width: 0
-            </Label.Text>
-        </Label>
-        <Label x:Name ="time"
-           TextColor = "Red"
-           FontSize="Small"
-           AbsoluteLayout.LayoutBounds="0.1, 0.3, 1, 0.1"
-           AbsoluteLayout.LayoutFlags="All">
-            <Label.Text>
-                Current time: 0
-            </Label.Text>
-        </Label>
-        <Label x:Name ="cursor_position"
-           TextColor = "Red"
-           FontSize="Small"
-           AbsoluteLayout.LayoutBounds="0.1, 0.4, 1, 0.1"
-           AbsoluteLayout.LayoutFlags="All">
-            <Label.Text>
-                Pointer X:
-                Pointer Y:
-            </Label.Text>
-        </Label>
-        <Label x:Name ="petinfo"
-           TextColor = "Red"
-           FontSize="Small"
-           AbsoluteLayout.LayoutBounds="0.1, 0.6, 1, 0.1"
-           AbsoluteLayout.LayoutFlags="All">
-            <Label.Text>
-                Pet Info: 
             </Label.Text>
         </Label>
     </AbsoluteLayout>

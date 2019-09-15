@@ -9,7 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Windows.Input;
 
-using TouchTracking;
+
 
 
 
@@ -27,23 +27,14 @@ namespace INFT2051app {
          * 
          */
 
-        private FamiliarsList familiarsList;    //Contains the entire Pet list
+        private readonly FamiliarsList familiarsList;    //Contains the entire Pet list
         private PetContainer petContainer;  //Controller for the pet
-        private int credits;
+        public int credits = 0;
 
-        Timer gameloop;
+        readonly Timer gameloop;
 
-        private Label creditsLabel;
-        private Label statusLabel;
-        private Label coordLabel;
-        private Label deviceLabel;
-        private Label timeLabel;
-        private Label petLabel;
-        private Label cursorLabel;
-
-        private BoxView leftRegion;
-        private BoxView rightRegion;
-        private BoxView backgroundRegion;
+        private readonly Label creditsLabel;
+        private readonly Label debugLabel;
 
         public MainPage() {
             InitializeComponent();
@@ -51,22 +42,7 @@ namespace INFT2051app {
             Init();
             //The following maps the labels to variables so they may be changed during render time
             creditsLabel = this.FindByName<Label>("Credits_number");
-            statusLabel = this.FindByName<Label>("Happiness_value");
-            coordLabel = this.FindByName<Label>("coordinates");
-            deviceLabel = this.FindByName<Label>("device");
-            timeLabel = this.FindByName<Label>("time");
-            petLabel = this.FindByName<Label>("petinfo");
-            cursorLabel = this.FindByName<Label>("cursor_position");
-
-            //The following maps the BoxViews to variables so the player can move the pet object during render time
-            rightRegion = this.FindByName<BoxView>("side_right");
-            leftRegion = this.FindByName<BoxView>("side_left");
-            backgroundRegion = this.FindByName<BoxView>("background");
-
-            //The following adds tap recognisers to listen to touches in that region
-            rightRegion.GestureRecognizers.Add(new TapGestureRecognizer());
-            leftRegion.GestureRecognizers.Add(new TapGestureRecognizer());
-
+            debugLabel = this.FindByName<Label>("DebugLabel");
 
             gameloop = new Timer(Step);
             gameloop.Change(0, 33);
@@ -82,7 +58,6 @@ namespace INFT2051app {
              */
             petContainer = new PetContainer();
             main_layout.Children.Add(petContainer);
-            credits = 0;
         }
         public void Step(object state) {
             /*
@@ -95,31 +70,27 @@ namespace INFT2051app {
              * Check changes to State Change
              * Perform Rendering
              */
-            //READ INPUT
-            Device.BeginInvokeOnMainThread(StepInput);
 
-            petContainer.update();
+            petContainer.Update();
             //RENDERING
             Device.BeginInvokeOnMainThread(StepLabel);
-
-        }
-
-        void StepInput() {
 
         }
 
         void StepLabel() {
             /*
              * The Following code updates all the labels in the front end
-             * 
+             * Comment out calls to this function when project is being finialised
              */
             creditsLabel.Text = "Credits: " + credits.ToString();
-            statusLabel.Text = "Happiness: " + petContainer.currentPet.Happiness + "\nStatus: "  + petContainer.currentPet.Status();
-            coordLabel.Text = "Pet X Coord: " + petContainer.Position_X + "\nPet Y Coord: " + petContainer.Position_Y;
-            timeLabel.Text = "Current time: \n" + DateTime.Now.ToString();
-            deviceLabel.Text = "Device Height: " + DeviceDisplay.MainDisplayInfo.Height + "\nDevice Width: " + DeviceDisplay.MainDisplayInfo.Width;
-            petLabel.Text = "Pet Info: " + petContainer.currentPet.ToString();
-            cursorLabel.Text = "Cursor X: " + petContainer.new_Position_X + "\nCursor Y: " + petContainer.new_Position_Y;
+            debugLabel.Text = "Happiness: " + petContainer.CurrentPet.Happiness + "\n"
+                            + "Status: " + petContainer.CurrentPet.Status() + "\n"
+                            + "Pet X Coord: " + petContainer.Position_X + " Pet Y Coord: " + petContainer.Position_Y + "\n"
+                            + "Current time: " + DateTime.Now.ToString() + "\n"
+                            + "Device Height: " + DeviceDisplay.MainDisplayInfo.Height + " Device Width: " + DeviceDisplay.MainDisplayInfo.Width + "\n"
+                            + "PageWidth: " + (int)Width + " PageHeight: " + (int)Height + "\n"
+                            + "Cursor X: " + petContainer.New_Position_X + " Cursor Y: " + petContainer.New_Position_Y + "\n"
+                            + "Pet Info: " + petContainer.CurrentPet.ToString() + "\n";
         }
 
         public void ChangeBackground() {
