@@ -12,6 +12,8 @@ namespace INFT2051app
         public App() {
             InitializeComponent();
 
+
+            //App.Current.MainPage = new Models.OpenPage();
             gamePage = new MainPage();
             MainPage = gamePage;
             MainPage = new NavigationPage(new MainPage());

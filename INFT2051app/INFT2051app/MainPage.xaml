@@ -13,34 +13,35 @@
                Aspect="AspectFill" 
                AbsoluteLayout.LayoutBounds="0,0,1,1" 
                AbsoluteLayout.LayoutFlags="All">
-            
+
         </Image>
+        
         <!-- Image Background -->
         <!--<BoxView x:Name="background" 
-           Image =""
+           
            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-           AbsoluteLayout.LayoutFlags="All" /-->
-        
-        <!-- Status -->
+           AbsoluteLayout.LayoutFlags="All" />
+
+        --><!-- Status --><!--
         <BoxView x:Name="Status"
            BackgroundColor="LightPink"
            AbsoluteLayout.LayoutBounds="0, 0, 0.5, 0.1"
            AbsoluteLayout.LayoutFlags="All" />
         
-        <!-- Credits -->
+        --><!-- Credits --><!--
         <BoxView x:Name="Credits"
             BackgroundColor="LightGray"
             AbsoluteLayout.LayoutBounds="1, 0, 0.5, 0.1"
             AbsoluteLayout.LayoutFlags="All" />
         
-        <!-- Options (Anchored below Credits but retains Height and Width)-->
+        --><!-- Options (Anchored below Credits but retains Height and Width)--><!--
         <BoxView x:Name="Options"
             BackgroundColor="Blue"
             AbsoluteLayout.LayoutBounds="1.5, 0.1, 0.5, 0.1"
             AbsoluteLayout.LayoutFlags="All" />
 
 
-        <!-- DEBUG LABELS-->
+        --><!-- DEBUG LABELS--><!--
         <Label x:Name="DebugLabel"
            TextColor = "Red"
            FontSize="Small"
@@ -59,7 +60,7 @@
             <Label.Text>
                 Credits: 0
             </Label.Text>
-        </Label>
+        </Label>-->
     </AbsoluteLayout>
 
 

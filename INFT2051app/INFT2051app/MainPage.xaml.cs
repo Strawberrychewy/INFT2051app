@@ -96,25 +96,26 @@ namespace INFT2051app {
 
             petContainer.Update();
             //RENDERING
-            Device.BeginInvokeOnMainThread(StepLabel);
+            //Device.BeginInvokeOnMainThread(StepLabel);
 
         }
 
-        void StepLabel() {
-            /*
-             * The Following code updates all the labels in the front end
-             * Comment out calls to this function when project is being finialised
-             */
-            creditsLabel.Text = "Credits: " + credits.ToString();
-            debugLabel.Text = "Happiness: " + petContainer.CurrentPet.Happiness + "\n"
-                            + "Status: " + petContainer.CurrentPet.Status() + "\n"
-                            + "Pet X Coord: " + petContainer.Position_X + " Pet Y Coord: " + petContainer.Position_Y + "\n"
-                            + "Current time: " + DateTime.Now.ToString() + "\n"
-                            + "Device Height: " + DeviceDisplay.MainDisplayInfo.Height + " Device Width: " + DeviceDisplay.MainDisplayInfo.Width + "\n"
-                            + "PageWidth: " + (int)Width + " PageHeight: " + (int)Height + "\n"
-                            + "Cursor X: " + petContainer.New_Position_X + " Cursor Y: " + petContainer.New_Position_Y + "\n"
-                            + "Pet Info: " + petContainer.CurrentPet.ToString() + "\n";
-        }
+        //void StepLabel()
+        //{
+        //    /*
+        //     * The Following code updates all the labels in the front end
+        //     * Comment out calls to this function when project is being finialised
+        //     */
+        //    creditsLabel.Text = "Credits: " + credits.ToString();
+        //    debugLabel.Text = "Happiness: " + petContainer.CurrentPet.Happiness + "\n"
+        //                    + "Status: " + petContainer.CurrentPet.Status() + "\n"
+        //                    + "Pet X Coord: " + petContainer.Position_X + " Pet Y Coord: " + petContainer.Position_Y + "\n"
+        //                    + "Current time: " + DateTime.Now.ToString() + "\n"
+        //                    + "Device Height: " + DeviceDisplay.MainDisplayInfo.Height + " Device Width: " + DeviceDisplay.MainDisplayInfo.Width + "\n"
+        //                    + "PageWidth: " + (int)Width + " PageHeight: " + (int)Height + "\n"
+        //                    + "Cursor X: " + petContainer.New_Position_X + " Cursor Y: " + petContainer.New_Position_Y + "\n"
+        //                    + "Pet Info: " + petContainer.CurrentPet.ToString() + "\n";
+        //}
 
         public void ChangeBackground() {
             /*

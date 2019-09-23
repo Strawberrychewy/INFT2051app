@@ -8,14 +8,15 @@
              Title="Opening Page"
              BackgroundImageSource="Inkedhomepage_LI.jpg"
              >
-    
-    
-    
+
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="openMain"
+                    Text="Welcome"
+                    Clicked="OpenMainPage"
+                    HorizontalOptions = "LayoutOptions.Center"
+                    VerticalOptions = "LayoutOptions.Center"
+                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
