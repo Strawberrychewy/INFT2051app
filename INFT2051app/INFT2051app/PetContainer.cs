@@ -31,11 +31,8 @@ namespace INFT2051app {
         public PetContainer() {
             //This changes the dimensions of the box size.
             //TODO: Change these requests to match the height and width of the parent element
-            WidthRequest = 411;
-            HeightRequest = 790;
             Opacity = 0.25;//Remove when finalising
             Color = Color.Black;//Remove when finalising
-
             //Variable initialisation
             CurrentPet = new Pet();
             Position_X = (int) Width/2;
