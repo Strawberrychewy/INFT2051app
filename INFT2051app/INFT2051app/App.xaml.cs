@@ -6,17 +6,17 @@ using Xamarin.Essentials;
 namespace INFT2051app
 {
     public partial class App : Application {
-        int Steps;
 
+        int Steps;
         private readonly MainPage gamePage;
+
+
         public App() {
             InitializeComponent();
 
 
-            //App.Current.MainPage = new Models.OpenPage();
             gamePage = new MainPage();
             MainPage = gamePage;
-            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart() {

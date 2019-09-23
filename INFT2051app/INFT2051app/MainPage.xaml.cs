@@ -50,19 +50,6 @@ namespace INFT2051app {
             gameloop.Change(0, 33);
 
 
-            //code from https://docs.microsoft.com/en-us/xamarin/xamarin-forms/xaml/xaml-basics/get-started-with-xaml?tabs=windows
-            Button button = new Button()
-            {
-                Text = "Open Settings",
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
-            };
-            button.Clicked += async (sender, args) =>
-            {
-                await Navigation.PushAsync(new INFT2051app.Models.Settings());
-            };
-
-
             //var absLayout = new AbsoluteLayout();
             //var image = new Image();
             //var stackLayout = GetStackLayout();
@@ -80,8 +67,6 @@ namespace INFT2051app {
              * 
              */
             petContainer = new PetContainer();
-            petContainer.HeightRequest = 411;
-            petContainer.WidthRequest = 790;
             main_layout.Children.Add(petContainer);
         }
         public void Step(object state) {
@@ -98,26 +83,25 @@ namespace INFT2051app {
 
             petContainer.Update();
             //RENDERING
-            //Device.BeginInvokeOnMainThread(StepLabel);
+            Device.BeginInvokeOnMainThread(StepLabel);
 
         }
 
-        //void StepLabel()
-        //{
-        //    /*
-        //     * The Following code updates all the labels in the front end
-        //     * Comment out calls to this function when project is being finialised
-        //     */
-        //    creditsLabel.Text = "Credits: " + credits.ToString();
-        //    debugLabel.Text = "Happiness: " + petContainer.CurrentPet.Happiness + "\n"
-        //                    + "Status: " + petContainer.CurrentPet.Status() + "\n"
-        //                    + "Pet X Coord: " + petContainer.Position_X + " Pet Y Coord: " + petContainer.Position_Y + "\n"
-        //                    + "Current time: " + DateTime.Now.ToString() + "\n"
-        //                    + "Device Height: " + DeviceDisplay.MainDisplayInfo.Height + " Device Width: " + DeviceDisplay.MainDisplayInfo.Width + "\n"
-        //                    + "PageWidth: " + (int)Width + " PageHeight: " + (int)Height + "\n"
-        //                    + "Cursor X: " + petContainer.New_Position_X + " Cursor Y: " + petContainer.New_Position_Y + "\n"
-        //                    + "Pet Info: " + petContainer.CurrentPet.ToString() + "\n";
-        //}
+        void StepLabel() {
+            /*
+             * The Following code updates all the labels in the front end
+             * Comment out calls to this function when project is being finialised
+             */
+            creditsLabel.Text = "Credits: " + credits.ToString();
+            debugLabel.Text = "Happiness: " + petContainer.CurrentPet.Happiness + "\n"
+                            + "Status: " + petContainer.CurrentPet.Status() + "\n"
+                            + "Pet X Coord: " + petContainer.Position_X + " Pet Y Coord: " + petContainer.Position_Y + "\n"
+                            + "Current time: " + DateTime.Now.ToString() + "\n"
+                            + "Device Height: " + DeviceDisplay.MainDisplayInfo.Height + " Device Width: " + DeviceDisplay.MainDisplayInfo.Width + "\n"
+                            + "PageWidth: " + (int)Width + " PageHeight: " + (int)Height + "\n"
+                            + "Cursor X: " + petContainer.New_Position_X + " Cursor Y: " + petContainer.New_Position_Y + "\n"
+                            + "Pet Info: " + petContainer.CurrentPet.ToString() + "\n";
+        }
 
         public void ChangeBackground() {
             /*

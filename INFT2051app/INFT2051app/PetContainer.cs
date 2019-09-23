@@ -29,10 +29,13 @@ namespace INFT2051app {
         //Enum states = { Eating, Idle, Jumping };
 
         public PetContainer() {
-            //This changes the dimensions of the box size.
-            //TODO: Change these requests to match the height and width of the parent element
+            //This changes the dimensions of the box size to match the page height and width.
+            AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0, 0, 1, 1));
+            AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
             Opacity = 0.25;//Remove when finalising
             Color = Color.Black;//Remove when finalising
+            HorizontalOptions = LayoutOptions.FillAndExpand;
+            VerticalOptions = LayoutOptions.FillAndExpand;
             //Variable initialisation
             CurrentPet = new Pet();
             Position_X = (int) Width/2;
