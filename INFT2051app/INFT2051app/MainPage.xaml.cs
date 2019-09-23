@@ -80,6 +80,8 @@ namespace INFT2051app {
              * 
              */
             petContainer = new PetContainer();
+            petContainer.HeightRequest = 411;
+            petContainer.WidthRequest = 790;
             main_layout.Children.Add(petContainer);
         }
         public void Step(object state) {
