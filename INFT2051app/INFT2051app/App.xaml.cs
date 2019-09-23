@@ -3,20 +3,26 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
+
 namespace INFT2051app
 {
     public partial class App : Application {
 
         int Steps;
         private readonly MainPage gamePage;
-
+        
 
         public App() {
             InitializeComponent();
 
-
+            MainPage = new NavigationPage(new OpenPage());
             gamePage = new MainPage();
-            MainPage = gamePage;
+
+            //MainPage = new NavigationPage(new INFT2051app.MainPage());
+            //MainPage = gamePage;
+
+
+
         }
 
         protected override void OnStart() {

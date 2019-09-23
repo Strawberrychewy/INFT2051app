@@ -29,5 +29,7 @@ namespace INFT2051app.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        
     }
 }
