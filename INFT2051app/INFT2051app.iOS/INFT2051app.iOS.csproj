@@ -132,4 +132,7 @@
       <Name>INFT2051app</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Inkedhomepage_LI.jpg" />
+  </ItemGroup>
 </Project>
