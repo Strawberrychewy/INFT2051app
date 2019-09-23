@@ -14,6 +14,7 @@ namespace INFT2051app
 
             gamePage = new MainPage();
             MainPage = gamePage;
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart() {

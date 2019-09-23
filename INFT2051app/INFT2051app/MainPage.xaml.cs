@@ -39,6 +39,8 @@ namespace INFT2051app {
         public MainPage() {
             InitializeComponent();
 
+
+
             Init();
             //The following maps the labels to variables so they may be changed during render time
             creditsLabel = this.FindByName<Label>("Credits_number");
@@ -46,6 +48,27 @@ namespace INFT2051app {
 
             gameloop = new Timer(Step);
             gameloop.Change(0, 33);
+
+
+            //code from https://docs.microsoft.com/en-us/xamarin/xamarin-forms/xaml/xaml-basics/get-started-with-xaml?tabs=windows
+            Button button = new Button()
+            {
+                Text = "Open Settings",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
+            };
+            button.Clicked += async (sender, args) =>
+            {
+                await Navigation.PushAsync(new INFT2051app.Models.Settings());
+            };
+
+
+            //var absLayout = new AbsoluteLayout();
+            //var image = new Image();
+            //var stackLayout = GetStackLayout();
+
+            //absLayout.Add(image, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+            //absLayout.Add(stackLayout, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
         }
 
         public void Init() {
