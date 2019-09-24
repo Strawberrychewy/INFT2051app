@@ -5,15 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="INFT2051app.OpenPage"
-             BackgroundImageSource="homepage.png">
+             BackgroundImageSource="homepage.png"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         
         
-        <StackLayout>
+        <AbsoluteLayout>
             <Button Text="Welcome to xxxx" 
                     Clicked="MoveToApp"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
-        </StackLayout>
+                    Opacity="0"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                    AbsoluteLayout.LayoutFlags="All"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

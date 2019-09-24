@@ -12,16 +12,18 @@ namespace INFT2051app
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OpenPage : ContentPage
     {
-        public OpenPage()
-        {
+
+        MainPage GamePage;
+
+        public OpenPage(MainPage gamePage) {
             InitializeComponent();
 
-
+            GamePage = gamePage;
         }
 
-        private async void MoveToApp(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
+        private async void MoveToApp(object sender, EventArgs e) {
+
+            await Navigation.PushAsync(GamePage);
         }
 
     }

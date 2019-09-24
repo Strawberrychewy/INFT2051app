@@ -10,13 +10,14 @@ namespace INFT2051app
 
         int Steps;
         private readonly MainPage gamePage;
-        
+
 
         public App() {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new OpenPage());
+            
             gamePage = new MainPage();
+            MainPage = new NavigationPage(new OpenPage(gamePage));
 
             //MainPage = new NavigationPage(new INFT2051app.MainPage());
             //MainPage = gamePage;

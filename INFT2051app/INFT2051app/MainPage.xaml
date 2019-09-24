@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="INFT2051app.MainPage"
-             BackgroundImageSource="homepage.png">
+             BackgroundImageSource="homepage.png"
+             NavigationPage.HasNavigationBar="false">
 
     <AbsoluteLayout x:Name ="main_layout">
         <Image x:Name="backgroundPic"
