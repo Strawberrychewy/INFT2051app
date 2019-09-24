@@ -5,12 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="INFT2051app.MainPage"
-             BackgroundImageSource="homepage.png"
              NavigationPage.HasNavigationBar="false">
 
     <AbsoluteLayout x:Name ="main_layout">
         <Image x:Name="backgroundPic"
-               Source="homepage.png" 
+               Source="bg_morning.png" 
                Aspect="AspectFill" 
                AbsoluteLayout.LayoutBounds="0,0,1,1" 
                AbsoluteLayout.LayoutFlags="All">

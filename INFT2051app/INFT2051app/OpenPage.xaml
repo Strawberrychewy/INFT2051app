@@ -7,15 +7,28 @@
              x:Class="INFT2051app.OpenPage"
              BackgroundImageSource="homepage.png"
              NavigationPage.HasNavigationBar="false">
-    <ContentPage.Content>
-        
-        
-        <AbsoluteLayout>
-            <Button Text="Welcome to xxxx" 
+
+
+    <AbsoluteLayout x:Name="open_layout">
+
+        <Image x:Name="backgroundPic"
+               Source="bg_morning.png" 
+               Aspect="AspectFill" 
+               AbsoluteLayout.LayoutBounds="0,0,1,1" 
+               AbsoluteLayout.LayoutFlags="All">
+
+        </Image>
+
+
+
+
+
+        <!-- Button Covers entire screen but is opaque (Let user know to click to enter actual game, also ensure this element is the last one on the stack)-->
+        <Button Text="Welcome to xxxx" 
                     Clicked="MoveToApp"
                     Opacity="0"
                     AbsoluteLayout.LayoutBounds="0,0,1,1" 
                     AbsoluteLayout.LayoutFlags="All"/>
-        </AbsoluteLayout>
-    </ContentPage.Content>
+
+    </AbsoluteLayout>
 </ContentPage>

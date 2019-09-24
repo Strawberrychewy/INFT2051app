@@ -135,4 +135,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\Inkedhomepage_LI.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg_morning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg_night.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg_noon.png" />
+  </ItemGroup>
 </Project>
