@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Windows.Input;
+using FFImageLoading.Forms;
 
 
 
@@ -26,7 +27,7 @@ namespace INFT2051app {
          * It is important to split these two apart as there is both a slow and fast element in this application
          * 
          */
-
+        
         private readonly FamiliarsList familiarsList;    //Contains the entire Pet list
         private PetContainer petContainer;  //Controller for the pet
         public int credits = 0;
@@ -34,7 +35,7 @@ namespace INFT2051app {
         readonly Timer gameloop;
 
         private readonly Label creditsLabel;
-        private readonly Label debugLabel;
+        private Label debugLabel;
 
         public MainPage() {
             InitializeComponent();
@@ -44,9 +45,6 @@ namespace INFT2051app {
             //The following maps the labels to variables so they may be changed during render time
             creditsLabel = this.FindByName<Label>("Credits_number");
             debugLabel = this.FindByName<Label>("DebugLabel");
-            //The following adapts the background to the current time
-            Background bg = new Background();
-            this.FindByName<Image>("backgroundPic").Source = bg.Source;
 
             gameloop = new Timer(Step);
             gameloop.Change(0, 33);
@@ -60,8 +58,23 @@ namespace INFT2051app {
              * 
              * 
              */
-            petContainer = new PetContainer();
+
+            //1. Add the background
+            Background bg = new Background();
+            main_layout.Children.Add(bg);
+
+            //2. Add the Pet controller input
+            petContainer = new PetContainer(main_layout.Height, main_layout.Width);
+
+            //3. Add the pet image (Right now its an egg, don't sue me)
+            main_layout.Children.Add(petContainer.CurrentPet);
+
+            //This pushes the debug label to the top of the stack, this allows input to be seen above backgrounds etc
+            main_layout.RaiseChild(this.FindByName<Label>("DebugLabel"));
+
+            //The top of the stack needs to be the input box
             main_layout.Children.Add(petContainer);
+
         }
         public void Step(object state) {
             /*
@@ -75,10 +88,8 @@ namespace INFT2051app {
              * Perform Rendering
              */
 
-            petContainer.Update();
             //RENDERING
             Device.BeginInvokeOnMainThread(StepLabel);
-
         }
 
         void StepLabel() {
@@ -89,12 +100,13 @@ namespace INFT2051app {
             creditsLabel.Text = "Credits: " + credits.ToString();
             debugLabel.Text = "Happiness: " + petContainer.CurrentPet.Happiness + "\n"
                             + "Status: " + petContainer.CurrentPet.Status() + "\n"
-                            + "Pet X Coord: " + petContainer.Position_X + " Pet Y Coord: " + petContainer.Position_Y + "\n"
+                            + "Pet Coord info: [" + petContainer.Position_X + " , " + petContainer.Position_Y + "]\n"
                             + "Current time: " + DateTime.Now.ToString() + "\n"
-                            + "Device Height: " + DeviceDisplay.MainDisplayInfo.Height + " Device Width: " + DeviceDisplay.MainDisplayInfo.Width + "\n"
-                            + "PageWidth: " + (int)Width + " PageHeight: " + (int)Height + "\n"
-                            + "Cursor X: " + petContainer.New_Position_X + " Cursor Y: " + petContainer.New_Position_Y + "\n"
-                            + "Pet Info: " + petContainer.CurrentPet.ToString() + "\n";
+                            + "Device info: [H: " + DeviceDisplay.MainDisplayInfo.Height + ", W: " + DeviceDisplay.MainDisplayInfo.Width + "]\n"
+                            + "Page info: [" + (int)Width + ", " + (int)Height + "]\n"
+                            + "Cursor info: [" + petContainer.New_Position_X + ", " + petContainer.New_Position_Y + "]\n"
+                            + "Pet Info: " + petContainer.CurrentPet.ToString() + "\n"
+                            + "Egg Info: [" + ((int)petContainer.CurrentPet.X + (int)petContainer.CurrentPet.Width/2) + ", " + (int)petContainer.CurrentPet.Y + "][H: " + (int)petContainer.CurrentPet.Height +", W: " + (int)petContainer.CurrentPet.Width + "]";
         }
 
         public void ChangeBackground() {

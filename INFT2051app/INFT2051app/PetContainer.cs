@@ -28,7 +28,7 @@ namespace INFT2051app {
         public int New_Position_Y { get; set; } // new Y Position of current pet
         //Enum states = { Eating, Idle, Jumping };
 
-        public PetContainer() {
+        public PetContainer(double height, double width) {
             //This changes the dimensions of the box size to match the page height and width.
             AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0, 0, 1, 1));
             AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
@@ -38,10 +38,20 @@ namespace INFT2051app {
             VerticalOptions = LayoutOptions.FillAndExpand;
             //Variable initialisation
             CurrentPet = new Pet();
-            Position_X = (int) Width/2;
-            Position_Y = (int) Height/2;
+
+            /*TODO: THE START OF THE GAME CAUSES THE IMAGE TO FORCE MOVE TO THE LEFT, 
+             * THIS IS BECAUSE IT CANNOT READ THE EXACT POINTS OF THE VIEW BOX 
+             * SO IT TREATS THESE VALUES AS (0, 0)
+             * 
+             * TEMPORARY FIX OR EVEN PERMANENT: updating the pet image is only via touch
+             * 
+             */
+            Position_X = (int)width / 2;
+            Position_Y = (int)height / 2;
             New_Position_X = Position_X;
             New_Position_Y = Position_Y;
+
+            
 
             //Allow for touch input
             TouchEffect effect = new TouchEffect();
@@ -53,15 +63,16 @@ namespace INFT2051app {
         void OnTouchEffectAction(object sender, TouchActionEventArgs e) {
             New_Position_X = (int) e.Location.X;
             New_Position_Y = (int) e.Location.Y;
+            touchUpdate();
         }
 
-        public void Update() {
+        public void touchUpdate() {
             /*
              * This function updates the game regardless of player interaction
              */
-            if (Position_X > New_Position_X) {//Cursor is left of pet
+            if (CurrentPet.X > New_Position_X) {//Cursor is left of pet
                 MoveLeft();
-            } else if (Position_X < New_Position_X) {//Cursor is right of pet
+            } else if (CurrentPet.X < New_Position_X) {//Cursor is right of pet
                 MoveRight();
             }
         }
@@ -69,15 +80,19 @@ namespace INFT2051app {
 
         /*MOVEMENT*/
         public void MoveLeft() {
-            if (Position_X > 0) {//Check if image does not exceed left edge
-                Position_X--;
+            int distance = (int) -(CurrentPet.X + CurrentPet.Width / 2) + New_Position_X;
+            if (CurrentPet.X + CurrentPet.Width / 2 > 0) {//Check if image does not exceed left edge
+                CurrentPet.TranslateTo(distance, 0, 500);
             }
+
         }
 
         public void MoveRight() {
-            if (Position_X < Width) {//Check if image does not exceed right edge
-                Position_X++;
+            int distance = (int) (New_Position_X - (CurrentPet.X + (CurrentPet.Width / 2)));
+            if (CurrentPet.X + CurrentPet.Width / 2 < Width) {//Check if image does not exceed right edge
+                CurrentPet.TranslateTo(distance, 0, 500);
             }
+
         }
 
 

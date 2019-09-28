@@ -8,20 +8,6 @@
              NavigationPage.HasNavigationBar="false">
 
     <AbsoluteLayout x:Name ="main_layout">
-        <Image x:Name="backgroundPic"
-               Source="bg_morning.png" 
-               Aspect="AspectFill" 
-               AbsoluteLayout.LayoutBounds="0,0,1,1" 
-               AbsoluteLayout.LayoutFlags="All">
-
-        </Image>
-        
-        <!-- Image Background -->
-        <BoxView x:Name="background" 
-           
-           AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-           AbsoluteLayout.LayoutFlags="All" />
-
         <!-- Status -->
         <BoxView x:Name="Status"
            BackgroundColor="LightPink"

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
+using Xamarin.Forms;
+using FFImageLoading.Forms;
+
 namespace INFT2051app {
-    class Pet{
+    class Pet : Image{
         /*
          * The Pet class defines the current pet that is used in the game.
          * The player can select from a number of pets that are within the JSON file. 
@@ -26,6 +29,13 @@ namespace INFT2051app {
             Happiness = happiness;
             Age = age;
             Base = new BasePet();
+
+
+
+            //Image properties
+            Source = "egg_brown.png";
+            AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0.5, 0.8, 0.2, 0.2));
+            AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
 
         }
 

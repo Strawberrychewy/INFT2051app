@@ -13,6 +13,10 @@ namespace INFT2051app {
         public Background() {
             AdaptBackground();
 
+            //Image Properties
+            Aspect = Aspect.AspectFill;
+            AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0, 0, 1, 1));
+            AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
 
         }
 
@@ -27,12 +31,10 @@ namespace INFT2051app {
             if (DateTime.Now.Hour >= 5 && DateTime.Now.Hour < 12) {
                 //MORNING
                 Source = "bg_morning";
-            }
-            else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 17) {
+            } else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 17) {
                 //NOON
                 Source = "bg_noon";
-            }
-            else {
+            } else {
                 //NIGHT
                 Source = "bg_night";
             }
