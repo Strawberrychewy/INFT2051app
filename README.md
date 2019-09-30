@@ -2,6 +2,8 @@
 
 Current Functionality:
 1. Background Step Counter (App must still be running and not completely closed to count shakes)
+2. FoodShop functional (Can buy food items using the popup menu)
+3. Options popup works but does not affect anything yet
 
 TODO:
 1. Implement fingerprint novelty system
@@ -9,8 +11,8 @@ TODO:
 3. [SPLASH SCREEN OPENING] Add logo/name + "Press screen to enter"
 4. Create Pet images/Sprite animation sheets
 5. Create Food images
-6. Create pop-up menus for shop
-7. Link buttons to pop up menus
+6. Create pop-up menus for shop [DONE]
+7. Link buttons to pop up menus [DONE]
 8. Pet interactivity (Jump, Feed, Status Check)
 
 External Resources needed:
