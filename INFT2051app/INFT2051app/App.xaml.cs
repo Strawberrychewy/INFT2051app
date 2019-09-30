@@ -32,7 +32,7 @@ namespace INFT2051app
 
         protected override void OnSleep() {
             // Handle when your app sleeps
-            Application.Current.Properties["Credits"] = gamePage.credits;
+            Application.Current.Properties["Credits"] = gamePage.foodShopPopup.credits;
             Accelerometer.Start(SensorSpeed.Game);
             Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
         }
@@ -48,7 +48,7 @@ namespace INFT2051app
             // Load all saved values from when the app is in sleep mode
             if (Application.Current.Properties.ContainsKey("Credits")) {
                 var creditsSaved = (int)Application.Current.Properties["Credits"];
-                gamePage.credits = creditsSaved + Steps;
+                gamePage.foodShopPopup.credits = creditsSaved + Steps;
                 Steps = 0;
             }
         }

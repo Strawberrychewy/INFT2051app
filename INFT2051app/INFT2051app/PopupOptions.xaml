@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="INFT2051app.PopupOptions"
+             xmlns:pages ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <!-- POP UP panel-->
+    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10,0">
+        <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
+            <!-- Inner Padding -->
+            <StackLayout Padding="10,0">
+                <Label Text="Options"/>
+
+                <!-- Button Sliders and Mute buttons-->   
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Button Grid.Row="0" Grid.Column="0" Text="Music"></Button>
+                    <Slider Grid.Row="0" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="MusicVolumeChanged" ></Slider>
+
+
+                    <Button Grid.Row="1" Grid.Column="0" Text="SFX"></Button>
+                    <Slider Grid.Row="1" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="SoundEffectChanged"></Slider>
+
+                </Grid>
+                <!-- Horizontal line of food items -->
+                <StackLayout x:Name ="Button_Row" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <!-- Each food item goes here -->
+                    <Button Text="Change Name"></Button>
+                    <Button Text="Credits"></Button>
+                    <Button Text="Restart Game"></Button>
+                </StackLayout>
+
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</pages:PopupPage>

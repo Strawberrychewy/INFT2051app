@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="INFT2051app.PopupFoodShop"
+             xmlns:pages ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+       <!-- POP UP panel-->
+    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10,0">
+        <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
+            <!-- Inner Padding -->
+            <StackLayout Padding="10, 0">
+                <Label Text="Welcome to the Shop!"/>
+                <!-- Each food item goes here -->
+                <Grid x:Name="food_grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Button Grid.Row="0" Grid.Column="0" CornerRadius="10"></Button>
+                    <Button Grid.Row="0" Grid.Column="1" CornerRadius="10"></Button>
+                    <Button Grid.Row="0" Grid.Column="2" CornerRadius="10"></Button>
+                    <Button Grid.Row="0" Grid.Column="3" CornerRadius="10"></Button>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Food Item 1"></Label>
+                    <Label Grid.Row="1" Grid.Column="1" Text="Food Item 2"></Label>
+                    <Label Grid.Row="1" Grid.Column="2" Text="Food Item 3"></Label>
+                    <Label Grid.Row="1" Grid.Column="3" Text="Food Item 4"></Label>
+
+                    <Button Grid.Row="2" Grid.Column="0" CornerRadius="10"></Button>
+                    <Button Grid.Row="2" Grid.Column="1" CornerRadius="10"></Button>
+                    <Button Grid.Row="2" Grid.Column="2" CornerRadius="10"></Button>
+                    <Button Grid.Row="2" Grid.Column="3" CornerRadius="10"></Button>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Food Item 5"></Label>
+                    <Label Grid.Row="3" Grid.Column="1" Text="Food Item 6"></Label>
+                    <Label Grid.Row="3" Grid.Column="2" Text="Food Item 7"></Label>
+                    <Label Grid.Row="3" Grid.Column="3" Text="Food Item 8"></Label>
+
+                </Grid>
+
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</pages:PopupPage>

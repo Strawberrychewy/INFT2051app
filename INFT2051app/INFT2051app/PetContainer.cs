@@ -28,7 +28,7 @@ namespace INFT2051app {
         public int New_Position_Y { get; set; } // new Y Position of current pet
         //Enum states = { Eating, Idle, Jumping };
 
-        public PetContainer(double height, double width) {
+        public PetContainer() {
             //This changes the dimensions of the box size to match the page height and width.
             AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0, 0, 1, 1));
             AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
@@ -46,8 +46,8 @@ namespace INFT2051app {
              * TEMPORARY FIX OR EVEN PERMANENT: updating the pet image is only via touch
              * 
              */
-            Position_X = (int)width / 2;
-            Position_Y = (int)height / 2;
+            Position_X = (int)Width / 2;
+            Position_Y = (int)Height / 2;
             New_Position_X = Position_X;
             New_Position_Y = Position_Y;
 

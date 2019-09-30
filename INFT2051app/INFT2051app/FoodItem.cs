@@ -12,10 +12,16 @@ namespace INFT2051app {
          */
         public string Name { get; set;}
         public string Type { get; set;}
-        public string Cost { get; set;}
+        public int Cost { get; set;}
 
         public FoodItem() {
 
+        }
+
+        public FoodItem(string name, string type, int cost ) {
+            Name = name;
+            Type = type;
+            Cost = cost;
         }
     }
 }

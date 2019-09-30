@@ -22,6 +22,8 @@ namespace INFT2051app {
         public int Happiness { get; set; } // Happiness
         public int Age { get; set; } // Age
 
+        public String State { get; set; }
+
         BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
 
         public Pet(string nickname = "Chewy", int happiness = 0, int age = 0) {
@@ -29,6 +31,7 @@ namespace INFT2051app {
             Happiness = happiness;
             Age = age;
             Base = new BasePet();
+            State = "";
 
 
 
