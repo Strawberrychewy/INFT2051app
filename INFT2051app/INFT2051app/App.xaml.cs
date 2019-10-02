@@ -28,6 +28,10 @@ namespace INFT2051app
 
         protected override void OnStart() {
             // Handle when your app starts
+            /*
+             * Use this method when loading player save data, or creating
+             * a new save data if none is present
+             */
         }
 
         protected override void OnSleep() {

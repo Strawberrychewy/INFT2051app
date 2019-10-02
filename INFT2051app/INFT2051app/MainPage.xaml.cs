@@ -28,22 +28,36 @@ namespace INFT2051app {
         private readonly FamiliarsList familiarsList;    //Contains the entire Pet list
         public PopupFoodShop foodShopPopup;
         private readonly PopupOptions optionsPopup;
-        PetContainer petContainer;  //Controller for the pet
+        readonly PetContainer petContainer;  //Controller for the pet
 
         readonly Timer gameloop;
 
         private readonly Label creditsLabel;
-        private Label debugLabel;
+        private readonly Label debugLabel;
+        private readonly Button FPButton;
+        private readonly ProgressBar progressBar;
 
         public MainPage() {
             InitializeComponent();
 
             petContainer = new PetContainer();
+
             optionsPopup = new PopupOptions();
 
             foodShopPopup = new PopupFoodShop();
             foodShopPopup.PurchaseSucceeded += HandlePurchaseSucceeded;
-            foodShopPopup.PurchaseFailed += HandlePurchaseFailed;
+
+            FPButton = new Button();
+            AbsoluteLayout.SetLayoutBounds(FPButton, new Rectangle(0.5, 0.5, 0.4, 0.3));
+            AbsoluteLayout.SetLayoutFlags(FPButton, AbsoluteLayoutFlags.All);
+            FPButton.Text = "Feed";
+            FPButton.HorizontalOptions = LayoutOptions.Center;
+            FPButton.VerticalOptions = LayoutOptions.Center;
+            FPButton.Clicked += petContainer.ButtonFeeding;//Calls ButtonFeeding method from petContainer upon button press
+
+            progressBar = new ProgressBar();//Includes Progress bar to layout, signifying eating progress
+            AbsoluteLayout.SetLayoutBounds(progressBar, new Rectangle(0.5, 0.7, 0.8, 0.4));
+            AbsoluteLayout.SetLayoutFlags(progressBar, AbsoluteLayoutFlags.All);
 
             //The following maps the labels to variables so they may be changed during render time
             creditsLabel = this.FindByName<Label>("Credits_number");
@@ -53,14 +67,6 @@ namespace INFT2051app {
 
             gameloop = new Timer(Step);
             gameloop.Change(0, 33);
-        }
-
-        private void HandlePurchaseFailed(object sender, EventArgs e) {
-            petContainer.CurrentPet.State = "Insufficient Funds";
-        }
-
-        private void HandlePurchaseSucceeded(object sender, EventArgs e) {
-            petContainer.CurrentPet.State = foodShopPopup.getCurrent();
         }
 
         public void Init() {
@@ -93,6 +99,7 @@ namespace INFT2051app {
             main_layout.RaiseChild(this.FindByName<ImageButton>("Foodshop"));
 
         }
+
         public void Step(object state) {
             /*
              * The step function specifies what happens in one instance of the loop.
@@ -124,9 +131,12 @@ namespace INFT2051app {
                             + "Cursor info: [" + petContainer.New_Position_X + ", " + petContainer.New_Position_Y + "]\n"
                             + "Pet Info: " + petContainer.CurrentPet.ToString() + "\n"
                             + "Egg Info: [" + ((int)petContainer.CurrentPet.X + (int)petContainer.CurrentPet.Width / 2) + ", " + (int)petContainer.CurrentPet.Y + "][H: " + (int)petContainer.CurrentPet.Height + ", W: " + (int)petContainer.CurrentPet.Width + "]\n"
-                            + "Credits: " + foodShopPopup.credits.ToString();
+                            + "Credits: " + foodShopPopup.Credits.ToString() + "\n"
+                            + "ButtonState: " + petContainer.state + "\n"
+                            + "Pet Hunger: " + petContainer.CurrentPet.Hunger;
         }
 
+        //------------------ UI BUTTON EVENTS----------------------------------------------------------------
         private async void InvokeSettings(object sender, EventArgs e) {
 
             await PopupNavigation.Instance.PushAsync(optionsPopup);
@@ -136,6 +146,74 @@ namespace INFT2051app {
 
             await PopupNavigation.Instance.PushAsync(foodShopPopup);
             
+        }
+
+        //------------------ GAME EVENTS----------------------------------------------------------------
+
+        private void HandlePurchaseSucceeded(object sender, EventArgs e) {
+            /*
+             * When purchasing successfully, the player must then be able to feed the pet using
+             * the fingerprint sensor.
+             * 
+             * Regardless, a progress bar is shown as an indication of the current progress the pet is in when eating
+             */
+
+            main_layout.Children.Add(progressBar);
+
+            petContainer.CurrentPet.State = foodShopPopup.GetCurrent();
+
+            petContainer.NoFingerPrintSensorDetected += HandleNoFingerPrintSensorDetected;//Subscribes the event in petcontainer to trigger the HandleNoFingerPrintSensorDetected function
+            petContainer.FeedingProcess += HandleFeedingProcess;
+            petContainer.FeedingComplete += HandleFeedingComplete;
+
+            petContainer.StartFeedingProcess();//Delegates the feeding task to the petContainer
+        }
+
+        private void HandleNoFingerPrintSensorDetected(object sender, EventArgs e) {
+            /*
+             * When no fingerprint sensor is detected/or when time has passed when the user does not use the sensor, 
+             * The mainpage will issue an Onscreen Button
+             * This Onscreen button will act as a Pseudo Fingerprint sensor 
+             * 
+             */
+
+            main_layout.Children.Add(FPButton);
+        }
+
+        private void HandleFingerPrintSensorDetected(object sender, EventArgs e) {
+            /*
+             * When a fingerprint sensor is detected, display helper text signifying that the user should use the fingerprint sensor
+             * 
+             * Never used, might delete later
+             */
+        }
+
+        private void HandleFeedingProcess(object sender, EventArgs e) {
+            /*
+             * Update the progress bar for every press
+             * 
+             */
+            progressBar.ProgressTo(progressBar.Progress + 0.2, 250, Easing.Linear);
+
+        }
+
+        private void HandleFeedingComplete(object sender, EventArgs e) {
+            /*
+             * This event is triggered upon feeding completion
+             * It will:
+             * 1. Remove On-Screen button and Progress bar generated from having no fingerprint sensor
+             * 2. Remove the food sprite from the container
+             * 
+             */
+            //Start unsubscribing to all events that trigger when the purchase started
+            petContainer.NoFingerPrintSensorDetected -= HandleNoFingerPrintSensorDetected;
+            petContainer.FeedingProcess -= HandleFeedingProcess;
+            petContainer.FeedingComplete -= HandleFeedingComplete;
+
+            main_layout.Children.Remove(FPButton);//Remove FPButton from xaml
+            progressBar.ProgressTo(0, 1, Easing.Linear);//ResetProgress bar
+            main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
+             
         }
 
         public void ChangeBackground() {

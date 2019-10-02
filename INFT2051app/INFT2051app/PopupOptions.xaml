@@ -27,20 +27,20 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Button Grid.Row="0" Grid.Column="0" Text="Music"></Button>
-                    <Slider Grid.Row="0" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="MusicVolumeChanged" ></Slider>
+                    <Button x:Name="MusicButton" Grid.Row="0" Grid.Column="0" Text="Music" Clicked="OnMusicButtonClicked"></Button>
+                    <Slider x:Name="MusicSlider" Grid.Row="0" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="MusicVolumeChanged" ></Slider>
 
 
-                    <Button Grid.Row="1" Grid.Column="0" Text="SFX"></Button>
-                    <Slider Grid.Row="1" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="SoundEffectChanged"></Slider>
+                    <Button x:Name="SFXButton" Grid.Row="1" Grid.Column="0" Text="SFX" Clicked="OnSFXButtonClicked" ></Button>
+                    <Slider x:Name="SFXSlider" Grid.Row="1" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="SoundEffectChanged"></Slider>
 
                 </Grid>
                 <!-- Horizontal line of food items -->
                 <StackLayout x:Name ="Button_Row" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <!-- Each food item goes here -->
-                    <Button Text="Change Name"></Button>
-                    <Button Text="Credits"></Button>
-                    <Button Text="Restart Game"></Button>
+                    <Button Text="Change Name" Clicked="OnNameChangeClicked"></Button>
+                    <Button Text="Credits" Clicked="OnCreditsClicked"></Button>
+                    <Button Text="Restart Game" Clicked="OnRestartGameClicked"></Button>
                 </StackLayout>
 
             </StackLayout>

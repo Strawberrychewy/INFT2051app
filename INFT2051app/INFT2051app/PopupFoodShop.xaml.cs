@@ -13,20 +13,20 @@ namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupFoodShop : PopupPage {
 
-        FoodList foodList { get; set; }
+        FoodList FoodList { get; set; }
 
-        List<FoodItem> foodShop;
+        readonly List<FoodItem> foodShop;
         FoodItem current;
-        public int credits { get; set;}
+        public int Credits { get; set;}
 
         public event EventHandler PurchaseSucceeded;
-        public event EventHandler PurchaseFailed;
 
         public PopupFoodShop() {
             InitializeComponent();
 
-            foodList = new FoodList();
-            foodShop = foodList.resetShop();
+            Credits = 100;
+            FoodList = new FoodList();
+            foodShop = FoodList.resetShop();
 
             GenerateButtons();
         }
@@ -51,7 +51,7 @@ namespace INFT2051app {
 
                     //Make new Label for said button
                     Label label = new Label();
-                    label.Text = "[" + (row + 1) + ", " + column + "]";//Text
+                    label.Text = "[" + foodShop.ElementAt(index).Name + ", $" + foodShop.ElementAt(index).Cost + "]";//Text
                     Grid.SetRow(label, row + 1);//Sets the ROW (Keep in mind that this is a row below the button)
                     Grid.SetColumn(label, column);//Sets the COLUMN
                     food_grid.Children.Add(label);
@@ -68,7 +68,7 @@ namespace INFT2051app {
             current = null;
         }
 
-        public string getCurrent() {
+        public string GetCurrent() {
             if (current == null) {
                 return "";
             } else {
@@ -78,20 +78,25 @@ namespace INFT2051app {
 
         private async void ButtonClicked(object sender, EventArgs e) {
             /*
-             * Pulls the item from the list and checks
+             * This Event is triggered upon the cooresponding button pressed when inside the popup
              * 
              * 
              * 
              */
             Button button = (Button)sender;//Identify sender as button
-            current = foodList.findFoodItem(button.Text);//set current as the item whose button is pressed
-            if (credits >= current.Cost) {
-                credits -= current.Cost;
+            button.IsEnabled = false;//Disable button press, this stops the user from double tapping and losing out on credits
+            current = FoodList.findFoodItem(button.Text);//set current as the item whose button is pressed
+
+            //Compare the number of credits with the cost of the item
+            if (Credits >= current.Cost) {
+                //Pops the shop off the UI stack
+                Credits -= current.Cost;
                 PurchaseSucceeded(this, EventArgs.Empty);
+                await PopupNavigation.Instance.PopAsync(true);
             } else {
-                PurchaseFailed(this, EventArgs.Empty);
+                shop_label.Text = "Insuffient Funds";
             }
-            await PopupNavigation.Instance.PopAsync(true);
+            button.IsEnabled = true;//Enable button press so that button may be used again
         }
 
     }

@@ -21,15 +21,17 @@ namespace INFT2051app {
         //Variables changed by game loop (Always updated)
         public int Happiness { get; set; } // Happiness
         public int Age { get; set; } // Age
+        public int Hunger { get; set; } // Age
 
         public String State { get; set; }
 
         BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
 
-        public Pet(string nickname = "Chewy", int happiness = 0, int age = 0) {
+        public Pet(string nickname = "Chewy", int happiness = 0, int age = 0, int hunger = 0) {
             NickName = nickname;
             Happiness = happiness;
             Age = age;
+            Hunger = hunger;
             Base = new BasePet();
             State = "";
 
