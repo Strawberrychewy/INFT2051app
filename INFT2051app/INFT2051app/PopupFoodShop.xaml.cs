@@ -51,7 +51,8 @@ namespace INFT2051app {
 
                     //Make new Label for said button
                     Label label = new Label();
-                    label.Text = "[" + foodShop.ElementAt(index).Name + ", $" + foodShop.ElementAt(index).Cost + "]";//Text
+                    label.HorizontalTextAlignment = TextAlignment.Center;
+                    label.Text = "[" + foodShop.ElementAt(index).Name + "]\n[$" + foodShop.ElementAt(index).Cost + "]";//Text
                     Grid.SetRow(label, row + 1);//Sets the ROW (Keep in mind that this is a row below the button)
                     Grid.SetColumn(label, column);//Sets the COLUMN
                     food_grid.Children.Add(label);

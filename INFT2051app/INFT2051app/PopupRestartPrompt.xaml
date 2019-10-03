@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="INFT2051app.PopupRestartPrompt"
+             xmlns:pages ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
+            <!-- Inner Padding -->
+            <StackLayout Padding="10,0">
+                <Label HorizontalOptions="Center" FontSize="Title"  Text="Are you sure?"/>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <Button Text="Yes" Clicked="OnYesButtonClicked"></Button>
+                    <Button Text="No" Clicked="OnNoButtonClicked"></Button>
+
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+    
+    
+    
+</pages:PopupPage>

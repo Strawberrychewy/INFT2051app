@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupOptions : PopupPage {
 
+        PopupRestartPrompt popupRestartPrompt;
+        PopupCredits popupCredits;
         double SFXValue;
         double MusicValue;
 
@@ -19,6 +22,8 @@ namespace INFT2051app {
             InitializeComponent();
             SFXValue = 100;
             MusicValue = 100;
+            popupCredits = new PopupCredits();
+            popupRestartPrompt = new PopupRestartPrompt();
 
         }
 
@@ -117,6 +122,7 @@ namespace INFT2051app {
             }
         }
 
+        //-------------------------------Bottom Button Events go here-----------------------------------------------------------
         private void OnNameChangeClicked(object sender, EventArgs e) {
             /*
              * This event triggers upon Name Change Button Click
@@ -134,9 +140,13 @@ namespace INFT2051app {
              * 1. Pop the current popup
              * 2. Push the credits page popup
              */
+
+            popupCredits.updateText();
+            await PopupNavigation.Instance.PushAsync(popupCredits);
+
         }
 
-        private void OnRestartGameClicked(object sender, EventArgs e) {
+        private async void OnRestartGameClicked(object sender, EventArgs e) {
             /*
              * This event triggers upon Restart button is Clicked
              * It will:
@@ -147,7 +157,10 @@ namespace INFT2051app {
              * It should not matter if the save dumps data into an object
              * but if the app continuously reads the save file during the game loop come crashes may occur
              * 
+             * NOTE 2: This is probably the most difficult thing that I had to accomplish, because not only 
+             * 
              */
+            await PopupNavigation.Instance.PushAsync(popupRestartPrompt);
         }
     }
 

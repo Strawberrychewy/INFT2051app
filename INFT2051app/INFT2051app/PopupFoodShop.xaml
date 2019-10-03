@@ -12,7 +12,7 @@
         <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
             <!-- Inner Padding -->
             <StackLayout Padding="10, 0">
-                <Label x:Name="shop_label" Text="Welcome to the Shop!"/>
+                <Label x:Name="shop_label" Text="Welcome to the Shop!" FontSize="Title"/>
                 <!-- Each food item goes here -->
                 <Grid x:Name="food_grid">
                     <Grid.RowDefinitions>

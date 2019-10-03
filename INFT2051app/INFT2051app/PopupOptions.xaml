@@ -12,7 +12,7 @@
         <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
             <!-- Inner Padding -->
             <StackLayout Padding="10,0">
-                <Label Text="Options"/>
+                <Label Text="Options" FontSize="Title"/>
 
                 <!-- Button Sliders and Mute buttons-->   
                 <Grid>
