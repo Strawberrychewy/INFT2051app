@@ -13,21 +13,21 @@ namespace INFT2051app {
          *
          */
 
-        List<BasePet> Familiars = new List<BasePet>();
+        readonly List<BasePet> Familiars = new List<BasePet>();
         public FamiliarsList() {
 
         }
 
-        public void LoadJSON(string filePath) {
+        public void LoadJSON() {
             /*
              * This function takes the JSON file and turns each row into objects. This objects are added to the list.
-             * 
+             * THIS FUNCTION IS FAKE ATM DON'T SUE ME
              * Familiars.add(e)
              */
 
         }
 
-        public void FindPetByName(string name) {
+        public void FindPetByName() {
             /*
              * This function finds the pet with the exact name input. Used for Evolution
              */

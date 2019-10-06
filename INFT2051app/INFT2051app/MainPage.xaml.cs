@@ -25,9 +25,10 @@ namespace INFT2051app {
          * 
          */
 
-        private readonly FamiliarsList familiarsList;    //Contains the entire Pet list
+        //private readonly FamiliarsList familiarsList;    //Contains the entire Pet list
         public PopupFoodShop foodShopPopup;
         private readonly PopupOptions optionsPopup;
+        private readonly PopupStatus statusPopup;
         readonly PetContainer petContainer;  //Controller for the pet
 
         readonly Timer gameloop;
@@ -43,7 +44,7 @@ namespace INFT2051app {
             petContainer = new PetContainer();
 
             optionsPopup = new PopupOptions();
-
+            statusPopup = new PopupStatus();
             foodShopPopup = new PopupFoodShop();
             foodShopPopup.PurchaseSucceeded += HandlePurchaseSucceeded;
 
@@ -97,6 +98,7 @@ namespace INFT2051app {
             //But the TOP TOP of the stack needs to be the sticky inputs (options/foodshop button)
             main_layout.RaiseChild(this.FindByName<ImageButton>("Options"));
             main_layout.RaiseChild(this.FindByName<ImageButton>("Foodshop"));
+            main_layout.RaiseChild(this.FindByName<ImageButton>("StatusPage"));
 
         }
 
@@ -113,7 +115,7 @@ namespace INFT2051app {
              */
 
             //RENDERING
-            Device.BeginInvokeOnMainThread(StepLabel);
+            //Device.BeginInvokeOnMainThread(StepLabel);
         }
 
         void StepLabel() {
@@ -146,6 +148,14 @@ namespace INFT2051app {
 
             await PopupNavigation.Instance.PushAsync(foodShopPopup);
             
+        }
+
+        private async void InvokeStatusPage(object sender, EventArgs e) {
+            string name = petContainer.CurrentPet.NickName;
+            int happiness = petContainer.CurrentPet.Happiness;
+            int hunger = petContainer.CurrentPet.Hunger;
+            statusPopup.Update(name, happiness, hunger);
+            await PopupNavigation.Instance.PushAsync(statusPopup);
         }
 
         //------------------ GAME EVENTS----------------------------------------------------------------

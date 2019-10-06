@@ -31,6 +31,7 @@ namespace INFT2051app {
         public event EventHandler NoFingerPrintSensorDetected;
         public event EventHandler FeedingProcess;
         public event EventHandler FeedingComplete;
+
         public int EatingProgress = 0;
 
         public string state;

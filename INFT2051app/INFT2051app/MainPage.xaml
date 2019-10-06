@@ -9,11 +9,16 @@
 
     <AbsoluteLayout x:Name ="main_layout">
         <!-- Status -->
-        <BoxView x:Name="Status"
+        <!--<BoxView x:Name="Status"
             BackgroundColor="LightPink"
             AbsoluteLayout.LayoutBounds="0, 0, 0.5, 0.1"
+            AbsoluteLayout.LayoutFlags="All" />-->
+        <ImageButton x:Name="StatusPage"
+            Clicked="InvokeStatusPage"
+            Source="icon_settings.png"
+            BackgroundColor="LightBlue"
+            AbsoluteLayout.LayoutBounds="0, 0, 0.5, 0.1"
             AbsoluteLayout.LayoutFlags="All" />
-
         <!-- Credits -->
         <ImageButton x:Name="Foodshop"
             Clicked="InvokeFoodShop"

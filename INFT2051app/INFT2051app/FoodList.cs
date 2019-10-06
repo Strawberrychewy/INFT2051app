@@ -22,7 +22,7 @@ namespace INFT2051app {
             //This changes the dimensions of the box size to match the page height and width.
 
             LoadJSON();
-            resetShop();
+            ResetShop();
 
         }
         public void LoadJSON() {
@@ -45,7 +45,7 @@ namespace INFT2051app {
 
         }
 
-        public List<FoodItem> resetShop() {
+        public List<FoodItem> ResetShop() {
             List<FoodItem> shop = new List<FoodItem>();
             for (int i = 0; i < 8; i++) {
                 var random = new Random();
@@ -56,7 +56,7 @@ namespace INFT2051app {
             return shop;
         }
 
-        public FoodItem findFoodItem(string name) {
+        public FoodItem FindFoodItem(string name) {
             return Foods.Find(x => x.Name == name);
         }
 

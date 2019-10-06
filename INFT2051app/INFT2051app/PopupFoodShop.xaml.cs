@@ -26,7 +26,7 @@ namespace INFT2051app {
 
             Credits = 100;
             FoodList = new FoodList();
-            foodShop = FoodList.resetShop();
+            foodShop = FoodList.ResetShop();
 
             GenerateButtons();
         }
@@ -86,7 +86,7 @@ namespace INFT2051app {
              */
             Button button = (Button)sender;//Identify sender as button
             button.IsEnabled = false;//Disable button press, this stops the user from double tapping and losing out on credits
-            current = FoodList.findFoodItem(button.Text);//set current as the item whose button is pressed
+            current = FoodList.FindFoodItem(button.Text);//set current as the item whose button is pressed
 
             //Compare the number of credits with the cost of the item
             if (Credits >= current.Cost) {
