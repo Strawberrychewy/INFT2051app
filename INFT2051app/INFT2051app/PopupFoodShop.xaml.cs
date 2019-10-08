@@ -27,6 +27,7 @@ namespace INFT2051app {
             Credits = 100;
             FoodList = new FoodList();
             foodShop = FoodList.ResetShop();
+            shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
 
             GenerateButtons();
         }
@@ -92,6 +93,7 @@ namespace INFT2051app {
             if (Credits >= current.Cost) {
                 //Pops the shop off the UI stack
                 Credits -= current.Cost;
+                shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
                 PurchaseSucceeded(this, EventArgs.Empty);
                 await PopupNavigation.Instance.PopAsync(true);
             } else {

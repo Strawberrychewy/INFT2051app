@@ -18,6 +18,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
@@ -27,11 +29,17 @@
 
 
 
-                    <Label x:Name="happinessLabel" Grid.Row="1" Grid.Column="0" Text="Happiness"></Label>
-                    <ProgressBar x:Name="happinessBar" Grid.Row="1" Grid.Column="1"></ProgressBar>
+                    <Label x:Name="healthLabel" Grid.Row="0" Grid.Column="0" Text="Health"></Label>
+                    <ProgressBar x:Name="healthBar" Grid.Row="0" Grid.Column="1" ProgressColor="LimeGreen"></ProgressBar>
 
-                    <Label x:Name="hungerLabel" Grid.Row="0" Grid.Column="0" Text="Hunger"></Label>
-                    <ProgressBar x:Name="hungerBar" Grid.Row="0" Grid.Column="1"></ProgressBar>
+                    <Label x:Name="hungerLabel" Grid.Row="1" Grid.Column="0" Text="Hunger"></Label>
+                    <ProgressBar x:Name="hungerBar" Grid.Row="1" Grid.Column="1" ProgressColor="PaleVioletRed"></ProgressBar>
+                    
+                    <Label x:Name="happinessLabel" Grid.Row="2" Grid.Column="0" Text="Happiness"></Label>
+                    <ProgressBar x:Name="happinessBar" Grid.Row="2" Grid.Column="1" ProgressColor="AliceBlue"></ProgressBar>
+                    
+                    <Label x:Name="hygieneLabel" Grid.Row="3" Grid.Column="0" Text="Hygiene"></Label>
+                    <ProgressBar x:Name="hygieneBar" Grid.Row="3" Grid.Column="1" ProgressColor="Cyan"></ProgressBar>
 
                 </Grid>
 

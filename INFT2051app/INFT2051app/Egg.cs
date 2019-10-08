@@ -15,6 +15,7 @@ namespace INFT2051app {
          * 
          */
 
+        public event EventHandler Hatch;
         string Type { get; set; } //TYPE OF EGG (LAND, SEA, AIR)
         string SpritePath { get; set; } // SPRITE PATH OF EGG
 
@@ -23,13 +24,15 @@ namespace INFT2051app {
             SpritePath = "";
             Source = "egg_brown.png";
 
+            Hatch += OnHatch;
+
             //Image properties
             
             AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0.5, 0.8, 0.2, 0.2));
             AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
         }
 
-        public void Hatch() {
+        public void OnHatch(object sender, EventArgs e) {
 
         }
     }

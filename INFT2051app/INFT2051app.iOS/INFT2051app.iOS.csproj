@@ -162,4 +162,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_settings.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pet_rabbit.png" />
+  </ItemGroup>
 </Project>

@@ -20,7 +20,6 @@ namespace INFT2051app {
 
         }
 
-
         public void AdaptBackground() {
             /*The following code checks the current time and changes the opening background splash based on time
              * Morning: 5am to 12pm
@@ -28,15 +27,16 @@ namespace INFT2051app {
              * Night: 5pm to 5am
              * 
              */
-            if (DateTime.Now.Hour >= 5 && DateTime.Now.Hour < 12) {
-                //MORNING
-                Source = "bg_morning";
-            } else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 17) {
-                //NOON
-                Source = "bg_noon";
-            } else {
-                //NIGHT
-                Source = "bg_night";
+            switch (DateTime.Now.Hour) {
+                case int n when (n >= 5 && n < 12):
+                    Source = "bg_morning";
+                    break;
+                case int n when (n >= 12 && n < 17):
+                    Source = "bg_noon";
+                    break;
+                default:
+                    Source = "bg_night";
+                    break;
             }
         }
     }
