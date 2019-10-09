@@ -25,7 +25,6 @@ namespace INFT2051app {
         public int Hunger { get; set; } // Hunger
         public int Hygiene { get; set; } //Hygiene
 
-
         public String State { get; set; }//TRY TO OMIT THIS
 
         //This set of enums describe the range of states the pet can have per parameter
@@ -41,7 +40,6 @@ namespace INFT2051app {
         public HappinessState HappinessStateValue { get; set; }
         public HungerState HungerStateValue { get; set; }
         public HygieneState HygieneStateValue { get; set; }
-
 
         BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
 
@@ -108,7 +106,7 @@ namespace INFT2051app {
                     j = 0;//reset
                 }
             }
-
+            //Update states based on values
             UpdateHappinessState();
             UpdateHealthState();
             UpdateHungerState();
@@ -178,14 +176,39 @@ namespace INFT2051app {
              */
             Age++;//Increment Age
         }
+        //----------------------------------------------IDLE STATE ANIMATIONS-------------------------------------------------------------------------------
+        public async void BounceHigh() {
+            await this.TranslateTo(TranslationX, -200, 200, Easing.Linear);//UP
+            await this.TranslateTo(TranslationX, 0, 200, Easing.Linear);//DOWN
+        }
 
+        public async void BounceLow() {
+            await this.TranslateTo(TranslationX, -100, 100, Easing.Linear);//UP
+            await this.TranslateTo(TranslationX, 0, 100, Easing.Linear);//DOWN
+        }
 
+        public async void BounceMicro() {
+            await this.TranslateTo(TranslationX, -50, 50, Easing.Linear);//UP
+            await this.TranslateTo(TranslationX, 0, 50, Easing.Linear);//DOWN
+            await this.TranslateTo(TranslationX, -25, 25, Easing.Linear);//UP
+            await this.TranslateTo(TranslationX, 0, 25, Easing.Linear);//DOWN
+            await this.TranslateTo(TranslationX, -10, 10, Easing.Linear);//UP
+            await this.TranslateTo(TranslationX, 0, 10, Easing.Linear);//DOWN
+        }
+
+        public async void BounceJump() {
+            await this.TranslateTo(TranslationX, -200, 200, Easing.Linear);//UP
+            await this.RotateTo(+360, 360, Easing.Linear);//ROTATE 360
+            this.Rotation = 0;//RESET ROTATION VARIABLE
+            await this.TranslateTo(TranslationX, 0, 200, Easing.Linear);//DOWN
+
+        }
         //----------------------------------------------UPDATE CURRENT STATES-------------------------------------------------------------------------------
         /*
          * This code updates each of the Current State Values to parameters within the range of its respective enum
          * 
          */
-        public void UpdateHappinessState() {
+        private void UpdateHappinessState() {
             switch (Happiness) {
                 case int n when (n < 30):
                     HappinessStateValue = HappinessState.UnHappy;
@@ -199,7 +222,7 @@ namespace INFT2051app {
             }
         }
 
-        public void UpdateHungerState() {
+        private void UpdateHungerState() {
             switch (Hunger) {
                 case int n when (n < 30):
                     HungerStateValue = HungerState.Starving;
@@ -219,7 +242,7 @@ namespace INFT2051app {
             }
         }
 
-        public void UpdateHygieneState() {
+        private void UpdateHygieneState() {
             switch (Hygiene) {
                 case int n when (n < 30):
                     HygieneStateValue = HygieneState.Dirty;
@@ -233,7 +256,7 @@ namespace INFT2051app {
             }
         }
 
-        public void UpdateHealthState() {
+        private void UpdateHealthState() {
             switch (Health) {
                 case int n when (n < 30):
                     HealthStateValue = HealthState.UnHealthy;
@@ -247,7 +270,7 @@ namespace INFT2051app {
             }
         }
 
-        public void UpdatePetState() {
+        private void UpdatePetState() {
             if (DateTime.Now.Hour > 5 && DateTime.Now.Hour < 17 && PetStateValue != PetState.Dead) {
                 PetStateValue = PetState.Awake;
             } else {

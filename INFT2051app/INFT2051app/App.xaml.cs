@@ -19,18 +19,14 @@ namespace INFT2051app
             gamePage = new MainPage();
             MainPage = new NavigationPage(new OpenPage(gamePage));
 
-            //MainPage = new NavigationPage(new INFT2051app.MainPage());
-            //MainPage = gamePage;
-
-
-
         }
 
         protected override void OnStart() {
             // Handle when your app starts
             /*
-             * Use this method when loading player save data, or creating
-             * a new save data if none is present
+             * Use this method to do these following things:
+             * 1. Load player save data to be used if save data is present, 
+             * 2. Create player save data to be used if no save data is present
              */
         }
 

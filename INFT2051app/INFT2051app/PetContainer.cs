@@ -24,8 +24,6 @@ namespace INFT2051app {
          * - 
          */
         public Pet CurrentPet { get; set; } //The current pet being played with
-        public int Position_X { get; set; } // X Position of current pet
-        public int Position_Y { get; set; } // Y Position of current pet
         public int New_Position_X { get; set; } // new X Position of current pet
         public int New_Position_Y { get; set; } // new Y Position of current pet
         public int boxWidth { get; set; }
@@ -69,7 +67,7 @@ namespace INFT2051app {
         }
 
 
-        //--------------------------------------INTERACTIVITY-----------------------------------------------------------------------------
+        //--------------------------------------INTERACTIVITY-------------------------------------------------------------------------------------------
         private void OnTouchEffectAction(object sender, TouchActionEventArgs e) {
             /*
              * This code triggers when the user clicks on the petContainer, which spans the entire screen
@@ -134,7 +132,7 @@ namespace INFT2051app {
                 FeedingComplete(this, EventArgs.Empty);
             }
         }
-        //---------------------------------------STATES-----------------------------------------------------------------------------------
+        //---------------------------------------STATES-------------------------------------------------------------------------------------------------
 
         public void Step(object source, ElapsedEventArgs e) {
             /* This code triggers every 5 seconds blah blah blah
@@ -152,23 +150,23 @@ namespace INFT2051app {
                     break;
                 case (1):
                     //Bounce High
-                    BounceHigh();
+                    CurrentPet.BounceHigh();
                     break;
                 case (2):
                     //Bounce Low
-                    BounceLow();
+                    CurrentPet.BounceLow();
                     break;
                 case (3):
                     //Bounce High with a jump
-                    BounceJump();
+                    CurrentPet.BounceJump();
                     break;
                 case (4):
                     //Bounce High with a jump
-                    BounceMicro();
+                    CurrentPet.BounceMicro();
                     break;
             }
-            PetTimer.Stop();
-            PetTimer.Interval = 3 * 1000;//3 seconds
+            PetTimer.Stop();//Having this here keeps the pet from lagging during opening idle animations
+            PetTimer.Interval = 3 * 1000;//3 seconds, shorter time for idle state
             PetTimer.Start();
         }
 
@@ -182,14 +180,16 @@ namespace INFT2051app {
             //This code triggers every 30 minutes
             CurrentPet.updateStatus(1);
         }
-        //--------------------------------------------------MOVEMENT-------------------------------------------------------
-
-        public void IdleMove() {
+        //---------------------------------------MOVEMENT-----------------------------------------------------------------------------------------------
+        /*
+         * Moving animations are relative to the positioning of the boxview, thus all of the following functions are on this compared to the Pet object
+         */
+        private void IdleMove() {
             Random random = new Random();
             New_Position_X = random.Next(0, boxWidth);
             MoveToPosition();
         }
-        public void MoveToPosition() {
+        private void MoveToPosition() {
             //This code will trigger upon either idle state or when user touches the screen
             
             if (CurrentPet.X + CurrentPet.Width / 2 > New_Position_X) {//Cursor is left of pet
@@ -201,7 +201,7 @@ namespace INFT2051app {
             }
         }
 
-        public async void MoveLeft() {
+        private async void MoveLeft() {
             int distance = (int) -(CurrentPet.X + CurrentPet.Width / 2) + New_Position_X;
             if (CurrentPet.X + CurrentPet.Width / 2 > 0) {//Check if image does not exceed left edge
                 if (New_Position_X < CurrentPet.Width / 2) {
@@ -214,7 +214,7 @@ namespace INFT2051app {
 
         }
 
-        public async void MoveRight() {
+        private async void MoveRight() {
             int distance = (int) (New_Position_X - (CurrentPet.X + (CurrentPet.Width / 2)));
             if (CurrentPet.X + CurrentPet.Width / 2 < boxWidth) {//Check if image does not exceed right edge
                 if (New_Position_X > boxWidth - CurrentPet.Width / 2) {
@@ -225,34 +225,7 @@ namespace INFT2051app {
             }
 
         }
-
-        public async void BounceHigh() {
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, -200, 200, Easing.Linear);//UP
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, 0, 200, Easing.Linear);//DOWN
-        }
-
-        public async void BounceLow() {
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, -100, 100, Easing.Linear);//UP
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, 0, 100, Easing.Linear);//DOWN
-        }
-
-        public async void BounceMicro() {
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, -50, 50, Easing.Linear);//UP
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, 0, 50, Easing.Linear);//DOWN
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, -25, 25, Easing.Linear);//UP
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, 0, 25, Easing.Linear);//DOWN
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, -10, 10, Easing.Linear);//UP
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, 0, 10, Easing.Linear);//DOWN
-        }
-
-        public async void BounceJump() {
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, -200, 200, Easing.Linear);//UP
-            await CurrentPet.RotateTo(+360, 360, Easing.Linear);//ROTATE 360
-            CurrentPet.Rotation = 0;//RESET ROTATION VARIABLE
-            await CurrentPet.TranslateTo(CurrentPet.TranslationX, 0, 200, Easing.Linear);//DOWN
-
-        }
-
+        //---------------------------------------OVERRIDES-----------------------------------------------------------------------------------------------
         protected override void OnSizeAllocated(double width, double height) {
             //This sets the height and width that the class can access. If this function is not implemented, Height and Width will return 0
             boxHeight = (int) height;
