@@ -36,15 +36,16 @@ namespace INFT2051app {
             /*
              * This function generates buttons in the front end
              */
+
             food_grid.Children.Clear();
             int index = 0;
             for (int row = 0; row < 4; row += 2) {
                 for (int column = 0; column < 4; column++) {
                     //Make new Button
-                    Button button = new Button();
-                    button.Text = foodShop.ElementAt(index).Name;//Text (Remove for button image)
-                    button.CornerRadius = 10;//Corner Radius
+                    ImageButton button = foodShop.ElementAt(index);
+                    
                     button.Clicked += ButtonClicked;
+                    button.Aspect = Aspect.AspectFit;
                     Grid.SetRow(button, row);//Sets the ROW
                     Grid.SetColumn(button, column);//Sets the COLUMN
                     food_grid.Children.Add(button);
@@ -78,6 +79,10 @@ namespace INFT2051app {
             }
         }
 
+        public void updateShopText() {
+            shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
+        }
+
         private async void ButtonClicked(object sender, EventArgs e) {
             /*
              * This Event is triggered upon the cooresponding button pressed when inside the popup
@@ -85,15 +90,14 @@ namespace INFT2051app {
              * 
              * 
              */
-            Button button = (Button)sender;//Identify sender as button
+            var button = sender as FoodItem;//Identify sender as button
             button.IsEnabled = false;//Disable button press, this stops the user from double tapping and losing out on credits
-            current = FoodList.FindFoodItem(button.Text);//set current as the item whose button is pressed
+            current = FoodList.FindFoodItem(button.Name);//Just using a carrot right now
 
             //Compare the number of credits with the cost of the item
             if (Credits >= current.Cost) {
                 //Pops the shop off the UI stack
                 Credits -= current.Cost;
-                shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
                 PurchaseSucceeded(this, EventArgs.Empty);
                 await PopupNavigation.Instance.PopAsync(true);
             } else {

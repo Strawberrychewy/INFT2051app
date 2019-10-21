@@ -20,7 +20,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="80*"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -32,7 +32,7 @@
                     Text ="Status"
                     VerticalOptions="Start"
                     HorizontalOptions="Start"
-                   Grid.Row="0"
+                    Grid.Row="0"
                     Grid.Column="0">
             </Button>
 

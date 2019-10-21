@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace INFT2051app {
-    class FoodItem {
+    class FoodItem : ImageButton {
         /*
          * The base object for a food item.
          * This is practically a token object
@@ -15,13 +16,14 @@ namespace INFT2051app {
         public int Cost { get; set;}
 
         public FoodItem() {
-
         }
 
-        public FoodItem(string name, string type, int cost ) {
+        public FoodItem(string name, string type, int cost, ImageSource source) {
             Name = name;
             Type = type;
             Cost = cost;
+            Source = source;
+            BackgroundColor = Color.Transparent;
         }
     }
 }
