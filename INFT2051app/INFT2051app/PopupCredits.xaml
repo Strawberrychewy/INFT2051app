@@ -15,6 +15,7 @@
                 <Label HorizontalOptions="Center" Text="Graeme Chew"/>
                 <Label HorizontalOptions="Center" Text="Kathleen Curran"/>
                 <Label HorizontalOptions="Center" Text="Asmita Pandey"/>
+                <Label HorizontalOptions="Center" Text="Art and Music by Robert Read"/>
 
                 <Label HorizontalOptions="Center" x:Name="Name_Pet" Text=""/>
                 <Label HorizontalOptions="Center" Text="AND"/>
