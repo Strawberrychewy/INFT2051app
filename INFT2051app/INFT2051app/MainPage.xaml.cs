@@ -98,9 +98,7 @@ namespace INFT2051app {
             main_layout.Children.Add(petContainer);
 
             //But the TOP TOP of the stack needs to be the sticky inputs (options/foodshop button)
-            main_layout.RaiseChild(this.FindByName<ImageButton>("Options"));
-            main_layout.RaiseChild(this.FindByName<ImageButton>("Foodshop"));
-            main_layout.RaiseChild(this.FindByName<ImageButton>("StatusPage"));
+            main_layout.RaiseChild(this.FindByName<Grid>("petGrid"));
 
         }
 

@@ -7,33 +7,65 @@
              x:Class="INFT2051app.MainPage"
              NavigationPage.HasNavigationBar="false">
 
-    <AbsoluteLayout x:Name ="main_layout">
-        <!-- Status -->
-        <Label x:Name="Status"
-            BackgroundColor="LightPink"
-            AbsoluteLayout.LayoutBounds="0, 0.1, 0.5, 0.1"
-            AbsoluteLayout.LayoutFlags="All" />
-        <ImageButton x:Name="StatusPage"
-            Clicked="InvokeStatusPage"
-            Source="icon_settings.png"
-            BackgroundColor="LightBlue"
-            AbsoluteLayout.LayoutBounds="0, 0, 0.5, 0.1"
-            AbsoluteLayout.LayoutFlags="All" />
-        <!-- Credits -->
-        <ImageButton x:Name="Foodshop"
-            Clicked="InvokeFoodShop"
-            Source="icon_settings.png"
-            BackgroundColor="LightGray"
-            AbsoluteLayout.LayoutBounds="1, 0, 0.5, 0.1"
-            AbsoluteLayout.LayoutFlags="All" />
+    <AbsoluteLayout x:Name ="main_layout"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    >
+        
+        <Grid x:Name="petGrid"
+              RowSpacing="0"
+              HorizontalOptions="FillAndExpand"
+              WidthRequest="{Binding Path=Width, Source={x:Reference main_layout}}"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="80*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <!-- Options (Anchored below Credits but retains Height and Width)-->
-        <ImageButton x:Name="Options"
-            Clicked="InvokeSettings"
-            Source="icon_settings.png"
-            BackgroundColor="Blue"
-            AbsoluteLayout.LayoutBounds="1, 0.1, 0.1, 0.1"
-            AbsoluteLayout.LayoutFlags="All" />
+            <Button x:Name="StatusPage"
+                    Clicked="InvokeStatusPage"
+                    Text ="Status"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                   Grid.Row="0"
+                    Grid.Column="0">
+            </Button>
+
+            <Button x:Name="Foodshop"
+                    Clicked="InvokeFoodShop"
+                    Text="Shop"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Grid.Row="1"
+                    Grid.Column="0">
+            </Button>
+
+            <ImageButton x:Name="Options"
+                         Clicked="InvokeSettings"
+                         Source="icon_settings.png"
+                         VerticalOptions="Start"
+                         HorizontalOptions="End"
+                         BackgroundColor="Transparent"
+                         Grid.Row="0"
+                         Grid.Column="1">
+            </ImageButton>
+
+            <Label x:Name="credits"
+                   Text="Credits: XXXX"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   Grid.Row="1"
+                   Grid.Column="1">
+            </Label>
+        </Grid>
+        
         <!-- DEBUG LABELS-->
         <Label x:Name="DebugLabel" TextColor = "Red" FontSize="Small" AbsoluteLayout.LayoutBounds="0.1, 0.5, 0.2, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>
         <Label x:Name ="Credits_number" TextColor = "Red" FontSize="Small" AbsoluteLayout.LayoutBounds="0.9, 0, 0.2, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>

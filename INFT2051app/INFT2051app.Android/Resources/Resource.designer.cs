@@ -5738,7 +5738,7 @@ namespace INFT2051app.Droid
 			public const int blueberry = 2131165280;
 			
 			// aapt resource value: 0x7F070061
-			public const int carrots = 2131165281;
+			public const int carrot = 2131165281;
 			
 			// aapt resource value: 0x7F070062
 			public const int design_bottom_navigation_item_background = 2131165282;
