@@ -148,6 +148,9 @@ namespace INFT2051app {
             petContainer.FeedingProcess += HandleFeedingProcess;
             petContainer.FeedingComplete += HandleFeedingComplete;
 
+            //trying to put a picture of the food when the button is clicked 
+            //i dont think I can do this until the JSON is loaded 
+
             petContainer.StartFeedingProcess();//Delegates the feeding task to the petContainer
         }
 

@@ -23,30 +23,30 @@
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="25*" />
+                        <ColumnDefinition Width="25*" />
+                        <ColumnDefinition Width="25*" />
+                        <!--<ColumnDefinition Width="25*" />-->
                     </Grid.ColumnDefinitions>
 
 
                     <Button Grid.Row="0" Grid.Column="0" CornerRadius="10"></Button>
                     <Button Grid.Row="0" Grid.Column="1" CornerRadius="10"></Button>
                     <Button Grid.Row="0" Grid.Column="2" CornerRadius="10"></Button>
-                    <Button Grid.Row="0" Grid.Column="3" CornerRadius="10"></Button>
+                    <!--<Button Grid.Row="0" Grid.Column="3" CornerRadius="10"></Button>-->
                     <Label Grid.Row="1" Grid.Column="0" Text="Food Item 1"></Label>
                     <Label Grid.Row="1" Grid.Column="1" Text="Food Item 2"></Label>
                     <Label Grid.Row="1" Grid.Column="2" Text="Food Item 3"></Label>
-                    <Label Grid.Row="1" Grid.Column="3" Text="Food Item 4"></Label>
+                    <!--<Label Grid.Row="1" Grid.Column="3" Text="Food Item 4"></Label>-->
 
                     <Button Grid.Row="2" Grid.Column="0" CornerRadius="10"></Button>
                     <Button Grid.Row="2" Grid.Column="1" CornerRadius="10"></Button>
                     <Button Grid.Row="2" Grid.Column="2" CornerRadius="10"></Button>
-                    <Button Grid.Row="2" Grid.Column="3" CornerRadius="10"></Button>
+                    <!--<Button Grid.Row="2" Grid.Column="3" CornerRadius="10"></Button>-->
                     <Label Grid.Row="3" Grid.Column="0" Text="Food Item 5"></Label>
                     <Label Grid.Row="3" Grid.Column="1" Text="Food Item 6"></Label>
                     <Label Grid.Row="3" Grid.Column="2" Text="Food Item 7"></Label>
-                    <Label Grid.Row="3" Grid.Column="3" Text="Food Item 8"></Label>
+                    <!--<Label Grid.Row="3" Grid.Column="3" Text="Food Item 8"></Label>-->
 
                 </Grid>
 

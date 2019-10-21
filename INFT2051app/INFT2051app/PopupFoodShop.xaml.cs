@@ -14,11 +14,9 @@ namespace INFT2051app {
     public partial class PopupFoodShop : PopupPage {
 
         FoodList FoodList { get; set; }
-
         readonly List<FoodItem> foodShop;
         FoodItem current;
         public int Credits { get; set;}
-
         public event EventHandler PurchaseSucceeded;
 
         public PopupFoodShop() {
@@ -29,6 +27,7 @@ namespace INFT2051app {
             foodShop = FoodList.ResetShop();
             shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
 
+
             GenerateButtons();
         }
 
@@ -38,8 +37,8 @@ namespace INFT2051app {
              */
             food_grid.Children.Clear();
             int index = 0;
-            for (int row = 0; row < 4; row += 2) {
-                for (int column = 0; column < 4; column++) {
+            for (int row = 0; row < 3; row += 2) {
+                for (int column = 0; column < 3; column++) {
                     //Make new Button
                     Button button = new Button();
                     button.Text = foodShop.ElementAt(index).Name;//Text (Remove for button image)
@@ -78,7 +77,7 @@ namespace INFT2051app {
             }
         }
 
-        private async void ButtonClicked(object sender, EventArgs e) {
+        public async void ButtonClicked(object sender, EventArgs e) {
             /*
              * This Event is triggered upon the cooresponding button pressed when inside the popup
              * 
@@ -100,6 +99,8 @@ namespace INFT2051app {
                 shop_label.Text = "Insuffient Funds";
             }
             button.IsEnabled = true;//Enable button press so that button may be used again
+
+            //MainPage.main_layout.Children.Add()
         }
 
     }
