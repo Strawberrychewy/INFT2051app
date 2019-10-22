@@ -11,42 +11,43 @@
     <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10,0">
         <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
             <!-- Inner Padding -->
-            <StackLayout Padding="10, 0">
+            <StackLayout Padding="10, 0" >
                 <Label x:Name="shop_label" Text="Welcome to the Shop!" FontSize="Title"/>
                 <!-- Each food item goes here -->
                 <Grid x:Name="food_grid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="25*" />
                         <ColumnDefinition Width="25*" />
                         <ColumnDefinition Width="25*" />
-                        <!--<ColumnDefinition Width="25*" />-->
+                        <ColumnDefinition Width="25*" />
                     </Grid.ColumnDefinitions>
 
 
-                    <Button Grid.Row="0" Grid.Column="0" CornerRadius="10"></Button>
-                    <Button Grid.Row="0" Grid.Column="1" CornerRadius="10"></Button>
-                    <Button Grid.Row="0" Grid.Column="2" CornerRadius="10"></Button>
-                    <!--<Button Grid.Row="0" Grid.Column="3" CornerRadius="10"></Button>-->
-                    <Label Grid.Row="1" Grid.Column="0" Text="Food Item 1"></Label>
-                    <Label Grid.Row="1" Grid.Column="1" Text="Food Item 2"></Label>
-                    <Label Grid.Row="1" Grid.Column="2" Text="Food Item 3"></Label>
-                    <!--<Label Grid.Row="1" Grid.Column="3" Text="Food Item 4"></Label>-->
+                    <!-- The below becomes omitted during button generation but left here as a guide to the structuring of the buttons -->
+                    <ImageButton x:Name = "Button_0" Source="meat.png" Grid.Row="0" Grid.Column="0" CornerRadius="10"></ImageButton>
+                    <ImageButton x:Name = "Button_1" Source="meat.png" Grid.Row="0" Grid.Column="1" CornerRadius="10"></ImageButton>
+                    <ImageButton x:Name = "Button_2" Source="meat.png" Grid.Row="0" Grid.Column="2" CornerRadius="10"></ImageButton>
+                    <ImageButton x:Name = "Button_3" Source="meat.png" Grid.Row="0" Grid.Column="3" CornerRadius="10"></ImageButton>
+                    <Label x:Name = "Label_0" Grid.Row="1" Grid.Column="0" Text="Food Item 1"></Label>
+                    <Label x:Name = "Label_1" Grid.Row="1" Grid.Column="1" Text="Food Item 2"></Label>
+                    <Label x:Name = "Label_2" Grid.Row="1" Grid.Column="2" Text="Food Item 3"></Label>
+                    <Label x:Name = "Label_3" Grid.Row="1" Grid.Column="3" Text="Food Item 4"></Label>
 
-                    <Button Grid.Row="2" Grid.Column="0" CornerRadius="10"></Button>
-                    <Button Grid.Row="2" Grid.Column="1" CornerRadius="10"></Button>
-                    <Button Grid.Row="2" Grid.Column="2" CornerRadius="10"></Button>
-                    <!--<Button Grid.Row="2" Grid.Column="3" CornerRadius="10"></Button>-->
-                    <Label Grid.Row="3" Grid.Column="0" Text="Food Item 5"></Label>
-                    <Label Grid.Row="3" Grid.Column="1" Text="Food Item 6"></Label>
-                    <Label Grid.Row="3" Grid.Column="2" Text="Food Item 7"></Label>
-                    <!--<Label Grid.Row="3" Grid.Column="3" Text="Food Item 8"></Label>-->
+                    <ImageButton x:Name = "Button_4" Source="meat.png" Grid.Row="2" Grid.Column="0" CornerRadius="10"></ImageButton>
+                    <ImageButton x:Name = "Button_5" Source="meat.png" Grid.Row="2" Grid.Column="1" CornerRadius="10"></ImageButton>
+                    <ImageButton x:Name = "Button_6" Source="meat.png" Grid.Row="2" Grid.Column="2" CornerRadius="10"></ImageButton>
+                    <ImageButton x:Name = "Button_7" Source="meat.png" Grid.Row="2" Grid.Column="3" CornerRadius="10"></ImageButton>
+                    <Label x:Name = "Label_4" Grid.Row="3" Grid.Column="0" Text="Food Item 5"></Label>
+                    <Label x:Name = "Label_5" Grid.Row="3" Grid.Column="1" Text="Food Item 6"></Label>
+                    <Label x:Name = "Label_6" Grid.Row="3" Grid.Column="2" Text="Food Item 7"></Label>
+                    <Label x:Name = "Label_7" Grid.Row="3" Grid.Column="3" Text="Food Item 8"></Label>
 
                 </Grid>
 

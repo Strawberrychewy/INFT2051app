@@ -115,6 +115,7 @@ namespace INFT2051app {
 
         private async void InvokeFoodShop(object sender, EventArgs e) {
 
+            foodShopPopup.updateShopText();
             await PopupNavigation.Instance.PushAsync(foodShopPopup);
             
         }
@@ -139,7 +140,7 @@ namespace INFT2051app {
              * 
              * Regardless, a progress bar is shown as an indication of the current progress the pet is in when eating
              */
-
+            credits.Text = "Credits: " + foodShopPopup.Credits;
             main_layout.Children.Add(progressBar);
 
             petContainer.CurrentPet.State = foodShopPopup.GetCurrent();

@@ -32,16 +32,16 @@ namespace INFT2051app {
              * Foods.add(e)
              */
 
-            Foods.Add(new FoodItem("Carrot", "Vegetable", 10));
-            Foods.Add(new FoodItem("Apple", "Fruit", 10));
-            Foods.Add(new FoodItem("Orange", "Fruit", 11));
-            Foods.Add(new FoodItem("Blueberries", "Fruit", 12));
+            Foods.Add(new FoodItem("Carrot", "Vegetable", 10, "carrot.png"));
+            Foods.Add(new FoodItem("Apple", "Fruit", 10, "apple.png"));
+            Foods.Add(new FoodItem("Orange", "Fruit", 11, "orange.png"));
+            Foods.Add(new FoodItem("Blueberries", "Fruit", 12, "blueberry.png"));
 
-            Foods.Add(new FoodItem("Grapes", "Fruit", 11));
-            Foods.Add(new FoodItem("Fish", "Meat", 16));
-            Foods.Add(new FoodItem("Lettuce", "Vegetable", 13));
-            Foods.Add(new FoodItem("Steak", "Meat", 20));
-            Foods.Add(new FoodItem("Chicken", "Meat", 19));
+            Foods.Add(new FoodItem("Grapes", "Fruit", 11, "grapes.png"));
+            Foods.Add(new FoodItem("Fish", "Meat", 16, "fish.png"));
+            Foods.Add(new FoodItem("Lettuce", "Vegetable", 13, "blueberry.png"));
+            Foods.Add(new FoodItem("Steak", "Meat", 20, "steak.png"));
+            Foods.Add(new FoodItem("Chicken", "Meat", 19, "meat.png"));
 
         }
 

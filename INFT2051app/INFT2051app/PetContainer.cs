@@ -126,7 +126,7 @@ namespace INFT2051app {
              */
             EatingProgress++;
             FeedingProcess(this, EventArgs.Empty);
-            if (EatingProgress == 5) {
+            if (EatingProgress >= 5) {
                 EatingProgress = 0;
                 CurrentPet.Hunger += 10;
                 FeedingComplete(this, EventArgs.Empty);
