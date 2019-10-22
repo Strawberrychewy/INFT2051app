@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -107,7 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\INFT2051app\INFT2051app.csproj">
-      <Project>{3607FACA-A8FF-4346-83CA-CC1368FC1831}</Project>
+      <Project>{1857DE21-4515-40E4-ADEE-569D97B7A5D1}</Project>
       <Name>INFT2051app</Name>
     </ProjectReference>
   </ItemGroup>

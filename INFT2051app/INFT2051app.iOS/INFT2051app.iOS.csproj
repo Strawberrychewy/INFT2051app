@@ -26,6 +26,9 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignProvision>inft2051_com_uon_v10</CodesignProvision>
+    <CodesignKey>iPhone Developer: INFT2051 Coordinator (R59ULU7888)</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -138,7 +141,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\INFT2051app\INFT2051app.csproj">
-      <Project>{3607FACA-A8FF-4346-83CA-CC1368FC1831}</Project>
+      <Project>{1857DE21-4515-40E4-ADEE-569D97B7A5D1}</Project>
       <Name>INFT2051app</Name>
     </ProjectReference>
   </ItemGroup>
