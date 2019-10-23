@@ -188,9 +188,6 @@
     <EmbeddedResource Include="Assets\appMusic.mp3" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="appMusic.mp3" />
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="EnvDTE">
       <Guid>{80CC9F66-E7D8-4DDD-85B6-D9E6CD0E93E2}</Guid>
       <VersionMajor>8</VersionMajor>

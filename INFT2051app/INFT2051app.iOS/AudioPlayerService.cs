@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using MediaPlayer;
 using System.IO;
-using AudioPlayer.iOS.Services;
+using INFT2051app.iOS.Services;
+using INFT2051app.Services;
 using AVFoundation;
 using Xamarin.Forms;
 
@@ -15,9 +16,9 @@ using Foundation;
 using UIKit;
 
 [assembly: Dependency(typeof(AudioPlayerService))]
-namespace AudioPlayer.iOS.Services
+namespace INFT2051app.iOS.Services
 {
-    public class AudioPlayerService : INFT2051app.IAudioPlayerService
+    public class AudioPlayerService : IAudioPlayerService
     {
         private AVAudioPlayer _audioPlayer = null;
         public Action onFinishedPlaying { get; set; }
@@ -43,6 +44,7 @@ namespace AudioPlayer.iOS.Services
         private void Player_FinishedPlaying(object sender, AVStatusEventArgs e)
         {
             onFinishedPlaying?.Invoke();
+            
         }
 
         public void Pause()
@@ -53,6 +55,7 @@ namespace AudioPlayer.iOS.Services
         public void Play()
         {
             _audioPlayer?.Play();
+            //onFinishedPlaying.Invoke();
         }
     }
 }

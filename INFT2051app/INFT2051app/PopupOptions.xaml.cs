@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using INFT2051app.ViewModels;
+using INFT2051app.Services;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,6 +27,11 @@ namespace INFT2051app {
             MusicValue = 100;
             popupCredits = new PopupCredits();
             popupRestartPrompt = new PopupRestartPrompt();
+
+            // the following line is from 
+            // https://www.godo.dev/tutorials/xamarin-forms-play-audio/
+
+            BindingContext = new AudioPlayerViewModel(DependencyService.Get<IAudioPlayerService>());
 
         }
 

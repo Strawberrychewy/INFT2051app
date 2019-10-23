@@ -7,22 +7,20 @@ using System.Linq;
 using System.Text;
 
 using Android.App;
+using Android.Graphics;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
 using Android.Media;
-using AudioPlayer.Droid.Services;
+using INFT2051app.Droid.Services;
+using INFT2051app.Services;
 
 using Xamarin.Forms;
 
 
 [assembly: Dependency(typeof(AudioPlayerService))]
-namespace AudioPlayer.Droid.Services
+namespace INFT2051app.Droid.Services
 {
-    public class AudioPlayerService : INFT2051app.IAudioPlayerService
+    public class AudioPlayerService : IAudioPlayerService
     {
         private MediaPlayer _mediaPlayer;
 
@@ -32,6 +30,7 @@ namespace AudioPlayer.Droid.Services
         {
         }
 
+        [Obsolete]
         public void Play(string pathToSoundName)
         {
             if (_mediaPlayer != null)
@@ -42,8 +41,8 @@ namespace AudioPlayer.Droid.Services
 
             var fullPath = pathToSoundName;
 
-            Android.Content.Res.AssetFileDescriptor afd = null;
-
+            global::Android.Content.Res.AssetFileDescriptor afd = null;
+            
             try
             {
                 afd = Forms.Context.Assets.OpenFd(fullPath);
@@ -76,6 +75,8 @@ namespace AudioPlayer.Droid.Services
         void MediaPlayer_Completion(object sender, EventArgs e)
         {
             onFinishedPlaying?.Invoke();
+            
+            //change this I dont want it to stop
         }
 
         public void Pause()
@@ -86,6 +87,7 @@ namespace AudioPlayer.Droid.Services
         public void Play()
         {
             _mediaPlayer?.Start();
+            //onFinishedPlaying.Invoke();
         }
     }
 }
