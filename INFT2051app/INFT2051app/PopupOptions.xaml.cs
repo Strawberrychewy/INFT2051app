@@ -14,6 +14,7 @@ namespace INFT2051app {
     public partial class PopupOptions : PopupPage {
 
         PopupRestartPrompt popupRestartPrompt;
+        //private readonly PopupChangeName popupChangeName;
         PopupCredits popupCredits;
         double SFXValue;
         double MusicValue;
@@ -60,6 +61,8 @@ namespace INFT2051app {
 
         }
 
+        
+
         //BUTTON EVENTS GO HERE (OPTIONS)
         private void OnMusicButtonClicked(object sender, EventArgs e) {
             /*
@@ -69,27 +72,37 @@ namespace INFT2051app {
              * 2. Mute: Visually show corresponding slider is on 0 
              * 3. Unmute: Visually show corresponding slider is on last saved value (OR 50, if thats too hard)
              */
-            if (MusicSlider.Value == 0) {//UNMUTE
-                MusicButton.Text = "UnMuted";
-                if (MusicValue == 0) {
-                    MusicSlider.Value = 50;
-                } else {
-                    MusicSlider.Value = MusicValue;
-                }
-            } else {//MUTE
-                MusicButton.Text = "Muted";
-                MusicValue = MusicSlider.Value;
 
-                /*  
-                 * Must unsubscribe to volume change before changing Slider value to 0
-                 * Otherwise it will trigger the volume change event and set the last saved value equal to 0
-                 * 
-                 * 
-                 */
-                MusicSlider.ValueChanged -= MusicVolumeChanged;
-                MusicSlider.Value = 0;
-                MusicSlider.ValueChanged += MusicVolumeChanged;
-            }
+
+
+
+            //if (MusicSlider.Value == 0)
+            //{//UNMUTE
+            //    MusicButton.Text = "UnMuted";
+            //    if (MusicValue == 0)
+            //    {
+            //        MusicSlider.Value = 50;
+            //    }
+            //    else
+            //    {
+            //        MusicSlider.Value = MusicValue;
+            //    }
+            //}
+            //else
+            //{//MUTE
+            //    MusicButton.Text = "Muted";
+            //    MusicValue = MusicSlider.Value;
+
+            //    /*  
+            //     * Must unsubscribe to volume change before changing Slider value to 0
+            //     * Otherwise it will trigger the volume change event and set the last saved value equal to 0
+            //     * 
+            //     * 
+            //     */
+            //    MusicSlider.ValueChanged -= MusicVolumeChanged;
+            //    MusicSlider.Value = 0;
+            //    MusicSlider.ValueChanged += MusicVolumeChanged;
+            //}
         }
 
         private void OnSFXButtonClicked(object sender, EventArgs e) {
@@ -123,7 +136,7 @@ namespace INFT2051app {
         }
 
         //-------------------------------Bottom Button Events go here-----------------------------------------------------------
-        private void OnNameChangeClicked(object sender, EventArgs e) {
+        private async void OnNameChangeClicked(object sender, EventArgs e) {
             /*
              * This event triggers upon Name Change Button Click
              * It will:
@@ -131,6 +144,8 @@ namespace INFT2051app {
              * 2. Save the name into the player save file
              * 
              */
+           // await PopupNavigation.PushAsync(popupChangeName);
+
         }
 
         private async void OnCreditsClicked(object sender, EventArgs e) {

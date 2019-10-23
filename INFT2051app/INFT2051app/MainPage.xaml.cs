@@ -10,6 +10,9 @@ using System.Windows.Input;
 using FFImageLoading.Forms;
 using Rg.Plugins.Popup.Services;
 using System.Timers;
+using Plugin.SimpleAudioPlayer;
+using System.Reflection;
+using System.IO;
 
 namespace INFT2051app {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
@@ -61,8 +64,21 @@ namespace INFT2051app {
             AbsoluteLayout.SetLayoutFlags(progressBar, AbsoluteLayoutFlags.All);
 
             //The following maps the labels to variables so they may be changed during render time
-            creditsLabel = this.FindByName<Label>("Credits_number");
-            debugLabel = this.FindByName<Label>("DebugLabel");
+            //creditsLabel = this.FindByName<Label>("Credits_number");
+            //debugLabel = this.FindByName<Label>("DebugLabel");
+
+
+            //var audio = GetStreamFromFile("appMusic.mp3");
+            //var music = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            //music.Load(audio);
+            //music.Play();
+
+            //Stream GetStreamFromFile(string filename)
+            //{
+            //    var assembly = typeof(App).GetTypeInfo().Assembly;
+            //    var stream = assembly.GetManifestResourceStream("INFT2051app" + filename);
+            //    return stream;
+            //}
 
             Init();
 
@@ -101,6 +117,8 @@ namespace INFT2051app {
             main_layout.RaiseChild(this.FindByName<Grid>("petGrid"));
 
         }
+
+        
 
         public void Step(object source, ElapsedEventArgs e) {
             //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss}", e.SignalTime);

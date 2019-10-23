@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using MediaManager.Forms;
 
 
 namespace INFT2051app
@@ -28,6 +29,8 @@ namespace INFT2051app
              * 1. Load player save data to be used if save data is present, 
              * 2. Create player save data to be used if no save data is present
              */
+
+
         }
 
         protected override void OnSleep() {

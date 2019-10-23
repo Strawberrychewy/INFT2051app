@@ -27,7 +27,13 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Button x:Name="MusicButton" Grid.Row="0" Grid.Column="0" Text="Music" Clicked="OnMusicButtonClicked"></Button>
+                    <Button x:Name="MusicButton" 
+                            Grid.Row="0" 
+                            Grid.Column="0" 
+                            Text="Music" 
+                            Clicked="OnMusicButtonClicked">
+                        
+                    </Button>
                     <Slider x:Name="MusicSlider" Grid.Row="0" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="MusicVolumeChanged" ></Slider>
 
 
