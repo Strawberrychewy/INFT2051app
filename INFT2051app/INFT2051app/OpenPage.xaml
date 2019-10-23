@@ -10,18 +10,17 @@
 
     <AbsoluteLayout x:Name="open_layout">
 
-        <Image x:Name="backgroundPic" Source="bg_morning.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
+        <Image x:Name="backgroundPic" Source="bg_morning.png" InputTransparent="True" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
 
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
             <Label x:Name="OpeningTitle"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text ="Uni Pets!"  FontSize ="43" FontFamily="Bellerose" TextColor="Azure" />
             <Label x:Name="OpeningSubtitle" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="Click Screen to Enter!" FontSize="20"/>
         </StackLayout>
 
-
-
+         <!--<Button x:Name="test" Text="go to next page placeholder" Clicked="MoveToApp" AbsoluteLayout.LayoutBounds=".5, .5, 1, 1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Wheat"></Button>-->
 
         <!-- Button Covers entire screen but is opaque (Let user know to click to enter actual game, also ensure this element is the last one on the stack)-->
-        <Button Text="Welcome to xxxx" Clicked="MoveToApp" BackgroundColor="Transparent" Opacity="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
+        <Button x:Name="welcome" Text="Welcome to xxxx" Clicked="MoveToApp" BackgroundColor="Transparent" Opacity="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
 
     </AbsoluteLayout>
 

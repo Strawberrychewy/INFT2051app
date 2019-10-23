@@ -13,13 +13,15 @@ namespace INFT2051app
     public partial class OpenPage : ContentPage
     {
         
-        private readonly MainPage GamePage;
+        private readonly MainPage gamePage;
         private readonly Timer subtitleTimer;
-
+        
         public OpenPage(MainPage gamePage) {
             InitializeComponent();
 
-            GamePage = gamePage;
+            this.gamePage = gamePage;
+            var number = 0;
+
 
             Background bg = new Background();
             this.FindByName<Image>("backgroundPic").Source = bg.Source;
@@ -29,6 +31,11 @@ namespace INFT2051app
             subtitleTimer.Elapsed += subtitleStep;
             subtitleTimer.AutoReset = true;
             subtitleTimer.Start();
+
+            open_layout.RaiseChild(this.FindByName<Button>("welcome"));
+
+            var moveGesture = new TapGestureRecognizer();
+            moveGesture.NumberOfTapsRequired = 1;
             
 
         }
@@ -56,9 +63,10 @@ namespace INFT2051app
             OpeningSubtitle.TranslationY = 0;
         }
 
+        
         private async void MoveToApp(object sender, EventArgs e) {
 
-            await Navigation.PushAsync(GamePage);
+            await Navigation.PushAsync(new MainPage());
         }
 
     }

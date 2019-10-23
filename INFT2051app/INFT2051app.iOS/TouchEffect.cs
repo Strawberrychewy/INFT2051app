@@ -18,7 +18,7 @@ namespace TouchTracking.iOS {
             view = Control == null ? Container : Control;
 
             // Uncomment this line if the UIView does not have touch enabled by default
-            //view.UserInteractionEnabled = true;
+            view.UserInteractionEnabled = true;
 
             // Get access to the TouchEffect class in the .NET Standard library
             TouchTracking.TouchEffect effect = (TouchTracking.TouchEffect)Element.Effects.FirstOrDefault(e => e is TouchTracking.TouchEffect);
