@@ -11,17 +11,18 @@
         <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
             <!-- Inner Padding -->
             <StackLayout Padding="10,0">
-                <Label HorizontalOptions="Center" FontSize="Title"  Text="Credits"/>
-                <Label HorizontalOptions="Center" Text="Graeme Chew"/>
-                <Label HorizontalOptions="Center" Text="Kathleen Curran"/>
-                <Label HorizontalOptions="Center" Text="Asmita Pandey"/>
-                <Label HorizontalOptions="Center" Text="Art and Music by Robert Read"/>
-
-                <Label HorizontalOptions="Center" x:Name="Name_Pet" Text=""/>
-                <Label HorizontalOptions="Center" Text="AND"/>
-                <Label HorizontalOptions="Center" FontSize="Large" x:Name="Name_Player" Text=""/>
-
-
+                <Label
+                    Text="Enter new pet name"
+                    >
+                </Label>
+                <Entry x:Name="NewPetName"
+                    Placeholder="Charles"
+                    BackgroundColor="White">
+                </Entry>
+                <Button x:Name="submitName"
+                        Text="Go"
+                        Clicked="ChangeName">
+                </Button>
             </StackLayout>
         </Frame>
 

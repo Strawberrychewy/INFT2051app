@@ -21,8 +21,6 @@ namespace INFT2051app
             InitializeComponent();
 
             this.gamePage = gamePage;
-            var number = 0;
-
 
             Background bg = new Background();
             this.FindByName<Image>("backgroundPic").Source = bg.Source;

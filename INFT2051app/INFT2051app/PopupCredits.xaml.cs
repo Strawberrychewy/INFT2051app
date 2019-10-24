@@ -13,6 +13,9 @@ namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupCredits : PopupPage {
 
+        PopUpNameChange popupNameChange;
+        Pet pet;
+
         public PopupCredits() {
             InitializeComponent();
         }
@@ -23,6 +26,8 @@ namespace INFT2051app {
              * 1. Name of the Pet (Name_Pet)
              * 2. Name of the Player (Name_Player)
              */
+             //this is hardcoded
+            this.Name_Pet.Text = "Josh";
         }
 
 

@@ -76,6 +76,11 @@ namespace INFT2051app {
             string EvolveInto = Base.EvolvesInto; //Finds the next evolution chain object from its current Base object
         }
 
+        //public void updatePetName()
+        //{
+        //    this.NickName = PopUpNameChange.ChangeName(this, EventArgs.Empty);
+        //}
+
         public void updateStatus(int timeInterval) {
             /*
              * This code is run at 30 minute intervals 
