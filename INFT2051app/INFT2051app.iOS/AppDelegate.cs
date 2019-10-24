@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using MediaManager;
 
 namespace INFT2051app.iOS
 {
@@ -22,6 +23,7 @@ namespace INFT2051app.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            CrossMediaManager.Current.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
 
@@ -30,6 +32,8 @@ namespace INFT2051app.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+
+
         }
     }
 }

@@ -180,9 +180,6 @@
     <BundleResource Include="Resources\pet_rabbit.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\appMusic.mp3" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\apple.png" />
   </ItemGroup>
   <ItemGroup>

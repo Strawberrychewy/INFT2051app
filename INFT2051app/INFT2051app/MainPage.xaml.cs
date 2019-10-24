@@ -13,6 +13,7 @@ using System.Timers;
 using System.Reflection;
 using System.IO;
 using INFT2051app.ViewModels;
+using MediaManager;
 //using INFT2051app.Services;
 
 namespace INFT2051app {
@@ -63,6 +64,7 @@ namespace INFT2051app {
             progressBar = new ProgressBar();//Includes Progress bar to layout, signifying eating progress
             AbsoluteLayout.SetLayoutBounds(progressBar, new Rectangle(0.5, 0.7, 0.8, 0.4));
             AbsoluteLayout.SetLayoutFlags(progressBar, AbsoluteLayoutFlags.All);
+
 
             
 
@@ -117,7 +119,11 @@ namespace INFT2051app {
 
         }
 
-        
+        private async void playMusic(object sender, EventArgs e)
+        {
+
+            await CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
+        }
 
         public void Step(object source, ElapsedEventArgs e) {
             //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss}", e.SignalTime);

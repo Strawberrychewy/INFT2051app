@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using INFT2051app.ViewModels;
 using INFT2051app.Services;
+using Rg.Plugins.Popup.Extensions;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,16 +17,20 @@ namespace INFT2051app {
     public partial class PopupOptions : PopupPage {
 
         PopupRestartPrompt popupRestartPrompt;
+        PopUpNameChange popupNameChange;
+        
         //private readonly PopupChangeName popupChangeName;
         PopupCredits popupCredits;
         double SFXValue;
         double MusicValue;
+        private PopupPage popUpNameChange;
 
         public PopupOptions() {
             InitializeComponent();
             SFXValue = 100;
             MusicValue = 100;
             popupCredits = new PopupCredits();
+            popupNameChange = new PopUpNameChange();
             popupRestartPrompt = new PopupRestartPrompt();
 
             // the following line is from 
@@ -34,6 +39,10 @@ namespace INFT2051app {
             BindingContext = new AudioPlayerViewModel(DependencyService.Get<IAudioPlayerService>());
 
         }
+
+        //code from 
+        //https://devlinduldulao.pro/xamarin-forms-101-how-to-create-a-popup-form-in-xamarin-forms/
+      
 
 
         //SLIDER EVENTS GO HERE (OPTIONS)
@@ -144,15 +153,8 @@ namespace INFT2051app {
 
         //-------------------------------Bottom Button Events go here-----------------------------------------------------------
         private async void OnNameChangeClicked(object sender, EventArgs e) {
-            /*
-             * This event triggers upon Name Change Button Click
-             * It will:
-             * 1. Change the name seen on the app
-             * 2. Save the name into the player save file
-             * 
-             */
-           // await PopupNavigation.PushAsync(popupChangeName);
 
+            await Navigation.PushPopupAsync(popupNameChange);
         }
 
         private async void OnCreditsClicked(object sender, EventArgs e) {

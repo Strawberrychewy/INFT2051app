@@ -36,6 +36,11 @@
                     Grid.Column="0">
             </Button>
 
+            <Button x:Name="music"
+                    Clicked="playMusic">
+                
+            </Button>
+
             <Button x:Name="Foodshop"
                     Clicked="InvokeFoodShop"
                     Text="Shop"

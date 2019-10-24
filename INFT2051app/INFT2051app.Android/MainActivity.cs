@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using MediaManager;
 
 using Plugin.Fingerprint;
 
@@ -18,6 +19,8 @@ namespace INFT2051app.Android
         {
 
             base.OnCreate(savedInstanceState);
+
+            CrossMediaManager.Current.Init(this);
 
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
 
