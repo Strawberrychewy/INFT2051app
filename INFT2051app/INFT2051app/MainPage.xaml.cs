@@ -35,11 +35,12 @@ namespace INFT2051app {
         private readonly PopupOptions optionsPopup;
         private readonly PopupStatus statusPopup;
         readonly PetContainer petContainer;  //Controller for the pet
+        
 
         readonly Timer gameloop;
 
-        private readonly Label creditsLabel;
-        private readonly Label debugLabel;
+        //private readonly Label creditsLabel;
+        //private readonly Label debugLabel;
         private readonly Button FPButton;
         private readonly ProgressBar progressBar;
 
@@ -64,6 +65,8 @@ namespace INFT2051app {
             progressBar = new ProgressBar();//Includes Progress bar to layout, signifying eating progress
             AbsoluteLayout.SetLayoutBounds(progressBar, new Rectangle(0.5, 0.7, 0.8, 0.4));
             AbsoluteLayout.SetLayoutFlags(progressBar, AbsoluteLayoutFlags.All);
+
+
 
 
             
@@ -102,20 +105,27 @@ namespace INFT2051app {
             Background bg = new Background();
             main_layout.Children.Add(bg);
 
+            
             //2. Add the Pet controller input
 
             //3. Add the pet image
             main_layout.Children.Add(petContainer.CurrentPet);
 
             //This pushes the debug/credits label to the top of the stack, this allows input to be seen above backgrounds etc
-            main_layout.RaiseChild(debugLabel);
-            main_layout.RaiseChild(creditsLabel);
+            //main_layout.RaiseChild(debugLabel);
+            //main_layout.RaiseChild(creditsLabel);
 
             //The top of the stack needs to be the input box
             main_layout.Children.Add(petContainer);
 
+
             //But the TOP TOP of the stack needs to be the sticky inputs (options/foodshop button)
             main_layout.RaiseChild(this.FindByName<Grid>("petGrid"));
+            //raises buttons to the top of the stack
+            //main_layout.RaiseChild(this.FindByName<Button>("StatusPage"));
+            //main_layout.RaiseChild(this.FindByName<Button>("FoodShop"));
+            //main_layout.RaiseChild(this.FindByName<ImageButton>("Options"));
+            main_layout.LowerChild(this.FindByName<AbsoluteLayout>("lastGrid"));
 
         }
 

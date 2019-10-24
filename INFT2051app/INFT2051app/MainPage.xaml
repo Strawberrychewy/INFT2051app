@@ -13,18 +13,24 @@
                     >
         
         <Grid x:Name="petGrid"
-              RowSpacing="0"
+              RowSpacing="4"
               HorizontalOptions="FillAndExpand"
+              Padding="5, 10"
+             AbsoluteLayout.LayoutBounds="0, 0, 1, .2"
+              AbsoluteLayout.LayoutFlags="All"
               WidthRequest="{Binding Path=Width, Source={x:Reference main_layout}}"
               >
+            <!--this width request doesnt do anything-->
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
             </Grid.ColumnDefinitions>
 
             <Button x:Name="StatusPage"
@@ -32,22 +38,22 @@
                     Text ="Status"
                     VerticalOptions="Start"
                     HorizontalOptions="Start"
+                    Padding="10"
                     Grid.Row="0"
-                    Grid.Column="0">
+                    Grid.Column="0"
+                    BackgroundColor="LightGray">
+                    
             </Button>
-
-            <!--<Button x:Name="music"
-                    Clicked="playMusic">
-                
-            </Button>-->
 
             <Button x:Name="Foodshop"
                     Clicked="InvokeFoodShop"
                     Text="Shop"
                     VerticalOptions="Start"
                     HorizontalOptions="Start"
+                    Padding="10"
                     Grid.Row="1"
-                    Grid.Column="0">
+                    Grid.Column="0"
+                    BackgroundColor="LightGray">
             </Button>
 
             <ImageButton x:Name="Options"
@@ -57,7 +63,7 @@
                          HorizontalOptions="End"
                          BackgroundColor="Transparent"
                          Grid.Row="0"
-                         Grid.Column="1">
+                         Grid.Column="2">
             </ImageButton>
 
             <Label x:Name="credits"
@@ -67,13 +73,15 @@
                    TextColor="White"
                    FontAttributes="Bold"
                    Grid.Row="1"
-                   Grid.Column="1">
+                   Grid.Column="2"
+                   >
             </Label>
+
         </Grid>
         
         <!-- DEBUG LABELS-->
-        <Label x:Name="DebugLabel" TextColor = "Red" FontSize="Small" AbsoluteLayout.LayoutBounds="0.1, 0.5, 0.2, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>
-        <Label x:Name ="Credits_number" TextColor = "Red" FontSize="Small" AbsoluteLayout.LayoutBounds="0.9, 0, 0.2, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>
+        <!--<Label x:Name="DebugLabel" TextColor = "Red" FontSize="Small" AbsoluteLayout.LayoutBounds="0.1, 0.5, 0.2, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>-->
+        <!--<Label x:Name ="Credits_number" TextColor = "Red" FontSize="Small" AbsoluteLayout.LayoutBounds="0.9, 0, 0.2, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>-->
     </AbsoluteLayout>
 
 

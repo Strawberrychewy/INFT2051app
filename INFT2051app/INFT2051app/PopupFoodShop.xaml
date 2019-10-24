@@ -31,10 +31,10 @@
 
 
                     <!-- The below becomes omitted during button generation but left here as a guide to the structuring of the buttons -->
-                    <ImageButton x:Name = "Button_0" Source="meat.png" Grid.Row="0" Grid.Column="0" CornerRadius="10"></ImageButton>
-                    <ImageButton x:Name = "Button_1" Source="meat.png" Grid.Row="0" Grid.Column="1" CornerRadius="10"></ImageButton>
-                    <ImageButton x:Name = "Button_2" Source="meat.png" Grid.Row="0" Grid.Column="2" CornerRadius="10"></ImageButton>
-                    <ImageButton x:Name = "Button_3" Source="meat.png" Grid.Row="0" Grid.Column="3" CornerRadius="10"></ImageButton>
+                    <ImageButton x:Name = "Button_0" Source="meat.png" Grid.Row="0" Grid.Column="0" CornerRadius="10" BackgroundColor="Transparent"></ImageButton>
+                    <ImageButton x:Name = "Button_1" Source="meat.png" Grid.Row="0" Grid.Column="1" CornerRadius="10" BackgroundColor="Transparent"></ImageButton>
+                    <ImageButton x:Name = "Button_2" Source="meat.png" Grid.Row="0" Grid.Column="2" CornerRadius="10" BackgroundColor="Transparent"></ImageButton>
+                    <ImageButton x:Name = "Button_3" Source="meat.png" Grid.Row="0" Grid.Column="3" CornerRadius="10" BackgroundColor="Transparent"></ImageButton>
                     <Label x:Name = "Label_0" Grid.Row="1" Grid.Column="0" Text="Food Item 1"></Label>
                     <Label x:Name = "Label_1" Grid.Row="1" Grid.Column="1" Text="Food Item 2"></Label>
                     <Label x:Name = "Label_2" Grid.Row="1" Grid.Column="2" Text="Food Item 3"></Label>
