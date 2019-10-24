@@ -5,11 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using INFT2051app.ViewModels;
-using INFT2051app.Services;
 using Rg.Plugins.Popup.Extensions;
-
+using MediaManager;
+using MediaManager.Forms.Xaml;
+using MediaManager.Playback;
+using MediaManager.Player;
+using MediaManager.Volume;
+using MediaManager.Library;
 using Xamarin.Forms;
+
 using Xamarin.Forms.Xaml;
 
 namespace INFT2051app {
@@ -17,8 +21,10 @@ namespace INFT2051app {
     public partial class PopupOptions : PopupPage {
 
         PopupRestartPrompt popupRestartPrompt;
-        PopUpNameChange popupNameChange;
-        
+        readonly PopUpNameChange popupNameChange;
+        private readonly IMediaManager mediaManager;
+        private IPlaybackManager PlaybackController => CrossMediaManager.Current;
+
         //private readonly PopupChangeName popupChangeName;
         PopupCredits popupCredits;
         double SFXValue;
@@ -36,7 +42,7 @@ namespace INFT2051app {
             // the following line is from 
             // https://www.godo.dev/tutorials/xamarin-forms-play-audio/
 
-            BindingContext = new AudioPlayerViewModel(DependencyService.Get<IAudioPlayerService>());
+            //BindingContext = new AudioPlayerViewModel(DependencyService.Get<IAudioPlayerService>());
 
         }
 
@@ -77,10 +83,8 @@ namespace INFT2051app {
 
         }
 
-        
-
         //BUTTON EVENTS GO HERE (OPTIONS)
-        private void OnMusicButtonClicked(object sender, EventArgs e) {
+        private async void OnMusicButtonClicked(object sender, EventArgs e) {
             /*
              * This event triggers when the Music Button is clicked
              * It will:
@@ -88,8 +92,8 @@ namespace INFT2051app {
              * 2. Mute: Visually show corresponding slider is on 0 
              * 3. Unmute: Visually show corresponding slider is on last saved value (OR 50, if thats too hard)
              */
-
-
+ 
+            await CrossMediaManager.Current.PlayPause();
 
 
             //if (MusicSlider.Value == 0)

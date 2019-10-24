@@ -12,7 +12,7 @@ using Rg.Plugins.Popup.Services;
 using System.Timers;
 using System.Reflection;
 using System.IO;
-using INFT2051app.ViewModels;
+
 using MediaManager;
 //using INFT2051app.Services;
 
@@ -65,11 +65,6 @@ namespace INFT2051app {
             progressBar = new ProgressBar();//Includes Progress bar to layout, signifying eating progress
             AbsoluteLayout.SetLayoutBounds(progressBar, new Rectangle(0.5, 0.7, 0.8, 0.4));
             AbsoluteLayout.SetLayoutFlags(progressBar, AbsoluteLayoutFlags.All);
-
-
-
-
-            
 
 
             //var audio = GetStreamFromFile("appMusic.mp3");

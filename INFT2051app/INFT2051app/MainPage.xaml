@@ -16,7 +16,7 @@
               RowSpacing="4"
               HorizontalOptions="FillAndExpand"
               Padding="5, 10"
-             AbsoluteLayout.LayoutBounds="0, 0, 1, .2"
+              AbsoluteLayout.LayoutBounds="0, 0, 1, .2"
               AbsoluteLayout.LayoutFlags="All"
               WidthRequest="{Binding Path=Width, Source={x:Reference main_layout}}"
               >

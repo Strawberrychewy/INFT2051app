@@ -4,7 +4,8 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
 using MediaManager;
-
+using MediaManager.Playback;
+using MediaManager.Forms.Xaml;
 
 namespace INFT2051app
 {
@@ -16,19 +17,12 @@ namespace INFT2051app
 
         public App() {
             InitializeComponent();
-
-            
             gamePage = new MainPage();
             MainPage = new NavigationPage(new OpenPage(gamePage));
 
+            // MediaManagerExtensions.ToggleRepeat(CrossMediaManager.Current);
+            //CrossMediaManager.Current.ToggleRepeat();
         }
-
-        //private async void playMusic(object sender, EventArgs e)
-        //{
-
-        //    await CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
-        //}
-
 
         protected override void OnStart() {
             // Handle when your app starts
@@ -37,8 +31,14 @@ namespace INFT2051app
              * 1. Load player save data to be used if save data is present, 
              * 2. Create player save data to be used if no save data is present
              */
+
+            //CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
             
 
+            //if (CrossMediaManager.Current.IsStopped() == true)
+            //{
+            //    await CrossMediaManager.Current.Play();
+            //}
         }
 
         protected override void OnSleep() {
