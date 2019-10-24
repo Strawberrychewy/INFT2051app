@@ -121,11 +121,11 @@ namespace INFT2051app {
 
 
         //got help from a classmate -- 
-        private async void playMusic(object sender, EventArgs e)
-        {
+        //private async void playMusic(object sender, EventArgs e)
+        //{
 
-            await CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
-        }
+        //    await CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
+        //}
 
         public void Step(object source, ElapsedEventArgs e) {
             //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss}", e.SignalTime);

@@ -17,7 +17,7 @@
             <Label x:Name="OpeningSubtitle" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="Click Screen to Enter!" FontSize="20"/>
         </StackLayout>
 
-         <!--<Button x:Name="test" Text="go to next page placeholder" Clicked="MoveToApp" AbsoluteLayout.LayoutBounds=".5, .5, 1, 1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Wheat"></Button>-->
+         <Button x:Name="test" Text="go to next page placeholder" Clicked="MoveToApp" AbsoluteLayout.LayoutBounds=".5, .5, 1, 1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Wheat"></Button>
 
         <!-- Button Covers entire screen but is opaque (Let user know to click to enter actual game, also ensure this element is the last one on the stack)-->
         <Button x:Name="welcome" Text="Welcome to xxxx" Clicked="MoveToApp" BackgroundColor="Transparent" Opacity="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>

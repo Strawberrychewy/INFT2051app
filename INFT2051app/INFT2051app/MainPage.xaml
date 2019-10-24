@@ -36,10 +36,10 @@
                     Grid.Column="0">
             </Button>
 
-            <Button x:Name="music"
+            <!--<Button x:Name="music"
                     Clicked="playMusic">
                 
-            </Button>
+            </Button>-->
 
             <Button x:Name="Foodshop"
                     Clicked="InvokeFoodShop"
