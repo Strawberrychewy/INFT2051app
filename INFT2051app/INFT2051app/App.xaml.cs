@@ -46,6 +46,7 @@ namespace INFT2051app
             Application.Current.Properties["Credits"] = gamePage.foodShopPopup.Credits;
             Accelerometer.Start(SensorSpeed.Game);
             Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+
         }
 
         protected override void OnResume() {
