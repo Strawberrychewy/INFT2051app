@@ -21,10 +21,10 @@ namespace INFT2051app {
 
         public event EventHandler PurchaseSucceeded;
 
-        public PopupFoodShop() {
+        public PopupFoodShop(int credits = 0) {
             InitializeComponent();
 
-            Credits = 100;
+            Credits = credits;
             FoodList = new FoodList();
             foodShop = FoodList.ResetShop();
             shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;

@@ -13,6 +13,7 @@ namespace INFT2051app
 
         int Steps;
         private readonly MainPage gamePage;
+        public static string savedata;
 
 
         public App() {
@@ -24,21 +25,18 @@ namespace INFT2051app
             //CrossMediaManager.Current.ToggleRepeat();
         }
 
+        public App(string save) {
+            InitializeComponent();
+            gamePage = new MainPage();
+            MainPage = new NavigationPage(new OpenPage(gamePage));
+
+            savedata = save;
+
+            // MediaManagerExtensions.ToggleRepeat(CrossMediaManager.Current);
+            //CrossMediaManager.Current.ToggleRepeat();
+        }
+
         protected override void OnStart() {
-            // Handle when your app starts
-            /*
-             * Use this method to do these following things:
-             * 1. Load player save data to be used if save data is present, 
-             * 2. Create player save data to be used if no save data is present
-             */
-
-            //CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
-            
-
-            //if (CrossMediaManager.Current.IsStopped() == true)
-            //{
-            //    await CrossMediaManager.Current.Play();
-            //}
         }
 
         protected override void OnSleep() {

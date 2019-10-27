@@ -39,7 +39,7 @@ namespace INFT2051app {
 
         readonly Timer PetTimer;// This timer will check if no touch action is used in the last 5 seconds. Any touch interaction will reset this timer
 
-        public PetContainer() {
+        public PetContainer(Pet pet) {
             //This changes the dimensions of the box size to match the page height and width.
             AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0, 0, 1, 1));
             AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
@@ -48,7 +48,7 @@ namespace INFT2051app {
             HorizontalOptions = LayoutOptions.FillAndExpand;
             VerticalOptions = LayoutOptions.FillAndExpand;
             //Variable initialisation
-            CurrentPet = new Pet();
+            CurrentPet = pet;
             New_Position_X = 0;
             New_Position_Y = 0;
 
@@ -103,13 +103,9 @@ namespace INFT2051app {
                 //FingerPrintSensorDetected(this, EventArgs.Empty);
                 //MainPage will display helper text signifying the user to use the fingerprint sensor
                 //The rest of the sensor code can be written here
-                int i = 1;
-                while (i <= 5) {
-                    var auth = await CrossFingerprint.Current.AuthenticateAsync("Feeding " + i);
-                    if (auth.Authenticated) {
-                        ButtonFeeding(this, EventArgs.Empty);
-                        i++;
-                    }
+                var auth = await CrossFingerprint.Current.AuthenticateAsync("Feeding ");
+                if (auth.Authenticated) {
+                    ButtonFeeding(this, EventArgs.Empty);
                 }
                 
             } else {//SENSOR UNAVAILABLE
@@ -124,13 +120,9 @@ namespace INFT2051app {
              * 
              * 
              */
-            EatingProgress++;
             FeedingProcess(this, EventArgs.Empty);
-            if (EatingProgress >= 5) {
-                EatingProgress = 0;
-                CurrentPet.Hunger += 10;
-                FeedingComplete(this, EventArgs.Empty);
-            }
+            CurrentPet.Hunger += 10;
+            FeedingComplete(this, EventArgs.Empty);
         }
         //---------------------------------------STATES-------------------------------------------------------------------------------------------------
 

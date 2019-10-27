@@ -24,13 +24,25 @@ namespace INFT2051app {
              * THIS FUNCTION IS FAKE ATM DON'T SUE ME
              * Familiars.add(e)
              */
+            Familiars.Add(new BasePet("Rockworm", "Land", null, "Roccoon", "This evasive creature digs below the earth, protecting itself using rocks as plate armor"));
+            Familiars.Add(new BasePet("Roccoon", "Land", "Rockworm", "Shellwyrm", "Preparing itself for further evolution, it patiently waits inside its spiked armor shell"));
+            Familiars.Add(new BasePet("Shellwyrm", "Land", "Roccoon", null, "Unusually large for a small evolution chain, this large dragon uses its armor for offense and defense"));
+
+            Familiars.Add(new BasePet("Sealpronger", "Sea", null, "Sealancer", "It uses its fork-like prong on its head to fish underwater for its next meal"));
+            Familiars.Add(new BasePet("Sealancer", "Sea", "Sealpronger", "Sealknight", "Sealancers charge at each other with the the lances attached to their head as a sign of respect and nobility"));
+            Familiars.Add(new BasePet("Sealknight", "Sea", "Sealancer", null, "It evolved by snapping its horn off and into two. It fights swiftly and dodges cleanly."));
+
+            Familiars.Add(new BasePet("Hawkeye", "Air", null, "WingSpark", "This bird narrows down its enemies from above, stunning them with lightning fast talons"));
+            Familiars.Add(new BasePet("WingSpark", "Air", "Hawkeye", "Thundersparse", "It generates electricity by flapping its wings, reminiscent of fireworks when seen in the night sky"));
+            Familiars.Add(new BasePet("Thundersparse", "Air", "WingSpark", null, "Its incredible speed scatters electric sparks during flight that clap towards the earth like thunderstorms"));
 
         }
 
-        public void FindPetByName() {
+        public BasePet FindPetByName(string name) {
             /*
              * This function finds the pet with the exact name input. Used for Evolution
              */
+            return Familiars.Find(x => x.Name == name);
         }
     }
 }

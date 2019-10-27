@@ -9,6 +9,7 @@ using Android.OS;
 using MediaManager;
 
 using Plugin.Fingerprint;
+using System.IO;
 
 namespace INFT2051app.Android
 {
@@ -31,7 +32,13 @@ namespace INFT2051app.Android
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+
+            string savedata = "savedata.json";
+            string folderpath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            string savepath = Path.Combine(folderpath, savedata);
+
+
+            LoadApplication(new App(savepath));
 
             
 

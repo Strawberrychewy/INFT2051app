@@ -14,6 +14,7 @@ using System.Reflection;
 using System.IO;
 
 using MediaManager;
+using Newtonsoft.Json;
 //using INFT2051app.Services;
 
 namespace INFT2051app {
@@ -35,7 +36,7 @@ namespace INFT2051app {
         private readonly PopupOptions optionsPopup;
         private readonly PopupStatus statusPopup;
         readonly PetContainer petContainer;  //Controller for the pet
-        
+        private readonly PlayerData playerData;
 
         readonly Timer gameloop;
 
@@ -47,11 +48,13 @@ namespace INFT2051app {
         public MainPage() {
             InitializeComponent();
 
-            petContainer = new PetContainer();
+            playerData = Load();
+            credits.Text = "Credits:" + playerData.Credits.ToString();
+            petContainer = new PetContainer(new Pet(nickname: playerData.PetName, happiness: playerData.Happiness, age: playerData.Age, hunger: playerData.Hunger, hygiene: playerData.Hygiene, health: playerData.Health, basepet: playerData.BasePet));
 
             optionsPopup = new PopupOptions();
-            statusPopup = new PopupStatus();
-            foodShopPopup = new PopupFoodShop();
+            statusPopup = new PopupStatus(playerData.Name);
+            foodShopPopup = new PopupFoodShop(playerData.Credits);
             foodShopPopup.PurchaseSucceeded += HandlePurchaseSucceeded;
 
             FPButton = new Button();
@@ -66,25 +69,39 @@ namespace INFT2051app {
             AbsoluteLayout.SetLayoutBounds(progressBar, new Rectangle(0.5, 0.7, 0.8, 0.4));
             AbsoluteLayout.SetLayoutFlags(progressBar, AbsoluteLayoutFlags.All);
 
-
-            //var audio = GetStreamFromFile("appMusic.mp3");
-            //var music = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-            //music.Load(audio);
-            //music.Play();
-
-            //Stream GetStreamFromFile(string filename)
-            //{
-            //    var assembly = typeof(App).GetTypeInfo().Assembly;
-            //    var stream = assembly.GetManifestResourceStream("INFT2051app" + filename);
-            //    return stream;
-            //}
-
             Init();
 
             gameloop = new Timer(30 * 60 * 1000);//30 Minutes
             gameloop.Elapsed += Step;
             gameloop.AutoReset = true;
             gameloop.Start();
+        }
+
+        //------------------ SAVE/LOAD FUNCTIONS --------------------------------------------------------
+        void UpdatePlayerData() {
+            playerData.Name = statusPopup.PlayerName;//Change this
+            playerData.Credits = foodShopPopup.Credits;
+
+            playerData.PetName = petContainer.CurrentPet.NickName;//Name of pet object
+            playerData.BasePet = petContainer.CurrentPet.Base.Name;//Name of Base pet from pet object
+            playerData.Age = petContainer.CurrentPet.Age;
+            playerData.Hunger = petContainer.CurrentPet.Hunger;
+            playerData.Happiness = petContainer.CurrentPet.Happiness;
+            playerData.Hygiene = petContainer.CurrentPet.Hygiene;
+            playerData.Health = petContainer.CurrentPet.Health;
+        }
+        public void Save() {
+            File.WriteAllText(App.savedata, JsonConvert.SerializeObject(playerData));
+        }
+        
+        public PlayerData Load() {
+            PlayerData d;
+            if (File.Exists(App.savedata)) {
+                d = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(App.savedata));
+            } else {
+                d = new PlayerData();
+            }
+            return d;
         }
 
         public void Init() {
@@ -96,37 +113,26 @@ namespace INFT2051app {
              * 
              */
 
+
             //1. Add the background
             Background bg = new Background();
             main_layout.Children.Add(bg);
-
-            
-            //2. Add the Pet controller input
-
             //3. Add the pet image
             main_layout.Children.Add(petContainer.CurrentPet);
 
-            //This pushes the debug/credits label to the top of the stack, this allows input to be seen above backgrounds etc
-            //main_layout.RaiseChild(debugLabel);
-            //main_layout.RaiseChild(creditsLabel);
-
             //The top of the stack needs to be the input box
             main_layout.Children.Add(petContainer);
-
-
             //But the TOP TOP of the stack needs to be the sticky inputs (options/foodshop button)
             main_layout.RaiseChild(this.FindByName<Grid>("petGrid"));
-            //raises buttons to the top of the stack
-            //main_layout.RaiseChild(this.FindByName<Button>("StatusPage"));
-            //main_layout.RaiseChild(this.FindByName<Button>("FoodShop"));
-            //main_layout.RaiseChild(this.FindByName<ImageButton>("Options"));
             main_layout.LowerChild(this.FindByName<AbsoluteLayout>("lastGrid"));
 
         }
 
-
         public void Step(object source, ElapsedEventArgs e) {
             //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss}", e.SignalTime);
+            UpdatePlayerData();
+            Save();
+
             petContainer.UpdateStatus();
         }
 
@@ -144,12 +150,7 @@ namespace INFT2051app {
         }
 
         private async void InvokeStatusPage(object sender, EventArgs e) {
-            string name = petContainer.CurrentPet.NickName;
-            int health = petContainer.CurrentPet.Health;
-            int happiness = petContainer.CurrentPet.Happiness;
-            int hunger = petContainer.CurrentPet.Hunger;
-            int hygiene = petContainer.CurrentPet.Hygiene;
-            statusPopup.Update(name, health, hunger, happiness, hygiene);
+            statusPopup.Update(petContainer.CurrentPet);
             await PopupNavigation.Instance.PushAsync(statusPopup);
 
         }
@@ -222,14 +223,10 @@ namespace INFT2051app {
             main_layout.Children.Remove(FPButton);//Remove FPButton from xaml
             progressBar.ProgressTo(0, 1, Easing.Linear);//ResetProgress bar
             main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
-             
-        }
 
-        public void ChangeBackground() {
-            /*
-             * This changes the current background
-             * 
-             */
+            UpdatePlayerData();
+            credits.Text = "Credits:" + playerData.Credits.ToString();
+            Save();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace INFT2051app {
-    class BasePet {
+    public class BasePet {
         /*
          * The BasePet class defines one row of the EXCEL document as one object.
          * This could also be used as part of a journal so players can see which ones are obtained.
@@ -14,28 +14,21 @@ namespace INFT2051app {
 
         public string Name { get; set; }// Name
         public string Type { get; set; } // Type of Pet [LAND, SEA, AIR]
-        public string Stage { get; set; } // Stage of Pet (BASIC, MIDDLE, FINAL) MIGHT NOT NEED THIS AS BASIC PETS HAVE NO PREVIOUS EVOLUTION
         public string Description { get; set; } // Description
         public string EvolvesFrom { get; set; } // Previous Evolution (NULL IF BASIC)
         public string EvolvesInto { get; set; } // Next Evolution (NULL IF FINAL)
         public string SpritePath { get; set; } // Path of sprite animation
-        public string SoundPath { get; set; } // Path of sound effect animation (Unused until sound is implemented)
 
         //TODO: ADD ACTUAL DEFAULT PARAMETERS SO CONSTRUCTOR BECOMES FOOLPROOF
-        public BasePet( string name = "Testy", 
-                        string type = "Land", 
-                        string stage = "Child", 
-                        string description = "TestObject", 
-                        string evolvesInto = "TestySupreme",
-                        string evolvesFrom = "None",
-                        string spritePath = "", 
-                        string soundPath = "") {
+        public BasePet( string name = "Rockworm", 
+                        string type = "Land",
+                        string evolvesInto = null,
+                        string evolvesFrom = "Roccoon",
+                        string description = "TestObject") {
             Name = name;
             Type = type;
-            Stage = stage;
             Description = description;
-            SpritePath = spritePath;
-            SoundPath = soundPath;
+            SpritePath = "Pet_" + name + ".png";
             EvolvesFrom = evolvesFrom;
             EvolvesInto = evolvesInto;
 
@@ -44,12 +37,10 @@ namespace INFT2051app {
         public override String ToString() {
             String s = "[" + Name + ", ";
             s += Type + ", ";
-            s += Stage + ", ";
             s += Description + ", ";
             s += EvolvesFrom + ", ";
             s += EvolvesInto + ", ";
             s += SpritePath + ", ";
-            s += SoundPath + "]";
             return s;
 
         }

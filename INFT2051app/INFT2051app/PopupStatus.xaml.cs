@@ -24,17 +24,27 @@ namespace INFT2051app {
          * 
          * 
          */
+        public string PlayerName { get; set; }
+
         public PopupStatus() {
             InitializeComponent();
         }
 
+        public PopupStatus(string playerName) {
+            InitializeComponent();
 
-        public void Update(String name, int health, int hunger, int happiness, int hygiene) {
-            titleLabel.Text = "Status: " + name;
-            healthBar.ProgressTo((float)health / 100, 250, Easing.Linear);
-            hungerBar.ProgressTo((float)hunger / 100, 250, Easing.Linear);
-            happinessBar.ProgressTo((float)happiness/100, 250, Easing.Linear);
-            hygieneBar.ProgressTo((float)hygiene/100, 250, Easing.Linear);
+            PlayerName = playerName;
+        }
+
+
+        public void Update(Pet pet) {
+            playerLabel.Text = "Player Name: " + PlayerName;
+            petLabel.Text = "Pet Name: " + pet.NickName;
+            basePetLabel.Text = "Pet Species: " + pet.Base.Name;
+            healthBar.ProgressTo((float)pet.Health / 100, 250, Easing.Linear);
+            hungerBar.ProgressTo((float)pet.Hunger / 100, 250, Easing.Linear);
+            happinessBar.ProgressTo((float)pet.Happiness/100, 250, Easing.Linear);
+            hygieneBar.ProgressTo((float)pet.Hygiene/100, 250, Easing.Linear);
 
         }
 

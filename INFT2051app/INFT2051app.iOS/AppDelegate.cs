@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using MediaManager;
+using System.IO;
 
 namespace INFT2051app.iOS
 {
@@ -29,7 +30,12 @@ namespace INFT2051app.iOS
 
 
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+
+            string savedata = "savedata.json";
+            string folderpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library");
+            string savepath = Path.Combine(folderpath, savedata);
+
+            LoadApplication(new App(savepath));
 
             return base.FinishedLaunching(app, options);
 

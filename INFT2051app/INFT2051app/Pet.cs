@@ -6,7 +6,7 @@ using Xamarin.Forms;
 using FFImageLoading.Forms;
 
 namespace INFT2051app {
-    class Pet : Image{
+    public class Pet : Image{
         /*
          * The Pet class defines the current pet that is used in the game.
          * The player can select from a number of pets that are within the JSON file. 
@@ -41,9 +41,9 @@ namespace INFT2051app {
         public HungerState HungerStateValue { get; set; }
         public HygieneState HygieneStateValue { get; set; }
 
-        BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
+        public BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
 
-        public Pet(string nickname = "Josh", int happiness = 0, int age = 0, int hunger = 0, int hygiene = 0, int health = 0) {
+        public Pet(string nickname = "Josh", int happiness = 50, int age = 0, int hunger = 50, int hygiene = 50, int health = 100, string basepet) {
             NickName = nickname;
             Happiness = happiness;
             Age = age;
