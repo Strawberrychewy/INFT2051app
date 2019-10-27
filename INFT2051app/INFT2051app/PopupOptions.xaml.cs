@@ -94,6 +94,16 @@ namespace INFT2051app {
              */
  
             await CrossMediaManager.Current.PlayPause();
+            await CrossMediaManager.Current.Stop();
+
+            if (CrossMediaManager.Current.IsPlaying() == true)
+            {
+                MusicButton.Text = "Music Off";
+            }
+            else if (CrossMediaManager.Current.IsStopped() == true)
+            {
+                MusicButton.Text = "Music On";
+            }
 
 
             //if (MusicSlider.Value == 0)
@@ -159,6 +169,8 @@ namespace INFT2051app {
         private async void OnNameChangeClicked(object sender, EventArgs e) {
 
             await Navigation.PushPopupAsync(popupNameChange);
+            
+
         }
 
         private async void OnCreditsClicked(object sender, EventArgs e) {
