@@ -12,25 +12,20 @@ Current Functionality:
 5. Pet moves (Horizontally) to the point touched on the screen (excluding button regions), just a gimmick and does not really do anything    meaningful
    - When the player has not touched the touch panel for [5 seconds], the pet now moves on its own in its idle state, 
      it can [Jump low, Jump high, Jump high and do a flip, bounce and walk as if the player has touched the panel]
+6. Game Saves if the player uses a pet based action. (UNTESTED: Auto saving probably works idk)
+7. Music Somewhat works
+8. Fake databasing works for foodshop and petlist
+9. Food List images are all implemented into the app
 
 TODO:
-1. Implement fingerprint novelty system [DONE]
-2. Create/Read Databases (Food List, Base Pet List)
-3. [SPLASH SCREEN OPENING] Add logo/name + "Press screen to enter"
-4. Create Pet images/Sprite animation sheets
-5. Create Food images and replace buttons to image buttons
-6. Create pop-up menus for shop [DONE]
-7. Link buttons to pop up menus [DONE]
-8. Pet interactivity (Jump[DONE but only works in idle state], Feed[DONE], Status Check)
-9. Include ways to increase Hygiene, Happiness, and Health parameters so it becomes harder for the pet to die
-10. Include a way to start the game with an egg that can evolve etc
-11. Include a way to save player data (Current pet with parameters, Time exitted, Time entered)
+1. Adapt UI for all popups 
+2. Upload Pet sprites
+3. Show when pet is dead
 
 External Resources needed:
 1. Art Assets
   - Food
   - Base Pets
-  - Backgrounds [DONE]
   - UI Elements
 2. Sound Assets
   - Base Music
