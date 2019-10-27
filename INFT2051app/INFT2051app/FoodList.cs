@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace INFT2051app {
-    class FoodList : BoxView {
+    public class FoodList : BoxView {
         /*
          * Holds all the food items generated from the JSON file
          * This list could also double as a compendium of food items so the player can check what is in the game
@@ -15,8 +15,6 @@ namespace INFT2051app {
         //ONE LIST FOR THE FULL FOOD LIST
         readonly List<FoodItem> Foods = new List<FoodItem>();
 
-        //ONE SUBLIST FOR SHOP
-        readonly List<FoodItem> foodShop = new List<FoodItem>();  //Contains a random x items from food pool
 
         public FoodList() {
             //This changes the dimensions of the box size to match the page height and width.
@@ -39,7 +37,7 @@ namespace INFT2051app {
 
             Foods.Add(new FoodItem("Grapes", "Fruit", 110));
             Foods.Add(new FoodItem("Fish", "Meat", 160));
-            Foods.Add(new FoodItem("Lettuce", "Vegetable", 130));
+            Foods.Add(new FoodItem("Watermelon", "Fruit", 130));
             Foods.Add(new FoodItem("Steak", "Meat", 200));
             Foods.Add(new FoodItem("Chicken", "Meat", 190));
 

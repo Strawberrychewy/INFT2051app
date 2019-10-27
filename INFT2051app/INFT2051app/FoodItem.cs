@@ -4,7 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 
 namespace INFT2051app {
-    class FoodItem : ImageButton {
+    public class FoodItem : ImageButton {
         /*
          * The base object for a food item.
          * This is practically a token object

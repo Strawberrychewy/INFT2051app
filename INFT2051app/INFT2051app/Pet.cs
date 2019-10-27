@@ -25,7 +25,7 @@ namespace INFT2051app {
         public int Hunger { get; set; } // Hunger
         public int Hygiene { get; set; } //Hygiene
 
-        public String State { get; set; }//TRY TO OMIT THIS
+        public event EventHandler EvolutionReady;
 
         //This set of enums describe the range of states the pet can have per parameter
         public enum PetState {Awake, Asleep, Dead}//Awake from start of morning until night time, sleep time differs on age
@@ -50,8 +50,7 @@ namespace INFT2051app {
             Hunger = hunger;
             Hygiene = hygiene;
             Health = health;
-            Base = new BasePet();
-            State = "";
+            Base = PetList.FindPetByName(basepet);
 
             //Image properties
             Source = "Pet_" + basepet + ".png";//CHANGE THIS TO PET IMAGE FILE NAMES ["Pet_" + Base.Name + ".png"]
@@ -65,23 +64,23 @@ namespace INFT2051app {
             UpdateHappinessState();
         }
 
-        public void Evolve() {
-            /*
-             * The pet will look at the next evolution in the base pet class/JSON file to evolve into
-             * BASE CLASS USED, only "Base" variable needs to be changed based on next evolution of current Base
-             * JSON FILE USED, need to search JSON file first for all information, then replace information whereever necessary
-             *
-             * The below code specifies using swapping the BASE object for one in the entire dex
-             */
-            //Base = PetList.FindPetByName(Base.EvolvesInto);
+        public void ChangePet(string basepet = "Rockworm") {
+            Base = PetList.FindPetByName(basepet);
+            Source = "Pet_" + basepet + ".png";//CHANGE THIS TO PET IMAGE FILE NAMES ["Pet_" + Base.Name + ".png"]
+        }
+        public void CapValues() {
+            if (Health > 100) {
+                Health = 100;
+            }
+            if (Happiness > 100) {
+                Health = 100;
+            }
+            if (Hygiene > 100) {
+                Health = 100;
+            }
         }
 
-        //public void updatePetName()
-        //{
-        //    this.NickName = PopUpNameChange.ChangeName(this, EventArgs.Empty);
-        //}
-
-        public void updateStatus(int timeInterval) {
+        public void UpdateStatus(int timeInterval = 1) {
             /*
              * This code is run at 30 minute intervals 
              * When the game is closed or put into the background, the app records the current time
@@ -96,18 +95,18 @@ namespace INFT2051app {
              * 
              * 6. If the 24th interval is run, (12hrs), Health reduces by 1 for every 1 age above the 'old' cap (Old cap currently is at 10)
              * 7. When the 48th interval is run (24hrs), increment the age counter by 1
-             * 8. When all stats are 'good' and the age is above 5, the pet is able to 'evolve'
+             * 8. When all stats are 'good' and the age is equal or above 5, the pet is able to 'evolve'
              * 
              */
             for(int i = 0, j = 0; i < timeInterval && PetStateValue != PetState.Dead; i++) {
                 j++;
-                interval_1();//Run this code every 1 step
+                Interval_1();//Run this code every 1 step
                 if (j == 12) {
-                    interval_12();//Run this code every 12 steps
+                    Interval_12();//Run this code every 12 steps
                 }
                 if (i == 24) {
-                    interval_12();//Run this code every 12 steps (factor of 24th interval)
-                    interval_24();//run this code every 24 steps
+                    Interval_12();//Run this code every 12 steps (factor of 24th interval)
+                    Interval_24();//run this code every 24 steps
                     j = 0;//reset
                 }
             }
@@ -117,9 +116,10 @@ namespace INFT2051app {
             UpdateHungerState();
             UpdateHygieneState();
             UpdatePetState();
+            CapValues();
         }
 
-        private void interval_1() {
+        private void Interval_1() {
             /*
              * This code simulates every 1 hour that passes
              * 
@@ -164,7 +164,7 @@ namespace INFT2051app {
             }
         }
 
-        private void interval_12() {
+        private void Interval_12() {
             /*
              * This code simulates every 12 hours that pass
              * 
@@ -174,12 +174,15 @@ namespace INFT2051app {
             }
         }
 
-        private void interval_24() {
+        private void Interval_24() {
             /*
              * This code simulates every 24 hours that pass
              * 
              */
             Age++;//Increment Age
+            if (Happiness >= 50 && Health >= 50 && Hygiene >= 50 && Age >= 5) {
+                EvolutionReady(this, EventArgs.Empty);
+            }
         }
         //----------------------------------------------IDLE STATE ANIMATIONS-------------------------------------------------------------------------------
         public async void BounceHigh() {

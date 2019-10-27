@@ -13,7 +13,6 @@
             <StackLayout Padding="10,0">
                 <Label x:Name ="playerLabel" HorizontalOptions="Center" FontSize="Title"  Text="Name: Jeremy"/>
                 <Label x:Name ="petLabel" HorizontalOptions="Center" FontSize="Title"  Text="Pet Name: Chewy"/>
-                <Label x:Name ="basePetLabel" HorizontalOptions="Center" FontSize="Title"  Text="Base Pet Species: Jewy"/>
 
                 <!-- Button Sliders and Mute buttons-->
                 <Grid>
@@ -45,6 +44,9 @@
 
                 </Grid>
 
+                <Label x:Name ="basePetNameLabel" HorizontalOptions="Center" FontSize="Title"  Text="Base Pet Species: Jewy"/>
+                <Label x:Name ="basePetTypeLabel" HorizontalOptions="Center" FontSize="Title"  Text="Name: Jeremy"/>
+                <Label x:Name ="basePetDescriptionLabel" HorizontalOptions="Center" FontSize="Title"  Text=""/>
 
             </StackLayout>
         </Frame>

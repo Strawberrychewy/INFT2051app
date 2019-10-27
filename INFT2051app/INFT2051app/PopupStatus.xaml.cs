@@ -37,10 +37,14 @@ namespace INFT2051app {
         }
 
 
-        public void Update(Pet pet) {
-            playerLabel.Text = "Player Name: " + PlayerName;
+        public void Update(Pet pet, PlayerData player) {
+            playerLabel.Text = "Player Name: " + player.Name;
             petLabel.Text = "Pet Name: " + pet.NickName;
-            basePetLabel.Text = "Pet Species: " + pet.Base.Name;
+
+            basePetNameLabel.Text = "Species: " + pet.Base.Name;
+            basePetTypeLabel.Text = "Type: " + pet.Base.Type;
+            basePetDescriptionLabel.Text = "Description: " + pet.Base.Description;
+
             healthBar.ProgressTo((float)pet.Health / 100, 250, Easing.Linear);
             hungerBar.ProgressTo((float)pet.Hunger / 100, 250, Easing.Linear);
             happinessBar.ProgressTo((float)pet.Happiness/100, 250, Easing.Linear);
@@ -48,6 +52,13 @@ namespace INFT2051app {
 
         }
 
+        protected override void OnDisappearing() {
+            base.OnDisappearing();
+            healthBar.ProgressTo(0, 250, Easing.Linear);
+            healthBar.ProgressTo(0, 250, Easing.Linear);
+            healthBar.ProgressTo(0, 250, Easing.Linear);
+            healthBar.ProgressTo(0, 250, Easing.Linear);
+        }
 
     }
 }

@@ -13,9 +13,9 @@ namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupFoodShop : PopupPage {
 
-        FoodList FoodList { get; set; }
+        public FoodList FoodList { get; set; }
 
-        readonly List<FoodItem> foodShop;
+        public List<FoodItem> foodShop;
         FoodItem current;
         public int Credits { get; set;}
 
@@ -26,6 +26,10 @@ namespace INFT2051app {
 
             Credits = credits;
             FoodList = new FoodList();
+            Reset();
+        }
+
+        public void Reset() {
             foodShop = FoodList.ResetShop();
             shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
 
@@ -42,8 +46,7 @@ namespace INFT2051app {
             for (int row = 0; row < 4; row += 2) {
                 for (int column = 0; column < 4; column++) {
                     //Make new Button
-                    ImageButton button = foodShop.ElementAt(index);
-                    button.Source = foodShop.ElementAt(index).Source;
+                    ImageButton button = new FoodItem(foodShop.ElementAt(index).Name, foodShop.ElementAt(index).Type, foodShop.ElementAt(index).Cost);
 
                     button.Clicked += ButtonClicked;
                     button.Aspect = Aspect.AspectFit;
@@ -53,9 +56,10 @@ namespace INFT2051app {
 
 
                     //Make new Label for said button
-                    Label label = new Label();
-                    label.HorizontalTextAlignment = TextAlignment.Center;
-                    label.Text = "[" + foodShop.ElementAt(index).Name + "]\n[$" + foodShop.ElementAt(index).Cost + "]";//Text
+                    Label label = new Label {
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        Text = "[" + foodShop.ElementAt(index).Name + "]\n[$" + foodShop.ElementAt(index).Cost + "]"//Text
+                    };
                     Grid.SetRow(label, row + 1);//Sets the ROW (Keep in mind that this is a row below the button)
                     Grid.SetColumn(label, column);//Sets the COLUMN
                     food_grid.Children.Add(label);
@@ -80,7 +84,7 @@ namespace INFT2051app {
             }
         }
 
-        public void updateShopText() {
+        public void UpdateShopText() {
             shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
         }
 

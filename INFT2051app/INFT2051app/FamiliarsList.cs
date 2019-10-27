@@ -15,7 +15,7 @@ namespace INFT2051app {
 
         readonly List<BasePet> Familiars = new List<BasePet>();
         public FamiliarsList() {
-
+            LoadJSON();
         }
 
         public void LoadJSON() {

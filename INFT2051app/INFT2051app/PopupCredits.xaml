@@ -17,8 +17,8 @@
                 <Label HorizontalOptions="Center" Text="Asmita Pandey"/>
                 <Label HorizontalOptions="Center" Text="Art and Music by Robert Read"/>
 
-                <Label HorizontalOptions="Center" x:Name="Name_Pet" Text=""/>
-                <Label HorizontalOptions="Center" Text="AND"/>
+                <Label HorizontalOptions="Center" FontSize="Large" x:Name="Name_Pet" Text=""/>
+                <Label HorizontalOptions="Center" FontSize="Large" Text="AND"/>
                 <Label HorizontalOptions="Center" FontSize="Large" x:Name="Name_Player" Text=""/>
 
 

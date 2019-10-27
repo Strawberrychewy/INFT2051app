@@ -13,21 +13,19 @@ namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupCredits : PopupPage {
 
-        PopUpNameChange popupNameChange;
-        Pet pet;
-
         public PopupCredits() {
             InitializeComponent();
         }
 
-        public void updateText() {
+        public void updateText(Pet pet, PlayerData player) {
             /*
              * This function will read the player data and update the text in the xaml
              * 1. Name of the Pet (Name_Pet)
              * 2. Name of the Player (Name_Player)
              */
-             //this is hardcoded
-            this.Name_Pet.Text = "Josh";
+            //this is hardcoded
+            Name_Pet.Text = pet.NickName;
+            Name_Player.Text = player.Name;
         }
 
 

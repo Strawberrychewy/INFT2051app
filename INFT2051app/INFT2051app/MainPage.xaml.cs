@@ -128,6 +128,8 @@ namespace INFT2051app {
 
         public void Step(object source, ElapsedEventArgs e) {
             //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss}", e.SignalTime);
+            foodShopPopup.Reset();
+
             UpdatePlayerData();
             Save();
 
@@ -136,23 +138,38 @@ namespace INFT2051app {
 
         //------------------ UI BUTTON EVENTS----------------------------------------------------------------
         private async void InvokeSettings(object sender, EventArgs e) {
-
+            optionsPopup.Update(petContainer.CurrentPet, playerData);
             await PopupNavigation.Instance.PushAsync(optionsPopup);
         }
 
         private async void InvokeFoodShop(object sender, EventArgs e) {
 
-            foodShopPopup.updateShopText();
+            foodShopPopup.UpdateShopText();
             await PopupNavigation.Instance.PushAsync(foodShopPopup);
             
         }
 
         private async void InvokeStatusPage(object sender, EventArgs e) {
-            statusPopup.Update(petContainer.CurrentPet);
+            statusPopup.Update(petContainer.CurrentPet, playerData);
             await PopupNavigation.Instance.PushAsync(statusPopup);
 
         }
 
+        private void InvokeCleanPet(object sender, EventArgs e) {
+            //Basic cleaning pet function
+            petContainer.CurrentPet.Hygiene += 10;
+            petContainer.CurrentPet.CapValues();
+            UpdatePlayerData();
+            Save();
+        }
+
+        private void InvokePlayPet(object sender, EventArgs e) {
+            //Basic cleaning pet function
+            petContainer.CurrentPet.Happiness += 10;
+            petContainer.CurrentPet.CapValues();
+            UpdatePlayerData();
+            Save();
+        }
         //------------------ GAME EVENTS----------------------------------------------------------------
 
         private void HandlePurchaseSucceeded(object sender, EventArgs e) {
@@ -164,8 +181,6 @@ namespace INFT2051app {
              */
             credits.Text = "Credits: " + foodShopPopup.Credits;
             main_layout.Children.Add(progressBar);
-
-            petContainer.CurrentPet.State = foodShopPopup.GetCurrent();
 
             petContainer.NoFingerPrintSensorDetected += HandleNoFingerPrintSensorDetected;//Subscribes the event in petcontainer to trigger the HandleNoFingerPrintSensorDetected function
             petContainer.FeedingProcess += HandleFeedingProcess;
@@ -226,5 +241,7 @@ namespace INFT2051app {
             credits.Text = "Credits:" + playerData.Credits.ToString();
             Save();
         }
+
+        
     }
 }

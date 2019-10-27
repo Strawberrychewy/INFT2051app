@@ -26,8 +26,8 @@ namespace INFT2051app {
         public Pet CurrentPet { get; set; } //The current pet being played with
         public int New_Position_X { get; set; } // new X Position of current pet
         public int New_Position_Y { get; set; } // new Y Position of current pet
-        public int boxWidth { get; set; }
-        public int boxHeight { get; set; }
+        public int BoxWidth { get; set; }
+        public int BoxHeight { get; set; }
         //Enum states = { Eating, Idle, Jumping };
         public event EventHandler NoFingerPrintSensorDetected;
         public event EventHandler FeedingProcess;
@@ -170,7 +170,7 @@ namespace INFT2051app {
 
         public void UpdateStatus() {
             //This code triggers every 30 minutes
-            CurrentPet.updateStatus(1);
+            CurrentPet.UpdateStatus(1);
         }
         //---------------------------------------MOVEMENT-----------------------------------------------------------------------------------------------
         /*
@@ -178,7 +178,7 @@ namespace INFT2051app {
          */
         private void IdleMove() {
             Random random = new Random();
-            New_Position_X = random.Next(0, boxWidth);
+            New_Position_X = random.Next(0, BoxWidth);
             MoveToPosition();
         }
         private void MoveToPosition() {
@@ -208,8 +208,8 @@ namespace INFT2051app {
 
         private async void MoveRight() {
             int distance = (int) (New_Position_X - (CurrentPet.X + (CurrentPet.Width / 2)));
-            if (CurrentPet.X + CurrentPet.Width / 2 < boxWidth) {//Check if image does not exceed right edge
-                if (New_Position_X > boxWidth - CurrentPet.Width / 2) {
+            if (CurrentPet.X + CurrentPet.Width / 2 < BoxWidth) {//Check if image does not exceed right edge
+                if (New_Position_X > BoxWidth - CurrentPet.Width / 2) {
                     await CurrentPet.TranslateTo(distance - CurrentPet.Width / 2, 0, 500, Easing.Linear);
                 } else {
                     await CurrentPet.TranslateTo(distance, 0, 500, Easing.Linear);
@@ -220,8 +220,8 @@ namespace INFT2051app {
         //---------------------------------------OVERRIDES-----------------------------------------------------------------------------------------------
         protected override void OnSizeAllocated(double width, double height) {
             //This sets the height and width that the class can access. If this function is not implemented, Height and Width will return 0
-            boxHeight = (int) height;
-            boxWidth = (int) width;
+            BoxHeight = (int) height;
+            BoxWidth = (int) width;
         }
         public override string ToString() {
             return AbsoluteLayout.GetLayoutBounds(this).Size.Width.ToString();

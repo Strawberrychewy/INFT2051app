@@ -20,16 +20,15 @@ namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupOptions : PopupPage {
 
-        PopupRestartPrompt popupRestartPrompt;
+        readonly PopupRestartPrompt popupRestartPrompt;
         readonly PopUpNameChange popupNameChange;
         private readonly IMediaManager mediaManager;
         private IPlaybackManager PlaybackController => CrossMediaManager.Current;
 
         //private readonly PopupChangeName popupChangeName;
-        PopupCredits popupCredits;
+        readonly PopupCredits popupCredits;
         double SFXValue;
         double MusicValue;
-        private PopupPage popUpNameChange;
 
         public PopupOptions() {
             InitializeComponent();
@@ -165,6 +164,10 @@ namespace INFT2051app {
             }
         }
 
+        public void Update(Pet pet, PlayerData player) {
+            popupCredits.updateText(pet, player);
+        }
+
         //-------------------------------Bottom Button Events go here-----------------------------------------------------------
         private async void OnNameChangeClicked(object sender, EventArgs e) {
 
@@ -181,7 +184,6 @@ namespace INFT2051app {
              * 2. Push the credits page popup
              */
 
-            popupCredits.updateText();
             await PopupNavigation.Instance.PushAsync(popupCredits);
 
         }
