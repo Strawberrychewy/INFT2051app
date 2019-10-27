@@ -17,7 +17,7 @@ namespace INFT2051app {
 
         //Variables changed by player
         public string NickName { get; set; }// NickName (PLAYER INPUT)
-
+        public FamiliarsList PetList { get; set; } = new FamiliarsList();
         //Variables changed by game loop (Always updated)
         public int Health { get; set; } //Health
         public int Happiness { get; set; } // Happiness
@@ -43,7 +43,7 @@ namespace INFT2051app {
 
         public BasePet Base {get; set;} //Base of the pet (If loading pets into objects at runtime [Slow start but better finish, does not matter too much if not many to load])
 
-        public Pet(string nickname = "Josh", int happiness = 50, int age = 0, int hunger = 50, int hygiene = 50, int health = 100, string basepet) {
+        public Pet(string nickname = "Josh", int happiness = 50, int age = 0, int hunger = 50, int hygiene = 50, int health = 100, string basepet = "Rockworm") {
             NickName = nickname;
             Happiness = happiness;
             Age = age;
@@ -54,7 +54,7 @@ namespace INFT2051app {
             State = "";
 
             //Image properties
-            Source = "pet_rabbit.png";
+            Source = "Pet_" + basepet + ".png";//CHANGE THIS TO PET IMAGE FILE NAMES ["Pet_" + Base.Name + ".png"]
             AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0.5, 0.8, 0.2, 0.2));
             AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
 
@@ -73,7 +73,7 @@ namespace INFT2051app {
              *
              * The below code specifies using swapping the BASE object for one in the entire dex
              */
-            string EvolveInto = Base.EvolvesInto; //Finds the next evolution chain object from its current Base object
+            //Base = PetList.FindPetByName(Base.EvolvesInto);
         }
 
         //public void updatePetName()

@@ -43,7 +43,8 @@ namespace INFT2051app {
                 for (int column = 0; column < 4; column++) {
                     //Make new Button
                     ImageButton button = foodShop.ElementAt(index);
-                    
+                    button.Source = foodShop.ElementAt(index).Source;
+
                     button.Clicked += ButtonClicked;
                     button.Aspect = Aspect.AspectFit;
                     Grid.SetRow(button, row);//Sets the ROW

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace INFT2051app {
-    class FamiliarsList {
+    public class FamiliarsList {
         /*
          * This class holds all base pet information upon initialization
          * Additionally it may contain some information like obtained/etc

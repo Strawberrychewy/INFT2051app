@@ -13,16 +13,16 @@ namespace INFT2051app {
          */
         public string Name { get; set;}
         public string Type { get; set;}
-        public int Cost { get; set;}
+        public int Cost { get; set; }
 
         public FoodItem() {
         }
 
-        public FoodItem(string name, string type, int cost, ImageSource source) {
+        public FoodItem(string name, string type, int cost) {
             Name = name;
             Type = type;
             Cost = cost;
-            Source = source;
+            Source = "FoodItem_" + name + ".png";
             BackgroundColor = Color.Transparent;
         }
     }

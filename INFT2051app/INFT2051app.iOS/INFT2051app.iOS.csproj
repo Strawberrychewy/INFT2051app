@@ -168,43 +168,39 @@
     <BundleResource Include="Resources\bg_noon.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\egg_brown.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\egg_brown_compact.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\icon_settings.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pet_rabbit.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\apple.png" />
+    <BundleResource Include="Resources\FoodItem_Grapes.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\blueberry.png" />
+    <BundleResource Include="Resources\FoodItem_Orange.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\carrot.png" />
+    <BundleResource Include="Resources\FoodItem_Steak.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\fish.png" />
+    <BundleResource Include="Resources\FoodItem_Watermelon.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\grapes.png" />
+    <BundleResource Include="Resources\FoodItem_Apple.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\meat.png" />
+    <BundleResource Include="Resources\FoodItem_Blueberries.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\orange.png" />
+    <BundleResource Include="Resources\FoodItem_Carrot.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\steak.png" />
+    <BundleResource Include="Resources\FoodItem_Chicken.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\watermelon.png" />
+    <BundleResource Include="Resources\FoodItem_Fish.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Rockworm.png" />
+  </ItemGroup>
 </Project>

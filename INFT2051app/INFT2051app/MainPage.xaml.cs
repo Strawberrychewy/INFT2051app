@@ -40,8 +40,6 @@ namespace INFT2051app {
 
         readonly Timer gameloop;
 
-        //private readonly Label creditsLabel;
-        //private readonly Label debugLabel;
         private readonly Button FPButton;
         private readonly ProgressBar progressBar;
 
