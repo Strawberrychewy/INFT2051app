@@ -15,7 +15,7 @@ using System.IO;
 
 using MediaManager;
 using Newtonsoft.Json;
-//using INFT2051app.Services;
+
 
 namespace INFT2051app {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
@@ -106,9 +106,7 @@ namespace INFT2051app {
             /*
              * This init function does the following things
              * - Initialise databases, loading from JSON
-             * - Initialise petContainer, setting a random egg
-             * 
-             * 
+             * - Initialise petContainer 
              */
 
 
@@ -158,6 +156,8 @@ namespace INFT2051app {
         private void InvokeCleanPet(object sender, EventArgs e) {
             //Basic cleaning pet function
             petContainer.CurrentPet.Hygiene += 10;
+            petContainer.CurrentPet.BounceMicro();
+            petContainer.CurrentPet.BounceMicro();
             petContainer.CurrentPet.CapValues();
             UpdatePlayerData();
             Save();
@@ -166,6 +166,7 @@ namespace INFT2051app {
         private void InvokePlayPet(object sender, EventArgs e) {
             //Basic cleaning pet function
             petContainer.CurrentPet.Happiness += 10;
+            petContainer.CurrentPet.BounceJump();
             petContainer.CurrentPet.CapValues();
             UpdatePlayerData();
             Save();
