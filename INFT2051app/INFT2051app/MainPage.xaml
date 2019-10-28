@@ -11,15 +11,15 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     >
-        
+
         <Grid x:Name="petGrid"
               RowSpacing="4"
               HorizontalOptions="FillAndExpand"
               Padding="5, 10"
               AbsoluteLayout.LayoutBounds="0, 0, 1, .3"
-              AbsoluteLayout.LayoutFlags="All"
-              WidthRequest="{Binding Path=Width, Source={x:Reference main_layout}}"
-              >
+              AbsoluteLayout.LayoutFlags="All">
+            <!--WidthRequest="{Binding Path=Width, Source={x:Reference main_layout}}"-->
+              
             <!--this width request doesnt do anything-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -43,6 +43,7 @@
                     Padding="10"
                     Grid.Row="0"
                     Grid.Column="0"
+                    TextColor="Black"
                     BackgroundColor="LightGray">
                     
             </Button>
@@ -55,6 +56,7 @@
                     Padding="10"
                     Grid.Row="1"
                     Grid.Column="0"
+                    TextColor="Black"
                     BackgroundColor="LightGray">
             </Button>
             
@@ -66,6 +68,7 @@
                     Padding="10"
                     Grid.Row="2"
                     Grid.Column="0"
+                    TextColor="Black"
                     BackgroundColor="LightGray">
             </Button>
 
@@ -77,6 +80,7 @@
                     Padding="10"
                     Grid.Row="3"
                     Grid.Column="0"
+                    TextColor="Black"
                     BackgroundColor="LightGray">
             </Button>
 

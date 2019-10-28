@@ -38,18 +38,10 @@ namespace INFT2051app {
             popupNameChange = new PopUpNameChange();
             popupRestartPrompt = new PopupRestartPrompt();
 
-            // the following line is from 
-            // https://www.godo.dev/tutorials/xamarin-forms-play-audio/
-
-            //BindingContext = new AudioPlayerViewModel(DependencyService.Get<IAudioPlayerService>());
+            
 
         }
-
-        //code from 
-        //https://devlinduldulao.pro/xamarin-forms-101-how-to-create-a-popup-form-in-xamarin-forms/
-      
-
-
+        
         //SLIDER EVENTS GO HERE (OPTIONS)
         public void SoundEffectChanged(object sender, ValueChangedEventArgs args) {
             /*
@@ -93,7 +85,6 @@ namespace INFT2051app {
              */
  
             await CrossMediaManager.Current.PlayPause();
-            await CrossMediaManager.Current.Stop();
 
             if (CrossMediaManager.Current.IsPlaying() == true)
             {

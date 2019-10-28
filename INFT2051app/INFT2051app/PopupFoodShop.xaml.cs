@@ -16,11 +16,7 @@ namespace INFT2051app {
         public FoodList FoodList { get; set; }
         public List<FoodItem> foodShop;
         FoodItem current;
-        private object theFrame;
-        private object VerticalOptions;
-
-        
-
+  
         public int Credits { get; set;}
         public event EventHandler PurchaseSucceeded;
 

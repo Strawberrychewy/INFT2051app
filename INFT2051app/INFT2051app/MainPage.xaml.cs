@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Essentials;
 using System.Windows.Input;
 using FFImageLoading.Forms;
@@ -45,6 +46,11 @@ namespace INFT2051app {
 
         public MainPage() {
             InitializeComponent();
+
+
+            //https://stackoverflow.com/questions/47779937/how-to-allow-for-ios-status-bar-and-iphone-x-notch-in-xamarin-forms
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
 
             playerData = Load();
             credits.Text = "Credits:" + playerData.Credits.ToString();
