@@ -171,9 +171,6 @@
     <BundleResource Include="Resources\icon_settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\pet_rabbit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\FoodItem_Grapes.png" />
   </ItemGroup>
   <ItemGroup>
@@ -202,5 +199,17 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Pet_Rockworm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Roccoon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Shellwyrm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Sealpronger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Sealancer.png" />
   </ItemGroup>
 </Project>
