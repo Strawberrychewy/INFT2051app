@@ -46,7 +46,7 @@
 
                 <Label x:Name ="basePetNameLabel" HorizontalOptions="Center" FontSize="Title"  Text="Base Pet Species: Jewy"/>
                 <Label x:Name ="basePetTypeLabel" HorizontalOptions="Center" FontSize="Title"  Text="Name: Jeremy"/>
-                <Label x:Name ="basePetDescriptionLabel" HorizontalOptions="Center" FontSize="Title"  Text=""/>
+                <Label x:Name ="basePetDescriptionLabel" HorizontalOptions="Center" FontSize="Medium"  Text=""/>
 
             </StackLayout>
         </Frame>

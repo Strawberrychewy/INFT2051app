@@ -16,6 +16,11 @@ namespace INFT2051app {
         public FoodList FoodList { get; set; }
         public List<FoodItem> foodShop;
         FoodItem current;
+        private object theFrame;
+        private object VerticalOptions;
+
+        
+
         public int Credits { get; set;}
         public event EventHandler PurchaseSucceeded;
 
@@ -39,10 +44,13 @@ namespace INFT2051app {
              * This function generates buttons in the front end
              */
 
+            
             food_grid.Children.Clear();
             int index = 0;
-            for (int row = 0; row < 4; row += 2) {
-                for (int column = 0; column < 4; column++) {
+            for (int row = 0; row < 4; row += 2)
+            {
+                for (int column = 0; column < 3; column++)
+                {
                     //Make new Button
                     ImageButton button = new FoodItem(foodShop.ElementAt(index).Name, foodShop.ElementAt(index).Type, foodShop.ElementAt(index).Cost);
 
@@ -54,9 +62,10 @@ namespace INFT2051app {
 
 
                     //Make new Label for said button
-                    Label label = new Label {
+                    Label label = new Label
+                    {
                         HorizontalTextAlignment = TextAlignment.Center,
-                        Text = "[" + foodShop.ElementAt(index).Name + "]\n[$" + foodShop.ElementAt(index).Cost + "]"//Text
+                        Text = "" + foodShop.ElementAt(index).Name + "\n[$" + foodShop.ElementAt(index).Cost + "]"//Text
                     };
                     Grid.SetRow(label, row + 1);//Sets the ROW (Keep in mind that this is a row below the button)
                     Grid.SetColumn(label, column);//Sets the COLUMN
