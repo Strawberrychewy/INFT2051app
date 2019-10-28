@@ -15,25 +15,17 @@ namespace INFT2051app
         private readonly MainPage gamePage;
         public static string savedata;
 
-
         public App() {
             InitializeComponent();
             gamePage = new MainPage();
             MainPage = new NavigationPage(new OpenPage(gamePage));
-
-            // MediaManagerExtensions.ToggleRepeat(CrossMediaManager.Current);
-            //CrossMediaManager.Current.ToggleRepeat();
         }
 
         public App(string save) {
             InitializeComponent();
             gamePage = new MainPage();
             MainPage = new NavigationPage(new OpenPage(gamePage));
-
             savedata = save;
-
-            // MediaManagerExtensions.ToggleRepeat(CrossMediaManager.Current);
-            //CrossMediaManager.Current.ToggleRepeat();
         }
 
         protected override void OnStart() {
@@ -44,7 +36,6 @@ namespace INFT2051app
             Application.Current.Properties["Credits"] = gamePage.foodShopPopup.Credits;
             Accelerometer.Start(SensorSpeed.Game);
             Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
-
         }
 
         protected override void OnResume() {
@@ -59,6 +50,7 @@ namespace INFT2051app
             if (Application.Current.Properties.ContainsKey("Credits")) {
                 var creditsSaved = (int)Application.Current.Properties["Credits"];
                 gamePage.foodShopPopup.Credits = creditsSaved + Steps;
+                gamePage.UpdateCreditsLabel();
                 Steps = 0;
             }
         }

@@ -81,6 +81,8 @@ namespace INFT2051app {
             New_Position_X = (int) e.Location.X;
             New_Position_Y = (int) e.Location.Y;
             MoveToPosition();
+
+            //when user touches the screen make a sound effect 
         }
 
         public async void StartFeedingProcess() {
@@ -158,7 +160,7 @@ namespace INFT2051app {
                     break;
             }
             PetTimer.Stop();//Having this here keeps the pet from lagging during opening idle animations
-            PetTimer.Interval = 3 * 1000;//3 seconds, shorter time for idle state
+            PetTimer.Interval = 6 * 1000;//3 seconds, shorter time for idle state
             PetTimer.Start();
         }
 

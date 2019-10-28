@@ -48,6 +48,7 @@ namespace INFT2051app {
 
             playerData = Load();
             credits.Text = "Credits:" + playerData.Credits.ToString();
+
             petContainer = new PetContainer(new Pet(nickname: playerData.PetName, happiness: playerData.Happiness, age: playerData.Age, hunger: playerData.Hunger, hygiene: playerData.Hygiene, health: playerData.Health, basepet: playerData.BasePet));
 
             optionsPopup = new PopupOptions();
@@ -170,6 +171,11 @@ namespace INFT2051app {
             petContainer.CurrentPet.CapValues();
             UpdatePlayerData();
             Save();
+        }
+
+        public void UpdateCreditsLabel()
+        {
+            credits.Text = "Credits:" + foodShopPopup.Credits.ToString();
         }
         //------------------ GAME EVENTS----------------------------------------------------------------
 

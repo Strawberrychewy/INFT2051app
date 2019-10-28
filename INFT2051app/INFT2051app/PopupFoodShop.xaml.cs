@@ -14,11 +14,9 @@ namespace INFT2051app {
     public partial class PopupFoodShop : PopupPage {
 
         public FoodList FoodList { get; set; }
-
         public List<FoodItem> foodShop;
         FoodItem current;
         public int Credits { get; set;}
-
         public event EventHandler PurchaseSucceeded;
 
         public PopupFoodShop(int credits = 0) {

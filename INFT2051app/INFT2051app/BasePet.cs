@@ -8,8 +8,6 @@ namespace INFT2051app {
          * The BasePet class defines one row of the EXCEL document as one object.
          * This could also be used as part of a journal so players can see which ones are obtained.
          * 
-         * 
-         * 
          */
 
         public string Name { get; set; }// Name
@@ -42,7 +40,6 @@ namespace INFT2051app {
             s += EvolvesInto + ", ";
             s += SpritePath + ", ";
             return s;
-
         }
     }
 }

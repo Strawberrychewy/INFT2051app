@@ -25,8 +25,8 @@ namespace INFT2051app {
         }
         public void LoadJSON() {
             /*
-             * This function takes the JSON file and turns each row into objects. This objects are added to the list.
-             * THIS FUNCTION IS FAKE ATM DON'T SUE ME
+             * This function takes the JSON file and turns each row into objects. 
+             * This objects are added to the list.
              * Foods.add(e)
              */
 
