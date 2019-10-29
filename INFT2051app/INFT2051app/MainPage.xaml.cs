@@ -60,6 +60,7 @@ namespace INFT2051app {
             optionsPopup.popupNameChange.PlayerNameChanged += ChangeName;
             optionsPopup.popupNameChange.PetNameChanged += ChangePetName;
             optionsPopup.popupRestartPrompt.NewGame += HandleRestartGame;
+
             statusPopup = new PopupStatus(playerData.Name);
             foodShopPopup = new PopupFoodShop(playerData);
             foodShopPopup.PurchaseSucceeded += HandlePurchaseSucceeded;
@@ -142,6 +143,7 @@ namespace INFT2051app {
 
             //The top of the stack needs to be the input box
             main_layout.Children.Add(petContainer);
+
             //But the TOP TOP of the stack needs to be the sticky inputs (options/foodshop button)
             main_layout.RaiseChild(this.FindByName<Grid>("petGrid"));
             main_layout.LowerChild(this.FindByName<AbsoluteLayout>("lastGrid"));
