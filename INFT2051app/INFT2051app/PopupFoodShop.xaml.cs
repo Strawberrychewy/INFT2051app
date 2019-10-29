@@ -20,17 +20,16 @@ namespace INFT2051app {
         public int Credits { get; set;}
         public event EventHandler PurchaseSucceeded;
 
-        public PopupFoodShop(int credits = 0) {
+        public PopupFoodShop(PlayerData playerData) {
             InitializeComponent();
 
-            Credits = credits;
+            Credits = playerData.Credits;
             FoodList = new FoodList();
             Reset();
         }
 
         public void Reset() {
             foodShop = FoodList.ResetShop();
-            shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
 
             GenerateButtons();
         }
@@ -87,8 +86,10 @@ namespace INFT2051app {
             }
         }
 
-        public void UpdateShopText() {
-            shop_label.Text = "Welcome to the Shop! [Credits: " + Credits;
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            foodShop = FoodList.ResetShop();
+            shop_label.Text = "Welcome to the Shop! [Credits: " + Credits + "]";
         }
 
         private async void ButtonClicked(object sender, EventArgs e) {

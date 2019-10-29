@@ -14,7 +14,6 @@ using System.Timers;
 using System.Reflection;
 using System.IO;
 
-using MediaManager;
 using Newtonsoft.Json;
 
 
@@ -37,9 +36,10 @@ namespace INFT2051app {
         private readonly PopupOptions optionsPopup;
         private readonly PopupStatus statusPopup;
         readonly PetContainer petContainer;  //Controller for the pet
-        private readonly PlayerData playerData;
-
+        public PlayerData playerData;
         readonly Timer gameloop;
+
+        public int Credits = 0;
 
         private readonly Button FPButton;
         private readonly ProgressBar progressBar;
@@ -52,14 +52,13 @@ namespace INFT2051app {
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
 
-            playerData = Load();
-            credits.Text = "Credits:" + playerData.Credits.ToString();
+            Load();
 
-            petContainer = new PetContainer(new Pet(nickname: playerData.PetName, happiness: playerData.Happiness, age: playerData.Age, hunger: playerData.Hunger, hygiene: playerData.Hygiene, health: playerData.Health, basepet: playerData.BasePet));
+            petContainer = new PetContainer(new Pet(playerData));
 
             optionsPopup = new PopupOptions();
             statusPopup = new PopupStatus(playerData.Name);
-            foodShopPopup = new PopupFoodShop(playerData.Credits);
+            foodShopPopup = new PopupFoodShop(playerData);
             foodShopPopup.PurchaseSucceeded += HandlePurchaseSucceeded;
 
             FPButton = new Button();
@@ -81,9 +80,8 @@ namespace INFT2051app {
             gameloop.AutoReset = true;
             gameloop.Start();
         }
-
         //------------------ SAVE/LOAD FUNCTIONS --------------------------------------------------------
-        void UpdatePlayerData() {
+        public void UpdatePlayerData() {
             playerData.Name = statusPopup.PlayerName;//Change this
             playerData.Credits = foodShopPopup.Credits;
 
@@ -95,18 +93,19 @@ namespace INFT2051app {
             playerData.Hygiene = petContainer.CurrentPet.Hygiene;
             playerData.Health = petContainer.CurrentPet.Health;
         }
+
         public void Save() {
+            //Converts [playerData] into JSON format and saves it to file at specific path
             File.WriteAllText(App.savedata, JsonConvert.SerializeObject(playerData));
         }
         
-        public PlayerData Load() {
-            PlayerData d;
+        private void Load() {
+            //Converts JSON Format file into [PlayerData] object and overrides the playerData variable
             if (File.Exists(App.savedata)) {
-                d = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(App.savedata));
-            } else {
-                d = new PlayerData();
+                playerData = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(App.savedata));
+            } else if (!File.Exists(App.savedata)) {
+                playerData = new PlayerData();
             }
-            return d;
         }
 
         public void Init() {
@@ -133,14 +132,13 @@ namespace INFT2051app {
 
         public void Step(object source, ElapsedEventArgs e) {
             //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss}", e.SignalTime);
-            foodShopPopup.Reset();
+            /*foodShopPopup.Reset();
 
             UpdatePlayerData();
             Save();
 
-            petContainer.UpdateStatus();
+            petContainer.UpdateStatus();*/
         }
-
         //------------------ UI BUTTON EVENTS----------------------------------------------------------------
         private async void InvokeSettings(object sender, EventArgs e) {
             optionsPopup.Update(petContainer.CurrentPet, playerData);
@@ -149,7 +147,6 @@ namespace INFT2051app {
 
         private async void InvokeFoodShop(object sender, EventArgs e) {
 
-            foodShopPopup.UpdateShopText();
             await PopupNavigation.Instance.PushAsync(foodShopPopup);
             
         }
@@ -162,11 +159,16 @@ namespace INFT2051app {
 
         private void InvokeCleanPet(object sender, EventArgs e) {
             //Basic cleaning pet function
+
+            foodShopPopup.Credits -= 10;
+
+
             petContainer.CurrentPet.Hygiene += 10;
             petContainer.CurrentPet.BounceMicro();
             petContainer.CurrentPet.BounceMicro();
             petContainer.CurrentPet.CapValues();
             UpdatePlayerData();
+            UpdateCreditsLabel();
             Save();
         }
 
@@ -178,11 +180,6 @@ namespace INFT2051app {
             UpdatePlayerData();
             Save();
         }
-
-        public void UpdateCreditsLabel()
-        {
-            credits.Text = "Credits:" + foodShopPopup.Credits.ToString();
-        }
         //------------------ GAME EVENTS----------------------------------------------------------------
 
         private void HandlePurchaseSucceeded(object sender, EventArgs e) {
@@ -192,7 +189,6 @@ namespace INFT2051app {
              * 
              * Regardless, a progress bar is shown as an indication of the current progress the pet is in when eating
              */
-            credits.Text = "Credits: " + foodShopPopup.Credits;
             main_layout.Children.Add(progressBar);
 
             petContainer.NoFingerPrintSensorDetected += HandleNoFingerPrintSensorDetected;//Subscribes the event in petcontainer to trigger the HandleNoFingerPrintSensorDetected function
@@ -250,11 +246,38 @@ namespace INFT2051app {
             progressBar.ProgressTo(0, 1, Easing.Linear);//ResetProgress bar
             main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
 
+            UpdateCreditsLabel();
             UpdatePlayerData();
-            credits.Text = "Credits:" + playerData.Credits.ToString();
             Save();
         }
 
-        
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            Accelerometer.Start(SensorSpeed.Game);
+            Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+            UpdateCreditsLabel();
+            UpdatePlayerData();
+            Save();
+        }
+
+        protected override void OnDisappearing() {
+            base.OnDisappearing();
+            Accelerometer.ShakeDetected -= Accelerometer_ShakeDetected;
+            Accelerometer.Stop();
+            UpdateCreditsLabel();
+            UpdatePlayerData();
+            Save();
+        }
+
+        public void Accelerometer_ShakeDetected(object sender, EventArgs e) {
+            // Process shake event
+            foodShopPopup.Credits++;
+            UpdateCreditsLabel();
+        }
+
+        private void UpdateCreditsLabel() {
+            credits.Text = "Credits: " + foodShopPopup.Credits; 
+        }
+
     }
 }

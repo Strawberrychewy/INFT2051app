@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using MediaManager;
 
 namespace INFT2051app
 {
@@ -67,7 +67,7 @@ namespace INFT2051app
 
             await Navigation.PushAsync(new MainPage());
             await CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
-            
+
 
         }
 

@@ -38,10 +38,18 @@ namespace INFT2051app {
             popupNameChange = new PopUpNameChange();
             popupRestartPrompt = new PopupRestartPrompt();
 
-            
+            // the following line is from 
+            // https://www.godo.dev/tutorials/xamarin-forms-play-audio/
+
+            //BindingContext = new AudioPlayerViewModel(DependencyService.Get<IAudioPlayerService>());
 
         }
-        
+
+        //code from 
+        //https://devlinduldulao.pro/xamarin-forms-101-how-to-create-a-popup-form-in-xamarin-forms/
+
+
+
         //SLIDER EVENTS GO HERE (OPTIONS)
         public void SoundEffectChanged(object sender, ValueChangedEventArgs args) {
             /*
@@ -52,7 +60,8 @@ namespace INFT2051app {
             double value = args.NewValue;
             if (value == 0) {
                 SFXButton.Text = "Muted";
-            } else if (value > 0) {
+            }
+            else if (value > 0) {
                 SFXButton.Text = "UnMuted";
             }
             SFXValue = value;
@@ -67,7 +76,8 @@ namespace INFT2051app {
             double value = args.NewValue;
             if (value == 0) {
                 MusicButton.Text = "Muted";
-            } else if (value > 0) {
+            }
+            else if (value > 0) {
                 MusicButton.Text = "UnMuted";
             }
             MusicValue = value;
@@ -83,15 +93,14 @@ namespace INFT2051app {
              * 2. Mute: Visually show corresponding slider is on 0 
              * 3. Unmute: Visually show corresponding slider is on last saved value (OR 50, if thats too hard)
              */
- 
-            await CrossMediaManager.Current.PlayPause();
 
-            if (CrossMediaManager.Current.IsPlaying() == true)
-            {
+            await CrossMediaManager.Current.PlayPause();
+            await CrossMediaManager.Current.Stop();
+
+            if (CrossMediaManager.Current.IsPlaying() == true) {
                 MusicButton.Text = "Music Off";
             }
-            else if (CrossMediaManager.Current.IsStopped() == true)
-            {
+            else if (CrossMediaManager.Current.IsStopped() == true) {
                 MusicButton.Text = "Music On";
             }
 
@@ -136,10 +145,12 @@ namespace INFT2051app {
                 SFXButton.Text = "UnMuted";
                 if (SFXValue == 0) {
                     SFXSlider.Value = 50;
-                } else {
+                }
+                else {
                     SFXSlider.Value = SFXValue;
                 }
-            } else {//MUTE
+            }
+            else {//MUTE
                 SFXButton.Text = "Muted";
                 SFXValue = SFXSlider.Value;
 
@@ -163,7 +174,7 @@ namespace INFT2051app {
         private async void OnNameChangeClicked(object sender, EventArgs e) {
 
             await Navigation.PushPopupAsync(popupNameChange);
-            
+
 
         }
 

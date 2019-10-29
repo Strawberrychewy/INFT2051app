@@ -24,10 +24,8 @@ namespace INFT2051app.Android
 
             base.OnCreate(savedInstanceState);
 
-            CrossMediaManager.Current.Init(this);
-
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
-
+            CrossMediaManager.Current.Init(this);
 
             CrossFingerprint.SetDialogFragmentType<FragmentFingerprint>();
             CrossFingerprint.SetCurrentActivityResolver(() => this);
@@ -46,46 +44,38 @@ namespace INFT2051app.Android
             
 
         }
-        protected void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] global::Android.Content.PM.Permission[] grantResults)
-        {
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] global::Android.Content.PM.Permission[] grantResults) {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        protected override void OnStart()
-        {
+        protected override void OnStart() {
             base.OnStart();
             //CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
         }
 
-        protected override void OnResume()
-        {
+        protected override void OnResume() {
             base.OnResume();
             //CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
         }
 
-        protected override void OnPause()
-        {
+        protected override void OnPause() {
             base.OnPause();
             audioCleanup();
         }
 
-        protected override void OnStop()
-        {
+        protected override void OnStop() {
             base.OnStop();
             audioCleanup();
         }
 
-        protected override void OnDestroy()
-        {
+        protected override void OnDestroy() {
             audioCleanup();
         }
 
-        protected void audioCleanup()
-        {
-            if (CrossMediaManager.Current.IsPlaying())
-            {
+        protected void audioCleanup() {
+            if (CrossMediaManager.Current.IsPlaying()) {
                 CrossMediaManager.Current.Stop();
             }
         }

@@ -57,11 +57,24 @@ namespace INFT2051app {
             AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0.5, 0.8, 0.2, 0.2));
             AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
 
-            UpdatePetState();
-            UpdateHygieneState();
-            UpdateHungerState();
-            UpdateHealthState();
-            UpdateHappinessState();
+            UpdateAllStates();
+        }
+
+        public Pet(PlayerData playerData) {
+            NickName = playerData.PetName;
+            Happiness = playerData.Happiness;
+            Age = playerData.Age;
+            Hunger = playerData.Hunger;
+            Hygiene = playerData.Hygiene;
+            Health = playerData.Health;
+            Base = PetList.FindPetByName(playerData.BasePet);
+
+            //Image properties
+            Source = "Pet_" + playerData.BasePet + ".png";//CHANGE THIS TO PET IMAGE FILE NAMES ["Pet_" + Base.Name + ".png"]
+            AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0.5, 0.8, 0.2, 0.2));
+            AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
+
+            UpdateAllStates();
         }
 
         public void ChangePet(string basepet = "Rockworm") {
@@ -216,6 +229,14 @@ namespace INFT2051app {
          * This code updates each of the Current State Values to parameters within the range of its respective enum
          * 
          */
+        private void UpdateAllStates() {
+            UpdatePetState();
+            UpdateHygieneState();
+            UpdateHungerState();
+            UpdateHealthState();
+            UpdateHappinessState();
+        }
+
         private void UpdateHappinessState() {
             switch (Happiness) {
                 case int n when (n < 30):
