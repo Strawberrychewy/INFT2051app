@@ -21,7 +21,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>INFT2051app</string>
+	<string>Uni Pets</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.uon.INFT2051app</string>
 	<key>CFBundleVersion</key>

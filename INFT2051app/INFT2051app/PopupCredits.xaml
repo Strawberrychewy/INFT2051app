@@ -16,12 +16,11 @@
                 <Label HorizontalOptions="Center" Text="Kathleen Curran"/>
                 <Label HorizontalOptions="Center" Text="Asmita Pandey"/>
                 <Label HorizontalOptions="Center" Text="Art and Music by Robert Read"/>
-
-                <Label HorizontalOptions="Center" FontSize="Large" x:Name="Name_Pet" Text=""/>
-                <Label HorizontalOptions="Center" FontSize="Large" Text="AND"/>
-                <Label HorizontalOptions="Center" FontSize="Large" x:Name="Name_Player" Text=""/>
-
-
+                <Label Text=""/>
+                <Label HorizontalOptions="Center" FontSize="Title" Text="Featuring:"/>
+                <Label HorizontalOptions="Center" FontSize="Medium" x:Name="Name_Pet" Text=""/>
+                <Label HorizontalOptions="Center" FontSize="Medium" Text="AND"/>
+                <Label HorizontalOptions="Center" FontSize="Medium" x:Name="Name_Player" Text=""/>
             </StackLayout>
         </Frame>
 

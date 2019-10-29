@@ -9,8 +9,7 @@
 
     <AbsoluteLayout x:Name ="main_layout"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    >
+                    VerticalOptions="FillAndExpand">
 
         <Grid x:Name="petGrid"
               RowSpacing="4"
@@ -18,9 +17,7 @@
               Padding="5, 10"
               AbsoluteLayout.LayoutBounds="0, 0, 1, .4"
               AbsoluteLayout.LayoutFlags="All">
-            <!--WidthRequest="{Binding Path=Width, Source={x:Reference main_layout}}"-->
-              
-            <!--this width request doesnt do anything-->
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -45,7 +42,6 @@
                     Grid.Column="0"
                     TextColor="Black"
                     BackgroundColor="LightGray">
-                    
             </Button>
 
             <Button x:Name="Foodshop"
@@ -59,7 +55,7 @@
                     TextColor="Black"
                     BackgroundColor="LightGray">
             </Button>
-            
+
             <Button x:Name="CleanPet"
                     Clicked="InvokeCleanPet"
                     Text="Clean Pet"
@@ -83,7 +79,7 @@
                     TextColor="Black"
                     BackgroundColor="LightGray">
             </Button>
-            
+
             <Button x:Name="FastForward"
                     Clicked="SpeedUpTime"
                     Text="SpeedUp"
@@ -113,19 +109,15 @@
                    TextColor="White"
                    FontAttributes="Bold"
                    Grid.Row="1"
-                   Grid.Column="2"
-                   >
+                   Grid.Column="2" >
             </Label>
 
         </Grid>
-        
-        <!-- DEBUG LABELS-->
-        <!--<Label x:Name="DebugLabel" TextColor = "Red" FontSize="Small" AbsoluteLayout.LayoutBounds="0.1, 0.5, 0.2, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>-->
-        <!--<Label x:Name ="Credits_number" TextColor = "Red" FontSize="Small" AbsoluteLayout.LayoutBounds="0.9, 0, 0.2, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>-->
+
     </AbsoluteLayout>
 
 
-    
+
 
 
 
