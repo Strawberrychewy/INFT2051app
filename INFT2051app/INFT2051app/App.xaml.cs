@@ -10,7 +10,6 @@ namespace INFT2051app
 
 
 
-        private int Steps;
         private readonly MainPage gamePage = new MainPage();
         public static string savedata;
 

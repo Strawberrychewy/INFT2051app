@@ -11,18 +11,10 @@
         <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
             <!-- Inner Padding -->
             <StackLayout Padding="10,0">
-                <Label
-                    Text="Enter new pet name"
-                    >
-                </Label>
-                <Entry x:Name="NewPetName"
-                    Placeholder="Charles"
-                    BackgroundColor="White">
-                </Entry>
-                <Button x:Name="submitName"
-                        Text="Go"
-                        Clicked="ChangeName">
-                </Button>
+                <Label Text="Player Name"/>
+                <Entry x:Name="NewPlayerName" Completed="EntryPlayerCompleted" Placeholder="Hayley Acres" BackgroundColor="White" PlaceholderColor="Purple"/>
+                <Label Text="Pet Name"/>
+                <Entry x:Name="NewPetName" Completed="EntryPetCompleted" Placeholder="Brittany" BackgroundColor="White" PlaceholderColor="Purple"/>
             </StackLayout>
         </Frame>
 

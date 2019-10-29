@@ -13,6 +13,10 @@ namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupRestartPrompt : PopupPage {
 
+
+        public event EventHandler NewGame;
+
+
         public PopupRestartPrompt() {
             InitializeComponent();
         }
@@ -33,7 +37,7 @@ namespace INFT2051app {
              * 2. Restart the game, and ensure the player gets to input username etc again
              * 
              */
-
+            NewGame(this, EventArgs.Empty);
              
         }
 

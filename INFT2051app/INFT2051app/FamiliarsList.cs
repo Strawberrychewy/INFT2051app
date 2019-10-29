@@ -59,7 +59,7 @@ namespace INFT2051app {
 
             //Finds a random pet in list
             Random random = new Random();
-            int i = random.Next(0, basicpets.Count - 1);
+            int i = random.Next(0, basicpets.Count);
             return basicpets[i];
         }
     }

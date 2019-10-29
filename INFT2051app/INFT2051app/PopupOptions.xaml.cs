@@ -20,8 +20,8 @@ namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupOptions : PopupPage {
 
-        readonly PopupRestartPrompt popupRestartPrompt;
-        readonly PopUpNameChange popupNameChange;
+        public readonly PopupRestartPrompt popupRestartPrompt;
+        public PopUpNameChange popupNameChange;
         private readonly IMediaManager mediaManager;
         private IPlaybackManager PlaybackController => CrossMediaManager.Current;
 
@@ -165,9 +165,10 @@ namespace INFT2051app {
                 SFXSlider.ValueChanged += SoundEffectChanged;
             }
         }
-
-        public void Update(Pet pet, PlayerData player) {
-            popupCredits.updateText(pet, player);
+        
+        public void Update(PlayerData playerData) {
+            popupNameChange.Update(playerData);
+            popupCredits.Update(playerData);
         }
 
         //-------------------------------Bottom Button Events go here-----------------------------------------------------------

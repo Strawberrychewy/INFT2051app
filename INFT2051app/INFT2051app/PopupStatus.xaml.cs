@@ -39,7 +39,7 @@ namespace INFT2051app {
 
         public void Update(Pet pet, PlayerData player) {
             playerLabel.Text = "Player Name: " + player.Name;
-            petLabel.Text = "Pet Name: " + pet.NickName + ", Age: " + pet.Age;
+            petLabel.Text = "Pet Name: " + player.PetName + ", Age: " + pet.Age;
 
             basePetNameLabel.Text = "Species: " + pet.Base.Name;
             basePetTypeLabel.Text = "Type: " + pet.Base.Type;

@@ -57,6 +57,9 @@ namespace INFT2051app {
             petContainer = new PetContainer(new Pet(playerData));
 
             optionsPopup = new PopupOptions();
+            optionsPopup.popupNameChange.PlayerNameChanged += ChangeName;
+            optionsPopup.popupNameChange.PlayerNameChanged += ChangePetName;
+            optionsPopup.popupRestartPrompt.NewGame += HandleRestartGame;
             statusPopup = new PopupStatus(playerData.Name);
             foodShopPopup = new PopupFoodShop(playerData);
             foodShopPopup.PurchaseSucceeded += HandlePurchaseSucceeded;
@@ -92,6 +95,20 @@ namespace INFT2051app {
             playerData.Happiness = petContainer.CurrentPet.Happiness;
             playerData.Hygiene = petContainer.CurrentPet.Hygiene;
             playerData.Health = petContainer.CurrentPet.Health;
+        }
+
+        public void OffloadPlayerData() {
+            statusPopup.PlayerName = playerData.Name;//Change this
+            foodShopPopup.Credits = playerData.Credits;
+
+            petContainer.CurrentPet.NickName = playerData.PetName;//Name of pet object
+            petContainer.CurrentPet.Age = playerData.Age;
+            petContainer.CurrentPet.Hunger = playerData.Hunger;
+            petContainer.CurrentPet.Happiness = playerData.Happiness;
+            petContainer.CurrentPet.Hygiene = playerData.Hygiene;
+            petContainer.CurrentPet.Health = playerData.Health;
+
+            petContainer.CurrentPet.ChangePet(playerData.BasePet);
         }
 
         public void Save() {
@@ -142,7 +159,7 @@ namespace INFT2051app {
         }
         //------------------ UI BUTTON EVENTS----------------------------------------------------------------
         private async void InvokeSettings(object sender, EventArgs e) {
-            optionsPopup.Update(petContainer.CurrentPet, playerData);
+            optionsPopup.Update(playerData);
             await PopupNavigation.Instance.PushAsync(optionsPopup);
         }
 
@@ -230,12 +247,16 @@ namespace INFT2051app {
             main_layout.Children.Add(FPButton);
         }
 
-        private void HandleFingerPrintSensorDetected(object sender, EventArgs e) {
+        private void HandleRestartGame(object sender, EventArgs e) {
             /*
-             * When a fingerprint sensor is detected, display helper text signifying that the user should use the fingerprint sensor
              * 
-             * Never used, might delete later
+             * 
+             * 
              */
+            FamiliarsList list = new FamiliarsList();
+            playerData = new PlayerData(basePet: list.FindRandomBasicPet().Name);
+            OffloadPlayerData();
+            
         }
 
         private void HandleFeedingProcess(object sender, EventArgs e) {
@@ -269,6 +290,16 @@ namespace INFT2051app {
             UpdateCreditsLabel();
             UpdatePlayerData();
             Save();
+        }
+
+        private void ChangeName(object sender, EventArgs e) {
+            statusPopup.PlayerName = optionsPopup.popupNameChange.PlayerName;
+            UpdatePlayerData();
+        }
+
+        private void ChangePetName(object sender, EventArgs e) {
+            petContainer.CurrentPet.NickName = optionsPopup.popupNameChange.PetName;
+            UpdatePlayerData();
         }
 
         protected override void OnAppearing() {

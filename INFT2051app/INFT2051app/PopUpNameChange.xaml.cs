@@ -9,16 +9,15 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace INFT2051app
-{
+namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PopUpNameChange : PopupPage
-    {
+    public partial class PopUpNameChange : PopupPage {
         // readonly Entry petName;
-        readonly Pet pet;
-
-        public PopUpNameChange()
-        {
+        public string PlayerName { get; set; }
+        public string PetName { get; set; }
+        public event EventHandler PlayerNameChanged;
+        public event EventHandler PetNameChanged;
+        public PopUpNameChange() {
             InitializeComponent();
 
             //https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/text/entry
@@ -26,12 +25,23 @@ namespace INFT2051app
             //var petName = new Entry { Placeholder = "Charles" };
         }
 
-        private async void ChangeName(object sender, EventArgs e)
-        {
-            //pet.NickName = this.FindByName<Entry>("NewPetName").Text;
-            await PopupNavigation.Instance.PopAsync();
+        public void Update(PlayerData playerData) {
+            //Updates the current strings in the popup namechange page
+            PlayerName = playerData.Name;
+            PetName = playerData.PetName;
         }
-        
+
+        private void EntryPlayerCompleted(object sender, EventArgs e) {
+            PlayerName = ((Entry)sender).Text;
+            PlayerNameChanged(this, EventArgs.Empty);
+        }
+
+        private void EntryPetCompleted(object sender, EventArgs e) {
+            PetName = ((Entry)sender).Text;
+            PetNameChanged(this, EventArgs.Empty);
+        }
+
+
 
     }
 

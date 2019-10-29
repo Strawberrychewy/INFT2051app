@@ -212,4 +212,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\Pet_Robbit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Hawkeye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Sealknight.png" />
+  </ItemGroup>
 </Project>

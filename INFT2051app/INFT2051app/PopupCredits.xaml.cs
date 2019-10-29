@@ -17,15 +17,15 @@ namespace INFT2051app {
             InitializeComponent();
         }
 
-        public void updateText(Pet pet, PlayerData player) {
+        public void Update(PlayerData playerData) {
             /*
              * This function will read the player data and update the text in the xaml
              * 1. Name of the Pet (Name_Pet)
              * 2. Name of the Player (Name_Player)
              */
             //this is hardcoded
-            Name_Pet.Text = pet.NickName;
-            Name_Player.Text = player.Name;
+            Name_Pet.Text = playerData.PetName;
+            Name_Player.Text = playerData.Name;
         }
 
 
