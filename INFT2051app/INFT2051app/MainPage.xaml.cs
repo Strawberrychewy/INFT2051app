@@ -159,17 +159,16 @@ namespace INFT2051app {
 
         private void InvokeCleanPet(object sender, EventArgs e) {
             //Basic cleaning pet function
-
-            foodShopPopup.Credits -= 10;
-
-
-            petContainer.CurrentPet.Hygiene += 10;
-            petContainer.CurrentPet.BounceMicro();
-            petContainer.CurrentPet.BounceMicro();
-            petContainer.CurrentPet.CapValues();
-            UpdatePlayerData();
-            UpdateCreditsLabel();
-            Save();
+            if (foodShopPopup.Credits >= 10) {
+                foodShopPopup.Credits -= 10;
+                petContainer.CurrentPet.Hygiene += 10;
+                petContainer.CurrentPet.BounceMicro();
+                petContainer.CurrentPet.BounceMicro();
+                petContainer.CurrentPet.CapValues();
+                UpdatePlayerData();
+                UpdateCreditsLabel();
+                Save();
+            }
         }
 
         private void InvokePlayPet(object sender, EventArgs e) {
