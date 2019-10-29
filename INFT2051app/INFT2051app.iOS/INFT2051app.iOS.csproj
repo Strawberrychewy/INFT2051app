@@ -168,16 +168,7 @@
     <BundleResource Include="Resources\icon_settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\FoodItem_Grapes.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FoodItem_Orange.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FoodItem_Steak.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FoodItem_Watermelon.png" />
+    <BundleResource Include="Resources\Pet_Robbit.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\FoodItem_Apple.png" />
@@ -195,27 +186,42 @@
     <BundleResource Include="Resources\FoodItem_Fish.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Pet_Rockworm.png" />
+    <BundleResource Include="Resources\FoodItem_Grapes.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Pet_Roccoon.png" />
+    <BundleResource Include="Resources\FoodItem_Orange.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Pet_Shellwyrm.png" />
+    <BundleResource Include="Resources\FoodItem_Steak.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Pet_Sealpronger.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Pet_Sealancer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Pet_Robbit.png" />
+    <BundleResource Include="Resources\FoodItem_Watermelon.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Pet_Hawkeye.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\Pet_Roccoon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Rockworm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Sealancer.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\Pet_Sealknight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Sealpronger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Shellwyrm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Thundersparse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_WingSpark.png" />
   </ItemGroup>
 </Project>

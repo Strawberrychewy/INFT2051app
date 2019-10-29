@@ -30,7 +30,7 @@
                     <Button x:Name="MusicButton" 
                             Grid.Row="0" 
                             Grid.Column="0" 
-                            Text="{Binding CommandText}"  
+                            Text="Music: On"  
                             Clicked="OnMusicButtonClicked"
                             TextColor="Black">
                         

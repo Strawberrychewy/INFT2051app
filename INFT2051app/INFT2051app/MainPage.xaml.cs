@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Essentials;
@@ -15,7 +14,7 @@ using System.Reflection;
 using System.IO;
 
 using Newtonsoft.Json;
-
+using System.Threading;
 
 namespace INFT2051app {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
@@ -37,7 +36,7 @@ namespace INFT2051app {
         private readonly PopupStatus statusPopup;
         readonly PetContainer petContainer;  //Controller for the pet
         public PlayerData playerData;
-        readonly Timer gameloop;
+        readonly System.Timers.Timer gameloop;
 
         public int Credits = 0;
 
@@ -79,7 +78,7 @@ namespace INFT2051app {
 
             Init();
 
-            gameloop = new Timer(30 * 60 * 1000);//30 Minutes
+            gameloop = new System.Timers.Timer(30 * 60 * 1000);//30 Minutes
             gameloop.Elapsed += Step;
             gameloop.AutoReset = true;
             gameloop.Start();
@@ -266,7 +265,7 @@ namespace INFT2051app {
              * Update the progress bar for every press
              * 
              */
-            progressBar.ProgressTo(progressBar.Progress + 0.2, 250, Easing.Linear);
+            progressBar.ProgressTo(progressBar.Progress + 1, 250, Easing.Linear);
 
         }
 
@@ -284,7 +283,7 @@ namespace INFT2051app {
             petContainer.FeedingComplete -= HandleFeedingComplete;
 
             main_layout.Children.Remove(FPButton);//Remove FPButton from xaml
-            progressBar.ProgressTo(0, 1, Easing.Linear);//ResetProgress bar
+            progressBar.ProgressTo(progressBar.Progress + 1, 250, Easing.Linear);//ResetProgress bar
             main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
 
             petContainer.CurrentPet.Hunger += (int)(foodShopPopup.current.Cost / 10);

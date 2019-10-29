@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using FFImageLoading.Forms;
@@ -14,6 +17,8 @@ namespace INFT2051app {
          * 
          * RECOMMENDED: Load JSON into objects first instead of reading them constantly
          */
+
+        MainPage mainPage;
 
         //Variables changed by player
         public string NickName { get; set; }// NickName (PLAYER INPUT)
@@ -189,7 +194,7 @@ namespace INFT2051app {
             }
         }
 
-        private void Interval_24() {
+        private async void Interval_24() {
             /*
              * This code simulates every 24 hours that pass
              * 
@@ -197,6 +202,7 @@ namespace INFT2051app {
             Age++;//Increment Age
             if (Happiness >= 70 && Health >= 70 && Hygiene >= 70 && Age >= 5) {
                 EvolvePet();
+                //await mainPage.DisplayAlert("Congratulations!", "Your pet has evolved! Check Status for a description.", "Okay");
             }
         }
         //----------------------------------------------IDLE STATE ANIMATIONS-------------------------------------------------------------------------------
