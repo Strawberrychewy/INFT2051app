@@ -58,7 +58,7 @@ namespace INFT2051app {
 
             optionsPopup = new PopupOptions();
             optionsPopup.popupNameChange.PlayerNameChanged += ChangeName;
-            optionsPopup.popupNameChange.PlayerNameChanged += ChangePetName;
+            optionsPopup.popupNameChange.PetNameChanged += ChangePetName;
             optionsPopup.popupRestartPrompt.NewGame += HandleRestartGame;
             statusPopup = new PopupStatus(playerData.Name);
             foodShopPopup = new PopupFoodShop(playerData);

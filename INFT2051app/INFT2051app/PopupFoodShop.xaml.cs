@@ -108,6 +108,7 @@ namespace INFT2051app {
                 //Pops the shop off the UI stack
                 Credits -= current.Cost;
                 PurchaseSucceeded(this, EventArgs.Empty);
+                GenerateButtons();
                 await PopupNavigation.Instance.PopAsync(true);
             } else {
                 shop_label.Text = "Insuffient Funds";
