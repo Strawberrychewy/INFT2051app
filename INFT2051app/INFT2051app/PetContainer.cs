@@ -123,7 +123,6 @@ namespace INFT2051app {
              * 
              */
             FeedingProcess(this, EventArgs.Empty);
-            CurrentPet.Hunger += 10;
             FeedingComplete(this, EventArgs.Empty);
         }
         //---------------------------------------STATES-------------------------------------------------------------------------------------------------

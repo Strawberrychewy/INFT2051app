@@ -15,7 +15,7 @@ namespace INFT2051app {
 
         public FoodList FoodList { get; set; }
         public List<FoodItem> foodShop;
-        FoodItem current;
+        public FoodItem current;
   
         public int Credits { get; set;}
         public event EventHandler PurchaseSucceeded;

@@ -104,7 +104,8 @@ namespace INFT2051app {
             if (File.Exists(App.savedata)) {
                 playerData = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(App.savedata));
             } else if (!File.Exists(App.savedata)) {
-                playerData = new PlayerData();
+                FamiliarsList list = new FamiliarsList();
+                playerData = new PlayerData(basePet: list.FindRandomBasicPet().Name);
             }
         }
 
@@ -132,12 +133,12 @@ namespace INFT2051app {
 
         public void Step(object source, ElapsedEventArgs e) {
             //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss}", e.SignalTime);
-            /*foodShopPopup.Reset();
+            foodShopPopup.Reset();
 
             UpdatePlayerData();
             Save();
 
-            petContainer.UpdateStatus();*/
+            petContainer.UpdateStatus();
         }
         //------------------ UI BUTTON EVENTS----------------------------------------------------------------
         private async void InvokeSettings(object sender, EventArgs e) {
@@ -160,11 +161,14 @@ namespace INFT2051app {
         private void InvokeCleanPet(object sender, EventArgs e) {
             //Basic cleaning pet function
             if (foodShopPopup.Credits >= 10) {
+
                 foodShopPopup.Credits -= 10;
                 petContainer.CurrentPet.Hygiene += 10;
+
+
+                
                 petContainer.CurrentPet.BounceMicro();
                 petContainer.CurrentPet.BounceMicro();
-                petContainer.CurrentPet.CapValues();
                 UpdatePlayerData();
                 UpdateCreditsLabel();
                 Save();
@@ -172,12 +176,27 @@ namespace INFT2051app {
         }
 
         private void InvokePlayPet(object sender, EventArgs e) {
-            //Basic cleaning pet function
+            //Basic PLAYING WITH PET function
             petContainer.CurrentPet.Happiness += 10;
             petContainer.CurrentPet.BounceJump();
-            petContainer.CurrentPet.CapValues();
             UpdatePlayerData();
             Save();
+        }
+
+        //--------------------------------DEBUG---------------------------------------------------------
+        private void SpeedUpTime(object sender, EventArgs e) {
+
+            //This is literally the step function in the form of a Button method (Also cheats)
+            petContainer.CurrentPet.Hygiene += 10;//OMIT WHEN DONE
+            petContainer.CurrentPet.Health += 10;//OMIT WHEN DONE
+            petContainer.CurrentPet.Happiness += 10;//OMIT WHEN DONE
+            petContainer.CurrentPet.Hunger += 10;//OMIT WHEN DONE
+            foodShopPopup.Reset();
+
+            UpdatePlayerData();
+            Save();
+
+            petContainer.CurrentPet.UpdateStatus(1);
         }
         //------------------ GAME EVENTS----------------------------------------------------------------
 
@@ -244,6 +263,8 @@ namespace INFT2051app {
             main_layout.Children.Remove(FPButton);//Remove FPButton from xaml
             progressBar.ProgressTo(0, 1, Easing.Linear);//ResetProgress bar
             main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
+
+            petContainer.CurrentPet.Hunger += (int)(foodShopPopup.current.Cost / 10);
 
             UpdateCreditsLabel();
             UpdatePlayerData();

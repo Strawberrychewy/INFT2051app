@@ -39,7 +39,7 @@ namespace INFT2051app {
 
         public void Update(Pet pet, PlayerData player) {
             playerLabel.Text = "Player Name: " + player.Name;
-            petLabel.Text = "Pet Name: " + pet.NickName;
+            petLabel.Text = "Pet Name: " + pet.NickName + ", Age: " + pet.Age;
 
             basePetNameLabel.Text = "Species: " + pet.Base.Name;
             basePetTypeLabel.Text = "Type: " + pet.Base.Type;
@@ -55,9 +55,9 @@ namespace INFT2051app {
         protected override void OnDisappearing() {
             base.OnDisappearing();
             healthBar.ProgressTo(0, 250, Easing.Linear);
-            healthBar.ProgressTo(0, 250, Easing.Linear);
-            healthBar.ProgressTo(0, 250, Easing.Linear);
-            healthBar.ProgressTo(0, 250, Easing.Linear);
+            hungerBar.ProgressTo(0, 250, Easing.Linear);
+            happinessBar.ProgressTo(0, 250, Easing.Linear);
+            hygieneBar.ProgressTo(0, 250, Easing.Linear);
         }
 
     }

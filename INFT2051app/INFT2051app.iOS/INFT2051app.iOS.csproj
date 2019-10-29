@@ -209,4 +209,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\Pet_Sealancer.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Robbit.png" />
+  </ItemGroup>
 </Project>

@@ -83,6 +83,17 @@
                     TextColor="Black"
                     BackgroundColor="LightGray">
             </Button>
+            <Button x:Name="FastForward"
+                    Clicked="SpeedUpTime"
+                    Text="SpeedUp"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Padding="10"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    TextColor="Black"
+                    BackgroundColor="LightGray">
+            </Button>
 
             <ImageButton x:Name="Options"
                          Clicked="InvokeSettings"

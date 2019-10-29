@@ -24,8 +24,7 @@ namespace INFT2051app {
         public int Age { get; set; } // Age
         public int Hunger { get; set; } // Hunger
         public int Hygiene { get; set; } //Hygiene
-
-        public event EventHandler EvolutionReady;
+        int interval = 0;
 
         //This set of enums describe the range of states the pet can have per parameter
         public enum PetState {Awake, Asleep, Dead}//Awake from start of morning until night time, sleep time differs on age
@@ -77,21 +76,27 @@ namespace INFT2051app {
             UpdateAllStates();
         }
 
-        public void ChangePet(string basepet = "Rockworm") {
+        public void ChangePet(string basepet = "Roccoon") {
             Base = PetList.FindPetByName(basepet);
             Source = "Pet_" + basepet + ".png";//CHANGE THIS TO PET IMAGE FILE NAMES ["Pet_" + Base.Name + ".png"]
         }
-        public void CapValues() {
-            if (Health > 100) {
-                Health = 100;
-            }
-            if (Happiness > 100) {
-                Health = 100;
-            }
-            if (Hygiene > 100) {
-                Health = 100;
+
+        public void EvolvePet() {
+            if (Base.Name.Equals("Robbit")) {
+                /*
+                 * It is said from the mountains and the trees that Robbit The Rabbit came out of hiding,
+                 * watching the very world that would be his very own. His small stature is a sign that
+                 * even the smallest creatures can become anything they want to be.
+                 * 
+                 * 
+                 * 
+                 */
+                ChangePet(PetList.FindRandomBasicPet().Name);
+            } else if (Base.EvolvesInto != null) {
+                ChangePet(Base.EvolvesInto);
             }
         }
+
 
         public void UpdateStatus(int timeInterval = 1) {
             /*
@@ -111,25 +116,9 @@ namespace INFT2051app {
              * 8. When all stats are 'good' and the age is equal or above 5, the pet is able to 'evolve'
              * 
              */
-            for(int i = 0, j = 0; i < timeInterval && PetStateValue != PetState.Dead; i++) {
-                j++;
-                Interval_1();//Run this code every 1 step
-                if (j == 12) {
-                    Interval_12();//Run this code every 12 steps
-                }
-                if (i == 24) {
-                    Interval_12();//Run this code every 12 steps (factor of 24th interval)
-                    Interval_24();//run this code every 24 steps
-                    j = 0;//reset
-                }
+            for (int i = 0; i < timeInterval && PetStateValue != PetState.Dead; i++) {
+                Interval_1();
             }
-            //Update states based on values
-            UpdateHappinessState();
-            UpdateHealthState();
-            UpdateHungerState();
-            UpdateHygieneState();
-            UpdatePetState();
-            CapValues();
         }
 
         private void Interval_1() {
@@ -141,17 +130,17 @@ namespace INFT2051app {
             //DECREMENT HEALTH BASED ON OTHER STATES
             //HUNGER
             if (HungerStateValue == HungerState.Starving) {
-                Health -= 10;
-            } else if (HungerStateValue == HungerState.Overfed || HungerStateValue == HungerState.Hungry) {
                 Health -= 5;
+            } else if (HungerStateValue == HungerState.Overfed || HungerStateValue == HungerState.Hungry) {
+                Health -= 3;
             }
             //HYGIENE
             if (HygieneStateValue == HygieneState.Dirty) {
-                Health -= 5;
+                Health -= 3;
             }
             //HAPPINESS
             if (HappinessStateValue == HappinessState.UnHappy) {
-                Health -= 5;
+                Health -= 3;
             }
             if (Health <= 0) {
                 //Pet dies
@@ -175,6 +164,19 @@ namespace INFT2051app {
                 }
                 Hunger -= hungerDecrement;
             }
+
+            Happiness -= 5;
+
+            UpdateAllStates();
+            interval++;
+            if (interval == 12) {
+                Interval_12();
+            } else if (interval == 24) {
+                Interval_12();
+                Interval_24();
+                interval = 0;//Reset
+            }
+
         }
 
         private void Interval_12() {
@@ -193,8 +195,8 @@ namespace INFT2051app {
              * 
              */
             Age++;//Increment Age
-            if (Happiness >= 50 && Health >= 50 && Hygiene >= 50 && Age >= 5) {
-                EvolutionReady(this, EventArgs.Empty);
+            if (Happiness >= 70 && Health >= 70 && Hygiene >= 70 && Age >= 5) {
+                EvolvePet();
             }
         }
         //----------------------------------------------IDLE STATE ANIMATIONS-------------------------------------------------------------------------------
@@ -238,6 +240,12 @@ namespace INFT2051app {
         }
 
         private void UpdateHappinessState() {
+            if (Happiness < 0) {
+                Happiness = 0;
+            }
+            if (Happiness > 100) {
+                Happiness = 100;
+            }
             switch (Happiness) {
                 case int n when (n < 30):
                     HappinessStateValue = HappinessState.UnHappy;
@@ -252,6 +260,12 @@ namespace INFT2051app {
         }
 
         private void UpdateHungerState() {
+            if (Hunger < 0) {
+                Hunger = 0;
+            }
+            if (Hunger > 100) {
+                Hunger = 100;
+            }
             switch (Hunger) {
                 case int n when (n < 30):
                     HungerStateValue = HungerState.Starving;
@@ -272,6 +286,12 @@ namespace INFT2051app {
         }
 
         private void UpdateHygieneState() {
+            if (Hygiene < 0) {
+                Hygiene = 0;
+            }
+            if (Hygiene > 100) {
+                Hygiene = 100;
+            }
             switch (Hygiene) {
                 case int n when (n < 30):
                     HygieneStateValue = HygieneState.Dirty;
@@ -286,6 +306,12 @@ namespace INFT2051app {
         }
 
         private void UpdateHealthState() {
+            if (Health < 0) {
+                Health = 0;
+            }
+            if (Health > 100) {
+                Health = 100;
+            }
             switch (Health) {
                 case int n when (n < 30):
                     HealthStateValue = HealthState.UnHealthy;

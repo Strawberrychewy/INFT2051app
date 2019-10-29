@@ -20,8 +20,8 @@ namespace INFT2051app {
         //TODO: ADD ACTUAL DEFAULT PARAMETERS SO CONSTRUCTOR BECOMES FOOLPROOF
         public BasePet( string name = "Rockworm", 
                         string type = "Land",
-                        string evolvesInto = null,
-                        string evolvesFrom = "Roccoon",
+                        string evolvesFrom = null,
+                        string evolvesInto = "Roccoon",
                         string description = "TestObject") {
             Name = name;
             Type = type;
