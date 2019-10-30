@@ -194,15 +194,15 @@ namespace INFT2051app {
             }
         }
 
-        private async void Interval_24() {
+        private void Interval_24() {
             /*
              * This code simulates every 24 hours that pass
              * 
              */
             Age++;//Increment Age
-            if (Happiness >= 70 && Health >= 70 && Hygiene >= 70 && Age >= 5) {
+            if (Happiness >= 70 && Health >= 70 && Hygiene >= 70 && Age >= 5)
+            {
                 EvolvePet();
-                //await mainPage.DisplayAlert("Congratulations!", "Your pet has evolved! Check Status for a description.", "Okay");
             }
         }
         //----------------------------------------------IDLE STATE ANIMATIONS-------------------------------------------------------------------------------

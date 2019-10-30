@@ -13,8 +13,11 @@
             <StackLayout Padding="10,0">
                 <Label Text="Player Name"/>
                 <Entry x:Name="NewPlayerName" Completed="EntryPlayerCompleted" Placeholder="Hayley Acres" BackgroundColor="White" PlaceholderColor="Purple"/>
+                                
                 <Label Text="Pet Name"/>
                 <Entry x:Name="NewPetName" Completed="EntryPetCompleted" Placeholder="Brittany" BackgroundColor="White" PlaceholderColor="Purple"/>
+
+                <Button Text="Go" x:Name="popOff" HorizontalOptions="Center" Clicked="CompleteChangeName" BackgroundColor="White"/>
             </StackLayout>
         </Frame>
 

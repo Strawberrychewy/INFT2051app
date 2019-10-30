@@ -26,7 +26,7 @@ namespace INFT2051app {
             await PopupNavigation.Instance.PopAsync(true);
         }
 
-        public void OnYesButtonClicked(object sender, EventArgs e) {
+        public async void OnYesButtonClicked(object sender, EventArgs e) {
             /*
              * When the user clicks "Yes", His save data will be destroyed and all hope is lost to recover it.
              * 
@@ -38,7 +38,7 @@ namespace INFT2051app {
              * 
              */
             NewGame(this, EventArgs.Empty);
-             
+            await PopupNavigation.Instance.PopAsync(true);
         }
 
 

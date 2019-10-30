@@ -20,9 +20,7 @@ namespace INFT2051app {
         public PopUpNameChange() {
             InitializeComponent();
 
-            //https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/text/entry
-            // petName = new Entry { Placeholder="Charles"};
-            //var petName = new Entry { Placeholder = "Charles" };
+
         }
 
         public void Update(PlayerData playerData) {
@@ -36,11 +34,16 @@ namespace INFT2051app {
             PlayerNameChanged(this, EventArgs.Empty);
         }
 
+
         private void EntryPetCompleted(object sender, EventArgs e) {
             PetName = ((Entry)sender).Text;
             PetNameChanged(this, EventArgs.Empty);
         }
 
+        private async void CompleteChangeName(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+        }
 
 
     }

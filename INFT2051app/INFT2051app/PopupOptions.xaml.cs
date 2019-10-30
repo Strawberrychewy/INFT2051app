@@ -27,12 +27,12 @@ namespace INFT2051app {
 
         //private readonly PopupChangeName popupChangeName;
         readonly PopupCredits popupCredits;
-        double SFXValue;
+        //double SFXValue;
         double MusicValue;
 
         public PopupOptions() {
             InitializeComponent();
-            SFXValue = 100;
+            //SFXValue = 100;
             MusicValue = 100;
             popupCredits = new PopupCredits();
             popupNameChange = new PopUpNameChange();
@@ -43,21 +43,21 @@ namespace INFT2051app {
 
 
         //SLIDER EVENTS GO HERE (OPTIONS)
-        public void SoundEffectChanged(object sender, ValueChangedEventArgs args) {
-            /*
-             * On Entering 0: Toggle the button visual to show muted
-             * On leaving 0: Toggle the button visual to show unmuted
-             * 
-             */
-            double value = args.NewValue;
-            if (value == 0) {
-                SFXButton.Text = "Muted";
-            }
-            else if (value > 0) {
-                SFXButton.Text = "UnMuted";
-            }
-            SFXValue = value;
-        }
+        //public void SoundEffectChanged(object sender, ValueChangedEventArgs args) {
+        //    /*
+        //     * On Entering 0: Toggle the button visual to show muted
+        //     * On leaving 0: Toggle the button visual to show unmuted
+        //     * 
+        //     */
+        //    double value = args.NewValue;
+        //    if (value == 0) {
+        //        SFXButton.Text = "Muted";
+        //    }
+        //    else if (value > 0) {
+        //        SFXButton.Text = "UnMuted";
+        //    }
+        //    SFXValue = value;
+        //}
 
         public void MusicVolumeChanged(object sender, ValueChangedEventArgs args) {
             /*
@@ -126,37 +126,37 @@ namespace INFT2051app {
             //}
         }
 
-        private void OnSFXButtonClicked(object sender, EventArgs e) {
-            /*
-             * This event triggers when the SFX button is pressed.
-             * 1. Mute/Unmute the SFX volume
-             * 2. Mute: Visually show corresponding slider is on 0 
-             * 3. Unmute: Visually show corresponding slider is on last saved value (OR 50, if thats too hard)
-             */
-            if (SFXSlider.Value == 0) {//UNMUTE
-                SFXButton.Text = "UnMuted";
-                if (SFXValue == 0) {
-                    SFXSlider.Value = 50;
-                }
-                else {
-                    SFXSlider.Value = SFXValue;
-                }
-            }
-            else {//MUTE
-                SFXButton.Text = "Muted";
-                SFXValue = SFXSlider.Value;
+        //private void OnSFXButtonClicked(object sender, EventArgs e) {
+        //    /*
+        //     * This event triggers when the SFX button is pressed.
+        //     * 1. Mute/Unmute the SFX volume
+        //     * 2. Mute: Visually show corresponding slider is on 0 
+        //     * 3. Unmute: Visually show corresponding slider is on last saved value (OR 50, if thats too hard)
+        //     */
+        //    if (SFXSlider.Value == 0) {//UNMUTE
+        //        SFXButton.Text = "UnMuted";
+        //        if (SFXValue == 0) {
+        //            SFXSlider.Value = 50;
+        //        }
+        //        else {
+        //            SFXSlider.Value = SFXValue;
+        //        }
+        //    }
+        //    else {//MUTE
+        //        SFXButton.Text = "Muted";
+        //        SFXValue = SFXSlider.Value;
 
-                /*  
-                 * Must unsubscribe to volume change before changing Slider value to 0
-                 * Otherwise it will trigger the volume change event and set the last saved value equal to 0
-                 * 
-                 * 
-                 */
-                SFXSlider.ValueChanged -= SoundEffectChanged;
-                SFXSlider.Value = 0;
-                SFXSlider.ValueChanged += SoundEffectChanged;
-            }
-        }
+        //        /*  
+        //         * Must unsubscribe to volume change before changing Slider value to 0
+        //         * Otherwise it will trigger the volume change event and set the last saved value equal to 0
+        //         * 
+        //         * 
+        //         */
+        //        SFXSlider.ValueChanged -= SoundEffectChanged;
+        //        SFXSlider.Value = 0;
+        //        SFXSlider.ValueChanged += SoundEffectChanged;
+        //    }
+        //}
         
         public void Update(PlayerData playerData) {
             popupNameChange.Update(playerData);

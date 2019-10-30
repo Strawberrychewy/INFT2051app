@@ -29,17 +29,19 @@
 
                     <Button x:Name="MusicButton" 
                             Grid.Row="0" 
-                            Grid.Column="0" 
+                            Grid.Column="1" 
                             Text="Music: On"  
                             Clicked="OnMusicButtonClicked"
-                            TextColor="Black">
-                        
+                            TextColor="Black"
+                            HorizontalOptions="Center"
+                            >
+                          
                     </Button>
-                    <Slider x:Name="MusicSlider" Grid.Row="0" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="MusicVolumeChanged" ></Slider>
+                    <!--<Slider x:Name="MusicSlider" Grid.Row="0" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="MusicVolumeChanged" ></Slider>-->
 
 
-                    <Button x:Name="SFXButton" Grid.Row="1" Grid.Column="0" Text="SFX" TextColor="Black" Clicked="OnSFXButtonClicked" ></Button>
-                    <Slider x:Name="SFXSlider" Grid.Row="1" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="SoundEffectChanged"></Slider>
+                    <!--<Button x:Name="SFXButton" Grid.Row="1" Grid.Column="0" Text="SFX" TextColor="Black" Clicked="OnSFXButtonClicked" ></Button>
+                    <Slider x:Name="SFXSlider" Grid.Row="1" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="SoundEffectChanged"></Slider>-->
 
                 </Grid>
                 <!-- Horizontal line of food items -->

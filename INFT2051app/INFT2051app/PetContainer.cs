@@ -149,11 +149,11 @@ namespace INFT2051app {
                     //Bounce Low
                     CurrentPet.BounceLow();
                     break;
+                //case (3):
+                //    //Bounce High with a jump
+                //    CurrentPet.BounceJump();
+                //    break;
                 case (3):
-                    //Bounce High with a jump
-                    CurrentPet.BounceJump();
-                    break;
-                case (4):
                     //Bounce High with a jump
                     CurrentPet.BounceMicro();
                     break;
