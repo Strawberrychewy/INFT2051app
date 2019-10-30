@@ -269,6 +269,7 @@ namespace INFT2051app {
              * 2. Remove the food sprite from the container
              * 
              */
+
             //Start unsubscribing to all events that trigger when the purchase started
             petContainer.NoFingerPrintSensorDetected -= HandleNoFingerPrintSensorDetected;
             petContainer.FeedingComplete -= HandleFeedingComplete;
@@ -291,11 +292,14 @@ namespace INFT2051app {
         private void ChangeName(object sender, EventArgs e) {
             statusPopup.PlayerName = optionsPopup.popupNameChange.PlayerName;
             UpdatePlayerData();
+            optionsPopup.Update(playerData);
         }
 
         private void ChangePetName(object sender, EventArgs e) {
             petContainer.CurrentPet.NickName = optionsPopup.popupNameChange.PetName;
             UpdatePlayerData();
+            optionsPopup.Update(playerData);
+
         }
 
         protected override void OnAppearing() {

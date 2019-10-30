@@ -14,7 +14,7 @@ using System.IO;
 
 namespace INFT2051app.Android
 {
-    [Activity(Label = "Uni Pets", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Uni Pets", Icon = "@drawable/unipets", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         INotificationManager notificationManager;
@@ -62,22 +62,17 @@ namespace INFT2051app.Android
 
         protected override void OnPause() {
             base.OnPause();
-            audioCleanup();
+            CrossMediaManager.Current.Stop();
         }
 
         protected override void OnStop() {
             base.OnStop();
-            audioCleanup();
+            CrossMediaManager.Current.Stop();
+
         }
 
         protected override void OnDestroy() {
-            audioCleanup();
-        }
-
-        protected void audioCleanup() {
-            if (CrossMediaManager.Current.IsPlaying()) {
-                CrossMediaManager.Current.Stop();
-            }
+            CrossMediaManager.Current.Stop();
         }
 
     }

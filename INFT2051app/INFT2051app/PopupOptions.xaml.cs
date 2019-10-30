@@ -59,22 +59,22 @@ namespace INFT2051app {
         //    SFXValue = value;
         //}
 
-        public void MusicVolumeChanged(object sender, ValueChangedEventArgs args) {
-            /*
-             * On Entering 0: Toggle the button visual to show muted
-             * On leaving 0: Toggle the button visual to show unmuted
-             * 
-             */
-            double value = args.NewValue;
-            if (value == 0) {
-                MusicButton.Text = "Muted";
-            }
-            else if (value > 0) {
-                MusicButton.Text = "UnMuted";
-            }
-            MusicValue = value;
+        //public void MusicVolumeChanged(object sender, ValueChangedEventArgs args) {
+        //    /*
+        //     * On Entering 0: Toggle the button visual to show muted
+        //     * On leaving 0: Toggle the button visual to show unmuted
+        //     * 
+        //     */
+        //    double value = args.NewValue;
+        //    if (value == 0) {
+        //        MusicButton.Text = "Muted";
+        //    }
+        //    else if (value > 0) {
+        //        MusicButton.Text = "UnMuted";
+        //    }
+        //    MusicValue = value;
 
-        }
+        //}
 
         //BUTTON EVENTS GO HERE (OPTIONS)
         private async void OnMusicButtonClicked(object sender, EventArgs e) {
@@ -86,14 +86,14 @@ namespace INFT2051app {
              * 3. Unmute: Visually show corresponding slider is on last saved value (OR 50, if thats too hard)
              */
 
-            await CrossMediaManager.Current.PlayPause();
-            await CrossMediaManager.Current.Stop();
-
             if (CrossMediaManager.Current.IsPlaying() == true) {
-                MusicButton.Text = "Music Off";
+                MusicButton.Text = "Music: Off";
+                CrossMediaManager.Current.Stop();
             }
+
             else if (CrossMediaManager.Current.IsStopped() == true) {
-                MusicButton.Text = "Music On";
+                MusicButton.Text = "Music: On";
+                CrossMediaManager.Current.Play();
             }
 
 

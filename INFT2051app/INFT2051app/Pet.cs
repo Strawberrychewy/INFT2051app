@@ -18,8 +18,6 @@ namespace INFT2051app {
          * RECOMMENDED: Load JSON into objects first instead of reading them constantly
          */
 
-        MainPage mainPage;
-
         //Variables changed by player
         public string NickName { get; set; }// NickName (PLAYER INPUT)
         public FamiliarsList PetList { get; set; } = new FamiliarsList();
