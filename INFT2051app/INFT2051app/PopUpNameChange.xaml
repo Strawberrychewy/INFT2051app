@@ -7,8 +7,8 @@
              x:Class="INFT2051app.PopUpNameChange"
              xmlns:pages ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
 
-    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10,0">
-        <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10">
+        <Frame CornerRadius="10" Padding="0, 10" BackgroundColor="CadetBlue" >
             <!-- Inner Padding -->
             <StackLayout Padding="10,0">
                 <Label Text="Player Name"/>
@@ -17,7 +17,7 @@
                 <Label Text="Pet Name"/>
                 <Entry x:Name="NewPetName" Completed="EntryPetCompleted" Placeholder="Brittany" BackgroundColor="White" PlaceholderColor="Purple"/>
 
-                <Button Text="Go" x:Name="popOff" HorizontalOptions="Center" Clicked="CompleteChangeName" BackgroundColor="White"/>
+                <Button Text="Go" x:Name="popOff" Padding="20, 0" HorizontalOptions="Center" Clicked="CompleteChangeName" BackgroundColor="White"/>
             </StackLayout>
         </Frame>
 

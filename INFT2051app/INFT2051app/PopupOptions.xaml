@@ -34,6 +34,9 @@
                             Clicked="OnMusicButtonClicked"
                             TextColor="Black"
                             HorizontalOptions="Center"
+                            BorderColor="Black"
+                            BackgroundColor="White"
+                            Padding="5,0"
                             >
                           
                     </Button>
@@ -44,12 +47,13 @@
                     <Slider x:Name="SFXSlider" Grid.Row="1" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="SoundEffectChanged"></Slider>-->
 
                 </Grid>
+                <Grid HorizontalOptions="Start"></Grid>
                 <!-- Horizontal line of food items -->
-                <StackLayout x:Name ="Button_Row" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <StackLayout x:Name ="Button_Row" Orientation="Horizontal" HorizontalOptions="Center" Padding="0,10">
                     <!-- Each food item goes here -->
-                    <Button Text="Change Name" TextColor="Black" Clicked="OnNameChangeClicked"></Button>
-                    <Button Text="Credits" TextColor="Black" Clicked="OnCreditsClicked"></Button>
-                    <Button Text="Restart Game" TextColor="Black" Clicked="OnRestartGameClicked"></Button>
+                    <Button Text="Change Name" TextColor="Black" Clicked="OnNameChangeClicked" BackgroundColor="White" Padding="5"></Button>
+                    <Button Text="Credits" TextColor="Black" Clicked="OnCreditsClicked" BackgroundColor="White" Padding="5"></Button>
+                    <Button Text="Restart" TextColor="Black" Clicked="OnRestartGameClicked" BackgroundColor="White" Padding="5"></Button>
                 </StackLayout>
 
             </StackLayout>
