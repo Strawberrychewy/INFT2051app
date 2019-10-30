@@ -112,9 +112,15 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\unipets.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\72962672_431228814244449_7681194201647677440_n.png" />
+    <ImageAsset Include="Media.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\unipets.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\72962672_431228814244449_7681194201647677440_n.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -164,9 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon_settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Pet_Robbit.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\FoodItem_Apple.png" />
@@ -221,5 +224,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Pet_WingSpark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pet_Robbit.png" />
   </ItemGroup>
 </Project>

@@ -30,11 +30,10 @@ namespace INFT2051app {
          * 
          */
 
-        //private readonly FamiliarsList familiarsList;    //Contains the entire Pet list
         public PopupFoodShop foodShopPopup;
         private readonly PopupOptions optionsPopup;
         private readonly PopupStatus statusPopup;
-        readonly PetContainer petContainer;  //Controller for the pet
+        readonly PetContainer petContainer;  
         public PlayerData playerData;
         readonly System.Timers.Timer gameloop;
 
@@ -72,10 +71,6 @@ namespace INFT2051app {
             FPButton.VerticalOptions = LayoutOptions.Center;
             FPButton.Clicked += HandleFeedingComplete;//Calls ButtonFeeding method from petContainer upon button press
 
-            progressBar = new ProgressBar();//Includes Progress bar to layout, signifying eating progress
-            AbsoluteLayout.SetLayoutBounds(progressBar, new Rectangle(0.5, 0.7, 0.8, 0.4));
-            AbsoluteLayout.SetLayoutFlags(progressBar, AbsoluteLayoutFlags.All);
-
             Init();
 
             gameloop = new System.Timers.Timer(30 * 60 * 1000);//30 Minutes
@@ -85,7 +80,7 @@ namespace INFT2051app {
         }
         //------------------ SAVE/LOAD FUNCTIONS --------------------------------------------------------
         public void UpdatePlayerData() {
-            playerData.Name = statusPopup.PlayerName;//Change this
+            playerData.Name = statusPopup.PlayerName;
             playerData.Credits = foodShopPopup.Credits;
 
             playerData.PetName = petContainer.CurrentPet.NickName;//Name of pet object
@@ -98,7 +93,7 @@ namespace INFT2051app {
         }
 
         public void OffloadPlayerData() {
-            statusPopup.PlayerName = playerData.Name;//Change this
+            statusPopup.PlayerName = playerData.Name;
             foodShopPopup.Credits = playerData.Credits;
 
             petContainer.CurrentPet.NickName = playerData.PetName;//Name of pet object
@@ -129,17 +124,15 @@ namespace INFT2051app {
 
         public void Init() {
             /*
-             * This init function does the following things
              * - Initialise databases, loading from JSON
              * - Initialise petContainer 
              */
 
-
-            //1. Add the background
+            // Add the background
             Background bg = new Background();
             main_layout.Children.Add(bg);
 
-            //3. Add the pet image
+            // Add the pet image
             main_layout.Children.Add(petContainer.CurrentPet);
 
             //The top of the stack needs to be the input box
@@ -152,7 +145,6 @@ namespace INFT2051app {
         }
 
         public void Step(object source, ElapsedEventArgs e) {
-            //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss}", e.SignalTime);
             foodShopPopup.Reset();
 
             UpdatePlayerData();
@@ -160,8 +152,10 @@ namespace INFT2051app {
 
             petContainer.UpdateStatus();
         }
+
         //------------------ UI BUTTON EVENTS----------------------------------------------------------------
         private async void InvokeSettings(object sender, EventArgs e) {
+
             optionsPopup.Update(playerData);
             await PopupNavigation.Instance.PushAsync(optionsPopup);
         }
@@ -173,6 +167,7 @@ namespace INFT2051app {
         }
 
         private async void InvokeStatusPage(object sender, EventArgs e) {
+
             statusPopup.Update(petContainer.CurrentPet, playerData);
             await PopupNavigation.Instance.PushAsync(statusPopup);
 
@@ -185,8 +180,7 @@ namespace INFT2051app {
                 foodShopPopup.Credits -= 10;
                 petContainer.CurrentPet.Hygiene += 10;
 
-
-                
+                petContainer.CurrentPet.BounceMicro();
                 petContainer.CurrentPet.BounceMicro();
                 petContainer.CurrentPet.BounceMicro();
                 petContainer.CurrentPet.BounceMicro();
@@ -244,15 +238,13 @@ namespace INFT2051app {
              * 
              */
 
-            main_layout.Children.Add(progressBar);
             main_layout.Children.Add(FPButton);
-            progressBar.ProgressTo(0, 250, Easing.Linear);
         }
 
         private void HandleRestartGame(object sender, EventArgs e) {
             /*
-             * 
-             * 
+             * Restarts the game
+             * Sets all player data to default and generates a new random pet
              * 
              */
             FamiliarsList list = new FamiliarsList();
@@ -274,9 +266,7 @@ namespace INFT2051app {
             petContainer.NoFingerPrintSensorDetected -= HandleNoFingerPrintSensorDetected;
             petContainer.FeedingComplete -= HandleFeedingComplete;
 
-            main_layout.Children.Remove(FPButton);//Remove FPButton from xaml
-            progressBar.ProgressTo(progressBar.Progress + 1, 250, Easing.Linear);//ResetProgress bar
-            main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
+            main_layout.Children.Remove(FPButton);
 
             petContainer.CurrentPet.Hunger += (int)(foodShopPopup.current.Cost / 10);
 

@@ -7,8 +7,6 @@ namespace INFT2051app {
         /*
          * This class holds all base pet information upon initialization
          * Additionally it may contain some information like obtained/etc
-         * 
-         * 
          *
          *
          */
@@ -21,7 +19,6 @@ namespace INFT2051app {
         public void LoadJSON() {
             /*
              * This function takes the JSON file and turns each row into objects. This objects are added to the list.
-             * THIS FUNCTION IS FAKE ATM DON'T SUE ME
              * Familiars.add(e)
              */
             Familiars.Add(new BasePet("Robbit", "Land", null, null, "It is said from the mountains and the trees that Robbit The Rabbit came out of hiding, watching the very world that would be his very own. His small stature is a sign that even the smallest creatures can become anything they want to be."));

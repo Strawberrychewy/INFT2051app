@@ -17,7 +17,6 @@ namespace INFT2051app {
         public string EvolvesInto { get; set; } // Next Evolution (NULL IF FINAL)
         public string SpritePath { get; set; } // Path of sprite animation
 
-        //TODO: ADD ACTUAL DEFAULT PARAMETERS SO CONSTRUCTOR BECOMES FOOLPROOF
         public BasePet( string name = "Rockworm", 
                         string type = "Land",
                         string evolvesFrom = null,
