@@ -28,7 +28,7 @@ namespace INFT2051app {
         public int New_Position_Y { get; set; } // new Y Position of current pet
         public int BoxWidth { get; set; }
         public int BoxHeight { get; set; }
-        //Enum states = { Eating, Idle, Jumping };
+        
         public event EventHandler NoFingerPrintSensorDetected;
         public event EventHandler FeedingProcess;
         public event EventHandler FeedingComplete;
@@ -43,10 +43,11 @@ namespace INFT2051app {
             //This changes the dimensions of the box size to match the page height and width.
             AbsoluteLayout.SetLayoutBounds(this, new Rectangle(0, 0, 1, 1));
             AbsoluteLayout.SetLayoutFlags(this, AbsoluteLayoutFlags.All);
-            Opacity = 0.25;//Remove when finalising
-            Color = Color.Black;//Remove when finalising
+            //Opacity = 0.25;//Remove when finalising
+            //Color = Color.Black;//Remove when finalising
             HorizontalOptions = LayoutOptions.FillAndExpand;
             VerticalOptions = LayoutOptions.FillAndExpand;
+
             //Variable initialisation
             CurrentPet = pet;
             New_Position_X = 0;
@@ -74,6 +75,11 @@ namespace INFT2051app {
              * 1. Detect X and Y coordinates
              * 2. Update the pet upon those coordinates
              * 3. Restart Timer
+             *
+             *
+             * The Touchtracking code can be found here
+             * https://github.com/xamarin/xamarin-forms-samples/tree/master/Effects/TouchTrackingEffect
+             *
              */
             PetTimer.Stop();
             PetTimer.Interval = 5 * 1000; // 5 SECONDS
@@ -98,6 +104,11 @@ namespace INFT2051app {
              *    As a pseduo fingerprint sensor
              * 2. Iterate from 0 - 100 while the fingerprint sensor/OnScreenButton is held
              * 3. Unsubscribe to the Fingerprint Sensor/OnScreenButton
+             *
+             *
+             * The fingerprint sensor information can be found here:
+             * https://github.com/smstuebe/xamarin-fingerprint
+             *
              * 
              */
             var result = await CrossFingerprint.Current.IsAvailableAsync(true);//Check if sensor is available
@@ -105,6 +116,7 @@ namespace INFT2051app {
                 //FingerPrintSensorDetected(this, EventArgs.Empty);
                 //MainPage will display helper text signifying the user to use the fingerprint sensor
                 //The rest of the sensor code can be written here
+
                 var auth = await CrossFingerprint.Current.AuthenticateAsync("Feeding ");
                 if (auth.Authenticated) {
                     ButtonFeeding(this, EventArgs.Empty);

@@ -25,7 +25,6 @@ namespace INFT2051app
             Background bg = new Background();
             this.FindByName<Image>("backgroundPic").Source = bg.Source;
 
-            //
             subtitleTimer = new Timer(3 * 1000);//3 Seconds
             subtitleTimer.Elapsed += subtitleStep;
             subtitleTimer.AutoReset = true;

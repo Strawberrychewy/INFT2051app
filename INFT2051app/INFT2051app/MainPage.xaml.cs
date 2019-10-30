@@ -293,6 +293,7 @@ namespace INFT2051app {
         }
 
         protected override void OnAppearing() {
+            //subscribes to accelerometer service then updates everything to game and on file
             base.OnAppearing();
             Accelerometer.Start(SensorSpeed.Game);
             Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
@@ -302,6 +303,7 @@ namespace INFT2051app {
         }
 
         protected override void OnDisappearing() {
+            //Unsubscribes from using accelerometer then updates everything to game and on file
             base.OnDisappearing();
             Accelerometer.ShakeDetected -= Accelerometer_ShakeDetected;
             Accelerometer.Stop();
@@ -311,6 +313,11 @@ namespace INFT2051app {
         }
 
         public void Accelerometer_ShakeDetected(object sender, EventArgs e) {
+            /*
+            * Documentation on Detecting shake can be found here
+            * https://docs.microsoft.com/en-us/xamarin/essentials/detect-shake
+            *
+            */
             // Process shake event
             foodShopPopup.Credits++;
             UpdateCreditsLabel();

@@ -39,7 +39,6 @@ namespace INFT2051app {
              * This function generates buttons in the front end
              */
 
-            
             food_grid.Children.Clear();
             int index = 0;
             for (int row = 0; row < 4; row += 2)
@@ -62,7 +61,7 @@ namespace INFT2051app {
                         HorizontalTextAlignment = TextAlignment.Center,
                         Text = "" + foodShop.ElementAt(index).Name + "\n[$" + foodShop.ElementAt(index).Cost + "]"//Text
                     };
-                    Grid.SetRow(label, row + 1);//Sets the ROW (Keep in mind that this is a row below the button)
+                    Grid.SetRow(label, row + 1);//Sets the ROW
                     Grid.SetColumn(label, column);//Sets the COLUMN
                     food_grid.Children.Add(label);
 
@@ -96,12 +95,10 @@ namespace INFT2051app {
             /*
              * This Event is triggered upon the cooresponding button pressed when inside the popup
              * 
-             * 
-             * 
              */
             var button = sender as FoodItem;//Identify sender as button
             button.IsEnabled = false;//Disable button press, this stops the user from double tapping and losing out on credits
-            current = FoodList.FindFoodItem(button.Name);//Just using a carrot right now
+            current = FoodList.FindFoodItem(button.Name);
 
             //Compare the number of credits with the cost of the item
             if (Credits >= current.Cost) {

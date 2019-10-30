@@ -23,7 +23,7 @@ namespace INFT2051app {
              * 1. Name of the Pet (Name_Pet)
              * 2. Name of the Player (Name_Player)
              */
-            //this is hardcoded
+
             Name_Pet.Text = playerData.PetName;
             Name_Player.Text = playerData.Name;
         }

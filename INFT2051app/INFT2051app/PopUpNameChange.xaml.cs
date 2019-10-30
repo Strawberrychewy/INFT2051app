@@ -15,8 +15,10 @@ namespace INFT2051app {
         // readonly Entry petName;
         public string PlayerName { get; set; }
         public string PetName { get; set; }
+
         public event EventHandler PlayerNameChanged;
         public event EventHandler PetNameChanged;
+
         public PopUpNameChange() {
             InitializeComponent();
 

@@ -6,7 +6,7 @@ namespace INFT2051app {
     public class FamiliarsList {
         /*
          * This class holds all base pet information upon initialization
-         * Additionally it may contain some information like obtained/etc
+         * 
          *
          *
          */

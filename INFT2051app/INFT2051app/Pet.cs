@@ -21,6 +21,8 @@ namespace INFT2051app {
         //Variables changed by player
         public string NickName { get; set; }// NickName (PLAYER INPUT)
         public FamiliarsList PetList { get; set; } = new FamiliarsList();
+
+
         //Variables changed by game loop (Always updated)
         public int Health { get; set; } //Health
         public int Happiness { get; set; } // Happiness
