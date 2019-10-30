@@ -138,6 +138,7 @@ namespace INFT2051app {
             //1. Add the background
             Background bg = new Background();
             main_layout.Children.Add(bg);
+
             //3. Add the pet image
             main_layout.Children.Add(petContainer.CurrentPet);
 
@@ -188,6 +189,8 @@ namespace INFT2051app {
                 
                 petContainer.CurrentPet.BounceMicro();
                 petContainer.CurrentPet.BounceMicro();
+                petContainer.CurrentPet.BounceMicro();
+
                 UpdatePlayerData();
                 UpdateCreditsLabel();
                 Save();
@@ -229,9 +232,6 @@ namespace INFT2051app {
 
             petContainer.NoFingerPrintSensorDetected += HandleNoFingerPrintSensorDetected;//Subscribes the event in petcontainer to trigger the HandleNoFingerPrintSensorDetected function
             petContainer.FeedingComplete += HandleFeedingComplete;
-
-            //trying to put a picture of the food when the button is clicked 
-            //i dont think I can do this until the JSON is loaded 
 
             petContainer.StartFeedingProcess();//Delegates the feeding task to the petContainer
         }
@@ -278,6 +278,10 @@ namespace INFT2051app {
             main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
 
             petContainer.CurrentPet.Hunger += (int)(foodShopPopup.current.Cost / 10);
+
+            petContainer.CurrentPet.BounceLow();
+            petContainer.CurrentPet.BounceLow();
+            petContainer.CurrentPet.BounceHigh();
 
             UpdateCreditsLabel();
             UpdatePlayerData();
