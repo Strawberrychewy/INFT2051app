@@ -60,6 +60,16 @@ namespace INFT2051app.Android
             //CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
         }
 
+        //----------------------------------
+        //Reference A4
+        //Purpose: get music to stop playing when app closes
+        //Date: 28 October 2019 
+        //Source: Xamarin Forums
+        //Author: Nickprovs
+        //URL: https://forums.xamarin.com/discussion/106204/handling-onstop-cleanup-on-ios-and-cross-platform
+        //Assistance: gave the idea that I could put my Stop() methods inside OnStop()
+        //Adaptation: used Stop() instead of the user's methods
+        //----------------------------------
         protected override void OnPause() {
             base.OnPause();
             CrossMediaManager.Current.Stop();
@@ -74,6 +84,8 @@ namespace INFT2051app.Android
         protected override void OnDestroy() {
             CrossMediaManager.Current.Stop();
         }
-
+        //----------------------------------
+        //End Reference A4
+        //----------------------------------
     }
 }

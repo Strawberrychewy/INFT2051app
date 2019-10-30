@@ -49,8 +49,8 @@ namespace INFT2051app {
              */
 
             //=============================================
-            //Reference A4
-            //Purpose pause and play music on button click
+            //Reference A3
+            //Purpose: pause and play music on button click
             //Date: Oct 24, 2019
             //Source: GitHub
             //URL: https://github.com/martijn00/XamarinMediaManager
