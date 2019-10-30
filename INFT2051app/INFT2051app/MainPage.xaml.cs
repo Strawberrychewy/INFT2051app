@@ -70,7 +70,7 @@ namespace INFT2051app {
             FPButton.Text = "Feed";
             FPButton.HorizontalOptions = LayoutOptions.Center;
             FPButton.VerticalOptions = LayoutOptions.Center;
-            FPButton.Clicked += petContainer.ButtonFeeding;//Calls ButtonFeeding method from petContainer upon button press
+            FPButton.Clicked += HandleFeedingComplete;//Calls ButtonFeeding method from petContainer upon button press
 
             progressBar = new ProgressBar();//Includes Progress bar to layout, signifying eating progress
             AbsoluteLayout.SetLayoutBounds(progressBar, new Rectangle(0.5, 0.7, 0.8, 0.4));
@@ -109,6 +109,7 @@ namespace INFT2051app {
             petContainer.CurrentPet.Health = playerData.Health;
 
             petContainer.CurrentPet.ChangePet(playerData.BasePet);
+            credits.Text = "Credits: " + playerData.Credits;
         }
 
         public void Save() {
@@ -225,10 +226,8 @@ namespace INFT2051app {
              * 
              * Regardless, a progress bar is shown as an indication of the current progress the pet is in when eating
              */
-            //main_layout.Children.Add(progressBar);
 
             petContainer.NoFingerPrintSensorDetected += HandleNoFingerPrintSensorDetected;//Subscribes the event in petcontainer to trigger the HandleNoFingerPrintSensorDetected function
-            petContainer.FeedingProcess += HandleFeedingProcess;
             petContainer.FeedingComplete += HandleFeedingComplete;
 
             //trying to put a picture of the food when the button is clicked 
@@ -245,7 +244,9 @@ namespace INFT2051app {
              * 
              */
 
+            main_layout.Children.Add(progressBar);
             main_layout.Children.Add(FPButton);
+            progressBar.ProgressTo(0, 250, Easing.Linear);
         }
 
         private void HandleRestartGame(object sender, EventArgs e) {
@@ -260,15 +261,6 @@ namespace INFT2051app {
             
         }
 
-        private void HandleFeedingProcess(object sender, EventArgs e) {
-            /*
-             * Update the progress bar for every press
-             * 
-             */
-            //progressBar.ProgressTo(progressBar.Progress + 1, 250, Easing.Linear);
-
-        }
-
         private void HandleFeedingComplete(object sender, EventArgs e) {
             /*
              * This event is triggered upon feeding completion
@@ -279,25 +271,18 @@ namespace INFT2051app {
              */
             //Start unsubscribing to all events that trigger when the purchase started
             petContainer.NoFingerPrintSensorDetected -= HandleNoFingerPrintSensorDetected;
-            petContainer.FeedingProcess -= HandleFeedingProcess;
             petContainer.FeedingComplete -= HandleFeedingComplete;
 
             main_layout.Children.Remove(FPButton);//Remove FPButton from xaml
-            //progressBar.ProgressTo(progressBar.Progress + 1, 250, Easing.Linear);//ResetProgress bar
-            //main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
+            progressBar.ProgressTo(progressBar.Progress + 1, 250, Easing.Linear);//ResetProgress bar
+            main_layout.Children.Remove(progressBar);//Remove Progress Bar from xaml
 
             petContainer.CurrentPet.Hunger += (int)(foodShopPopup.current.Cost / 10);
 
             UpdateCreditsLabel();
             UpdatePlayerData();
             Save();
-
-            petContainer.CurrentPet.BounceLow();
-            petContainer.CurrentPet.BounceLow();
-            petContainer.CurrentPet.BounceHigh();
         }
-
-
 
         private void ChangeName(object sender, EventArgs e) {
             statusPopup.PlayerName = optionsPopup.popupNameChange.PlayerName;

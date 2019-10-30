@@ -122,7 +122,6 @@ namespace INFT2051app {
              * 
              * 
              */
-            FeedingProcess(this, EventArgs.Empty);
             FeedingComplete(this, EventArgs.Empty);
         }
         //---------------------------------------STATES-------------------------------------------------------------------------------------------------
