@@ -8,7 +8,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+/*
+* NAME: RG.PLUGIN.POPUP
+* PURPOSE: To allow for popup menus and UI to be made as a main interface navigational tool
+* DATE: 30/9/19
+* SOURCE OF CODE AND ASSISTANCE: https://github.com/xamarin/Essentials
+* AUTHOR: Kirill Lyubimov
+* DESCRIPTION OF ASSISTANCE: Directions on how to setup and create a popup page  
+*/
 namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupRestartPrompt : PopupPage {
@@ -16,25 +23,20 @@ namespace INFT2051app {
 
         public event EventHandler NewGame;
 
-
         public PopupRestartPrompt() {
             InitializeComponent();
         }
 
         public async void OnNoButtonClicked(object sender, EventArgs e) {
-            //WHEN THE USER CLICKS NO, HE WILL BE TRANSPORTED THROUGH TIME AND SPACE TO BE SENT BACKWARD TO THE PREVIOUS MENU
+            
             await PopupNavigation.Instance.PopAsync(true);
         }
 
         public async void OnYesButtonClicked(object sender, EventArgs e) {
             /*
-             * When the user clicks "Yes", His save data will be destroyed and all hope is lost to recover it.
-             * 
-             * Honestly I don't know how to code this without ruining the game,
-             * but I do know the steps necessary to make this function work:
-             * 
-             * 1. Delete the player save data, make sure that no other functions are reading any files in run time
-             * 2. Restart the game, and ensure the player gets to input username etc again
+             * When the user clicks "Yes", saved data will be destroyed.
+             * 1. Deletes the player save data, make sure that no other functions are reading any files in run time
+             * 2. Restarts the game, and ensure the player gets to input username etc again
              * 
              */
             NewGame(this, EventArgs.Empty);

@@ -6,7 +6,7 @@ using Rg.Plugins.Popup.Services;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using FFImageLoading.Forms;
+
 
 namespace INFT2051app {
     public class Pet : Image{

@@ -34,8 +34,6 @@ namespace INFT2051app
 
             var moveGesture = new TapGestureRecognizer();
             moveGesture.NumberOfTapsRequired = 1;
-            
-
         }
 
         private void subtitleStep(object source, ElapsedEventArgs e) {
@@ -65,8 +63,20 @@ namespace INFT2051app
         private async void MoveToApp(object sender, EventArgs e) {
 
             await Navigation.PushAsync(new MainPage());
+
+            //=============================================
+            //Reference A2
+            //Purpose: play music in app without throwing errors
+            //Date: Oct 23 2019
+            //Source: fellow student Nicholas Kumar
+            //Assistance: helped understand how to find audio file in project
+            //=============================================
+
             await CrossMediaManager.Current.PlayFromAssembly("appMusic.wav", typeof(MainPage).Assembly);
 
+            //=============================================
+            // End reference A3
+            //=============================================
 
         }
 

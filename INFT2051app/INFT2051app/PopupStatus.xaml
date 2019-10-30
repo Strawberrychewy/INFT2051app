@@ -9,6 +9,7 @@
 
     <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10,0">
         <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
+            
             <!-- Inner Padding -->
             <StackLayout Padding="10,0">
                 <Label x:Name ="playerLabel" HorizontalOptions="Center" FontSize="Title"  Text="Name: Jeremy"/>

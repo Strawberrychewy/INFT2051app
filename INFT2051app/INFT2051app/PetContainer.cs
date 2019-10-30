@@ -77,8 +77,19 @@ namespace INFT2051app {
              * 3. Restart Timer
              *
              *
-             * The Touchtracking code can be found here
-             * https://github.com/xamarin/xamarin-forms-samples/tree/master/Effects/TouchTrackingEffect
+             * NAME: PLUGIN.FINGERPRINT
+             * PURPOSE: To allow fingerprint to be sensed for both Android and IOS for the pet to be fed
+             * DATE: 2/10/19
+             * SOURCE OF CODE AND ASSISTANCE: https://github.com/smstuebe/xamarin-fingerprint
+             * AUTHOR: Sven-Michael Stübe
+             * DESCRIPTION OF ASSISTANCE: Code Tutorial to read and authenticate fingerprint
+             * 
+             * NAME: PLUGIN.CURRENTACTIVITY
+             * PURPOSE: To allow for fingerprint plugin to work for android
+             * DATE: 2/10/19
+             * SOURCE OF CODE AND ASSISTANCE: https://github.com/jamesmontemagno/CurrentActivityPlugin
+             * AUTHOR: James Montemagno
+             * DESCRIPTION OF ASSISTANCE: Included in the same code tutorial as PLUGIN.FINGERPRINT to read and authenticate fingerprint
              *
              */
             PetTimer.Stop();
@@ -146,7 +157,7 @@ namespace INFT2051app {
              * 
              */
             Random random = new Random();
-            int i = random.Next(0, 5);
+            int i = random.Next(0, 4);
             switch (i) {
                 case (0):
                     //Random Movement (LEFT/RIGHT)

@@ -29,22 +29,6 @@
                         <ColumnDefinition Width="25*" />
                     </Grid.ColumnDefinitions>
 
-
-                     <!--The below becomes omitted during button generation but left here as a guide to the structuring of the buttons--><!-- 
-                    <ImageButton x:Name = "Button_0" Source="meat.png" Grid.Row="0" Grid.Column="0" CornerRadius="10" BackgroundColor="Transparent"></ImageButton>
-                    <ImageButton x:Name = "Button_1" Source="meat.png" Grid.Row="0" Grid.Column="1" CornerRadius="10" BackgroundColor="Transparent"></ImageButton>
-                    <ImageButton x:Name = "Button_2" Source="meat.png" Grid.Row="0" Grid.Column="2" CornerRadius="10" BackgroundColor="Transparent"></ImageButton>
-                    <Label x:Name = "Label_0" Grid.Row="1" Grid.Column="0" Text="Food Item 1"></Label>
-                    <Label x:Name = "Label_1" Grid.Row="1" Grid.Column="1" Text="Food Item 2"></Label>
-                    <Label x:Name = "Label_2" Grid.Row="1" Grid.Column="2" Text="Food Item 3"></Label>
-
-                    <ImageButton x:Name = "Button_4" Source="meat.png" Grid.Row="2" Grid.Column="0" CornerRadius="10"></ImageButton>
-                    <ImageButton x:Name = "Button_5" Source="meat.png" Grid.Row="2" Grid.Column="1" CornerRadius="10"></ImageButton>
-                    <ImageButton x:Name = "Button_6" Source="meat.png" Grid.Row="2" Grid.Column="2" CornerRadius="10"></ImageButton>
-                    <Label x:Name = "Label_4" Grid.Row="3" Grid.Column="0" Text="Food Item 5"></Label>
-                    <Label x:Name = "Label_5" Grid.Row="3" Grid.Column="1" Text="Food Item 6"></Label>
-                    <Label x:Name = "Label_6" Grid.Row="3" Grid.Column="2" Text="Food Item 7"></Label>-->
-
                 </Grid>
 
             </StackLayout>

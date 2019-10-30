@@ -10,9 +10,11 @@
 
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
+            
             <!-- Inner Padding -->
             <StackLayout Padding="10,0">
                 <Label HorizontalOptions="Center" FontSize="Title"  Text="Are you sure?"/>
+                
                 <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="15" Padding="10">
                     <Button Text="Yes" Clicked="OnYesButtonClicked" BackgroundColor="White" Padding="10,5"></Button>
                     <Button Text="No" Clicked="OnNoButtonClicked" BackgroundColor="White" Padding="10, 10"></Button>

@@ -7,7 +7,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+        /*
+        * NAME: RG.PLUGIN.POPUP
+        * PURPOSE: To allow for popup menus and UI to be made as a main interface navigational tool
+        * DATE: 30/9/19
+        * SOURCE OF CODE AND ASSISTANCE: https://github.com/xamarin/Essentials
+        * AUTHOR: Kirill Lyubimov
+        * DESCRIPTION OF ASSISTANCE: Directions on how to setup and create a popup page  
+        */
 namespace INFT2051app {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupStatus : PopupPage {
@@ -19,9 +26,6 @@ namespace INFT2051app {
          * 2. Pet Image
          * 3. Happiness
          * 4. Hunger
-         * 5. ????
-         * 
-         * 
          * 
          */
         public string PlayerName { get; set; }

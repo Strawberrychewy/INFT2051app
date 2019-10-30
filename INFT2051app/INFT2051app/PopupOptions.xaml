@@ -14,7 +14,7 @@
             <StackLayout Padding="10,0">
                 <Label Text="Options" FontSize="Title"/>
 
-                <!-- Button Sliders and Mute buttons-->   
+                <!-- Button Sliders and Mute buttons-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -26,7 +26,6 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-
                     <Button x:Name="MusicButton" 
                             Grid.Row="0" 
                             Grid.Column="1" 
@@ -36,18 +35,10 @@
                             HorizontalOptions="Center"
                             BorderColor="Black"
                             BackgroundColor="White"
-                            Padding="5,0"
-                            >
-                          
+                            Padding="5,0">
                     </Button>
-                    <!--<Slider x:Name="MusicSlider" Grid.Row="0" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="MusicVolumeChanged" ></Slider>-->
-
-
-                    <!--<Button x:Name="SFXButton" Grid.Row="1" Grid.Column="0" Text="SFX" TextColor="Black" Clicked="OnSFXButtonClicked" ></Button>
-                    <Slider x:Name="SFXSlider" Grid.Row="1" Grid.Column="1" Maximum="100" Minimum="0" ValueChanged="SoundEffectChanged"></Slider>-->
-
                 </Grid>
-                <Grid HorizontalOptions="Start"></Grid>
+                
                 <!-- Horizontal line of food items -->
                 <StackLayout x:Name ="Button_Row" Orientation="Horizontal" HorizontalOptions="Center" Padding="0,10">
                     <!-- Each food item goes here -->

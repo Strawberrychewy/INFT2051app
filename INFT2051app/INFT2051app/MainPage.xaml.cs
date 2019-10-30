@@ -7,7 +7,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Essentials;
 using System.Windows.Input;
-using FFImageLoading.Forms;
 using Rg.Plugins.Popup.Services;
 using System.Timers;
 using System.Reflection;
@@ -45,9 +44,20 @@ namespace INFT2051app {
         public MainPage() {
             InitializeComponent();
 
-
+            //=============================================
+            //Reference A1
+            //Purpose: add space to the top of iphone to avoid overlap
+            //Date: 27 October 2019
+            //Source: StackOverFlow
+            //Author: Jason
             //https://stackoverflow.com/questions/47779937/how-to-allow-for-ios-status-bar-and-iphone-x-notch-in-xamarin-forms
+            //=============================================
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+            //=============================================
+            // End reference A1
+            //=============================================
 
 
             Load();
@@ -63,6 +73,7 @@ namespace INFT2051app {
             foodShopPopup = new PopupFoodShop(playerData);
             foodShopPopup.PurchaseSucceeded += HandlePurchaseSucceeded;
 
+            //implements Feed button 
             FPButton = new Button();
             AbsoluteLayout.SetLayoutBounds(FPButton, new Rectangle(0.5, 0.5, 0.4, 0.3));
             AbsoluteLayout.SetLayoutFlags(FPButton, AbsoluteLayoutFlags.All);
@@ -79,6 +90,14 @@ namespace INFT2051app {
             gameloop.Start();
         }
         //------------------ SAVE/LOAD FUNCTIONS --------------------------------------------------------
+           /* NAME: NEWTONSOFT.JSON
+            * PURPOSE: To Read and Write the PlayerData object to a file so it can be used after the app is closed
+            * DATE: 27/10/19
+            * SOURCE OF CODE AND ASSISTANCE: https://github.com/JamesNK/Newtonsoft.Json
+            * AUTHOR: James Newton-King
+            * URL: https://www.newtonsoft.com/json/help/html/SerializingJSON.htm
+            * DESCRIPTION OF ASSISTANCE: Code examples to read and write to file
+            */
         public void UpdatePlayerData() {
             playerData.Name = statusPopup.PlayerName;
             playerData.Credits = foodShopPopup.Credits;
@@ -314,8 +333,12 @@ namespace INFT2051app {
 
         public void Accelerometer_ShakeDetected(object sender, EventArgs e) {
             /*
-            * Documentation on Detecting shake can be found here
-            * https://docs.microsoft.com/en-us/xamarin/essentials/detect-shake
+             * NAME: XAMARIN.ESSENTIALS
+             * PURPOSE: To allow for shakes to be detected using the accelerometer on the device
+             * DATE: 15/9/19
+             * SOURCE OF CODE AND ASSISTANCE: https://github.com/xamarin/Essentials
+             * AUTHOR: Microsoft
+             * DESCRIPTION OF ASSISTANCE: Code Tutorial to subscribe and unsubscribe to the accelerometer service
             *
             */
             // Process shake event
