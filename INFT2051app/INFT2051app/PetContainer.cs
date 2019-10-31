@@ -77,6 +77,7 @@ namespace INFT2051app {
              * 3. Restart Timer
              *
              *
+             * A9
              * NAME: PLUGIN.FINGERPRINT
              * PURPOSE: To allow fingerprint to be sensed for both Android and IOS for the pet to be fed
              * DATE: 2/10/19

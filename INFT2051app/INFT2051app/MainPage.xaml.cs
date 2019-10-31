@@ -90,7 +90,8 @@ namespace INFT2051app {
             gameloop.Start();
         }
         //------------------ SAVE/LOAD FUNCTIONS --------------------------------------------------------
-           /* NAME: NEWTONSOFT.JSON
+           /* A7
+            * NAME: NEWTONSOFT.JSON
             * PURPOSE: To Read and Write the PlayerData object to a file so it can be used after the app is closed
             * DATE: 27/10/19
             * SOURCE OF CODE AND ASSISTANCE: https://github.com/JamesNK/Newtonsoft.Json
@@ -333,6 +334,7 @@ namespace INFT2051app {
 
         public void Accelerometer_ShakeDetected(object sender, EventArgs e) {
             /*
+             * A8
              * NAME: XAMARIN.ESSENTIALS
              * PURPOSE: To allow for shakes to be detected using the accelerometer on the device
              * DATE: 15/9/19
