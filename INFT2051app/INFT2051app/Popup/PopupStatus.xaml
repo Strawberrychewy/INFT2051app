@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="INFT2051app.PopupStatus"
+             xmlns:pages ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10,0">
+        <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue">
+            
+            <!-- Inner Padding -->
+            <StackLayout Padding="10,0">
+
+                <Label HorizontalOptions="Center" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Name: " FontAttributes="Bold" FontSize="Title"/>
+                            <Span x:Name ="playerLabel" FontSize="Large"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
+                <Label HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Pet Name: " FontAttributes="Bold" FontSize="Title"/>
+                            <Span x:Name ="petLabel" FontSize="Large"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    
+                </Label>
+                
+                <Label HorizontalOptions="Center" FontSize="Title">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Age: " FontAttributes="Bold" FontSize="Title"/>
+                            <Span x:Name ="ageLabel" FontSize="Large"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!-- Button Sliders and Mute buttons-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+
+                    <Label x:Name="healthLabel" Grid.Row="0" Grid.Column="0" Text="Health"></Label>
+                    <ProgressBar x:Name="healthBar" Grid.Row="0" Grid.Column="1" ProgressColor="LimeGreen"></ProgressBar>
+
+                    <Label x:Name="hungerLabel" Grid.Row="1" Grid.Column="0" Text="Hunger"></Label>
+                    <ProgressBar x:Name="hungerBar" Grid.Row="1" Grid.Column="1" ProgressColor="PaleVioletRed"></ProgressBar>
+                    
+                    <Label x:Name="happinessLabel" Grid.Row="2" Grid.Column="0" Text="Happiness"></Label>
+                    <ProgressBar x:Name="happinessBar" Grid.Row="2" Grid.Column="1" ProgressColor="AliceBlue"></ProgressBar>
+                    
+                    <Label x:Name="hygieneLabel" Grid.Row="3" Grid.Column="0" Text="Hygiene"></Label>
+                    <ProgressBar x:Name="hygieneBar" Grid.Row="3" Grid.Column="1" ProgressColor="Cyan"></ProgressBar>
+
+                </Grid>
+
+                <Label HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Species: " FontAttributes="Bold" FontSize="Title"/>
+                            <Span x:Name ="basePetNameLabel" FontSize="Medium"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label HorizontalOptions="Center" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Type: " FontAttributes="Bold" FontSize="Title"/>
+                            <Span x:Name ="basePetTypeLabel" FontSize="Medium"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+
+                </Label>
+
+                <Label HorizontalOptions="Center" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Description: " FontAttributes="Bold"  FontSize="Large"/>
+                            <Span x:Name ="basePetDescriptionLabel" FontSize="Medium"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </StackLayout>
+        </Frame>
+
+
+
+    </StackLayout>
+
+
+
+</pages:PopupPage>

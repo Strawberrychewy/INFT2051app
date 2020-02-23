@@ -16,61 +16,47 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="appMusic.wav" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="appMusic.wav">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Plugin.Fingerprint" Version="1.4.9" />
-    <PackageReference Include="Plugin.MediaManager" Version="0.8.18" />
-    <PackageReference Include="Plugin.MediaManager.Forms" Version="0.8.18" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
-    <PackageReference Include="Xamarians.MediaPlayer" Version="1.1.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Xamarin.iOS">
+    <!--<Reference Include="Xamarin.iOS">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
-    </Reference>
+    </Reference>-->
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="PopupFoodShop.xaml.cs">
+    <Compile Update="Popup\PopupFoodShop.xaml.cs">
       <DependentUpon>PopupFoodShop.xaml</DependentUpon>
     </Compile>
-    <Compile Update="PopupRestartPrompt.xaml.cs">
+    <Compile Update="Popup\PopupRestartPrompt.xaml.cs">
       <DependentUpon>PopupRestartPrompt.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="PopupCredits.xaml">
+    <EmbeddedResource Update="Popup\PopupCredits.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopupFoodShop.xaml">
+    <EmbeddedResource Update="Popup\PopupFoodShop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="OpenPage.xaml">
+    <EmbeddedResource Update="Pages\OpenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopUpNameChange.xaml">
+    <EmbeddedResource Update="Popup\PopUpNameChange.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopupOptions.xaml">
+    <EmbeddedResource Update="Popup\PopupOptions.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopupRestartPrompt.xaml">
+    <EmbeddedResource Update="Popup\PopupRestartPrompt.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PopupStatus.xaml">
+    <EmbeddedResource Update="Popup\PopupStatus.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="INFT2051app.PopupFoodShop"
+             xmlns:pages ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+       <!-- POP UP panel-->
+    <StackLayout VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="FillAndExpand"  HeightRequest="300" BackgroundColor="Transparent" Padding ="10,10">
+        <Frame CornerRadius="10" Padding="0" VerticalOptions="Center" HorizontalOptions="FillAndExpand" BackgroundColor = "CadetBlue" >
+            
+            <!-- Inner Padding -->
+            <StackLayout Padding="10, 0" Spacing="0">
+                <Label HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Shop " FontAttributes="Bold" FontSize="Title"/>
+                            <Span x:Name="shop_label" FontSize="Large"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!--Each food item goes here--> 
+                <Grid x:Name="food_grid" RowSpacing="2" Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*" />
+                        <ColumnDefinition Width="25*" />
+                        <ColumnDefinition Width="25*" />
+                    </Grid.ColumnDefinitions>
+
+                </Grid>
+
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</pages:PopupPage>

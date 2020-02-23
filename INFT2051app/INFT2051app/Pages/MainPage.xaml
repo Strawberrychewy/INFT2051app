@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="INFT2051app.MainPage"
+             NavigationPage.HasNavigationBar="false">
+
+    <AbsoluteLayout x:Name ="main_layout"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+
+        <Grid x:Name="petGrid"
+              RowSpacing="4"
+              HorizontalOptions="FillAndExpand"
+              Padding="5, 5"
+              AbsoluteLayout.LayoutBounds="0, 0, 1, .4"
+              AbsoluteLayout.LayoutFlags="All">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+
+            <ImageButton x:Name="StatusPage"
+                    Clicked="InvokeStatusPage"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="LightGray"
+                    Source="icon_status.png">
+                         
+            </ImageButton>
+
+            <ImageButton x:Name="Foodshop"
+                    Clicked="InvokeFoodShop"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="LightGray"
+                    Source="icon_food.png">
+            </ImageButton>
+
+            <ImageButton x:Name="CleanPet"
+                    Clicked="InvokeCleanPet"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    BackgroundColor="LightGray"
+                    Source="icon_wash.png">
+            </ImageButton>
+
+            <ImageButton x:Name="PlayPet"
+                    Clicked="InvokePlayPet"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    BackgroundColor="LightGray"
+                    Source="icon_play.png">
+            </ImageButton>
+<!-- FAST FORWARD
+            <ImageButton x:Name="FastForward"
+                    Clicked="SpeedUpTime"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    BackgroundColor="LightGray"
+                    Source="icon_fast">
+            </ImageButton>
+-->
+            <ImageButton x:Name="Options"
+                         Clicked="InvokeSettings"
+                         VerticalOptions="Start"
+                         HorizontalOptions="End"
+                         BackgroundColor="Transparent"
+                         Grid.Row="0"
+                         Grid.Column="2"
+                         Source="icon_settings.png">
+            </ImageButton>
+
+            <Label x:Name="credits"
+                   Text="Credits: XXXX"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   Grid.Row="1"
+                   Grid.Column="2" >
+            </Label>
+
+        </Grid>
+
+    </AbsoluteLayout>
+
+</ContentPage>

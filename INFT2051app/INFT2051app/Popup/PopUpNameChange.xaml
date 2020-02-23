@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="INFT2051app.PopUpNameChange"
+             xmlns:pages ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="10">
+        <Frame CornerRadius="10" Padding="0, 10" BackgroundColor="CadetBlue" >
+            
+            <!-- Inner Padding -->
+            <StackLayout Padding="10,0">
+                <Label Text="Player Name" FontAttributes="Bold" FontSize="Title"/>
+                <Entry x:Name="NewPlayerName" TextChanged="EntryPlayerChanged" BackgroundColor="White" PlaceholderColor="Purple"/>
+                                
+                <Label Text="Pet Name" FontAttributes="Bold" FontSize="Title"/>
+                <Entry x:Name="NewPetName" TextChanged="EntryPetChanged" BackgroundColor="White" PlaceholderColor="Purple"/>
+            </StackLayout>
+        </Frame>
+
+
+
+    </StackLayout>
+</pages:PopupPage>

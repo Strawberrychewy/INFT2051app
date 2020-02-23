@@ -34,6 +34,10 @@
     <MandroidI18n />
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +48,11 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidLinkMode>Full</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -59,15 +68,6 @@
     <PackageReference Include="Plugin.CurrentActivity">
       <Version>2.1.0.4</Version>
     </PackageReference>
-    <PackageReference Include="Plugin.Fingerprint">
-      <Version>1.4.9</Version>
-    </PackageReference>
-    <PackageReference Include="Plugin.MediaManager">
-      <Version>0.8.18</Version>
-    </PackageReference>
-    <PackageReference Include="Plugin.MediaManager.Forms">
-      <Version>0.8.18</Version>
-    </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.2.0.223</Version>
     </PackageReference>
@@ -77,18 +77,16 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FragmentFingerprint.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TouchEffect.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Bellerose.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -110,12 +108,6 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\drawable\unipets.png">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MediaManager\" />
@@ -225,34 +217,85 @@
     <AndroidResource Include="Resources\drawable\Inkedhomepage_LI.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Hawkeye.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Sealancer_Rare.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Roccoon.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Sealpronger_Normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Rockworm.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Sealpronger_Rare.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Sealancer.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Sealskeer_Normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Sealknight.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Sealskeer_Rare.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Sealpronger.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Shellworm_Normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Shellwyrm.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Shellworm_Rare.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Thundersparse.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Thundersparse_Normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_WingSpark.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Thundersparse_Rare.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pet_Robbit.png" />
+    <AndroidResource Include="Resources\drawable\Pet_Wingspark_Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Wingspark_Rare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Dead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Elechick_Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Elechick_Rare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Robbit_Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Robbit_Rare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Roccoon_Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Roccoon_Rare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Rockworm_Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Rockworm_Rare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pet_Sealancer_Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_wash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_fast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_food.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_play.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
